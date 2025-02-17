@@ -1,0 +1,261 @@
+<html><head><title>jobs.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\jobs.h</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\jobs.h";
+top.document.title  = "jobs.h";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* jobs.h -- structures and definitions used by the jobs.c file. */</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"></span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">/* Copyright (C) 1993-2009 Free Software Foundation, Inc.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"></span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">   This file is part of GNU Bash, the Bourne Again SHell.</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"></span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">   Bash is free software: you can redistribute it and/or modify</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">   it under the terms of the GNU General Public License as published by</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">   the Free Software Foundation, either version 3 of the License, or</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">   (at your option) any later version.</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment"></span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">   Bash is distributed in the hope that it will be useful,</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">   GNU General Public License for more details.</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment"></span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">   You should have received a copy of the GNU General Public License</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">   along with Bash.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">*/</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment"></span>
+<a name="21"><font size=-1>21     </font></a><span class="comment"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_&.html#1560">_JOBS_H_</a>)</span>
+<a name="22"><font size=-1>22     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_&.html#1560">_JOBS_H_</a></span>
+<a name="23"><font size=-1>23     </font></a><span class="preproc"></span>
+<a name="24"><font size=-1>24     </font></a><span class="preproc">#include </span><span class="string">&quot;quit.h&quot;</span>
+<a name="25"><font size=-1>25     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;siglist.h&quot;</span>
+<a name="26"><font size=-1>26     </font></a><span class="string"></span>
+<a name="27"><font size=-1>27     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;stdc.h&quot;</span>
+<a name="28"><font size=-1>28     </font></a><span class="string"></span>
+<a name="29"><font size=-1>29     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;posixwait.h&quot;</span>
+<a name="30"><font size=-1>30     </font></a><span class="string"></span>
+<a name="31"><font size=-1>31     </font></a><span class="string"></span><span class="comment">/* Defines controlling the fashion in which jobs are listed. */</span>
+<a name="32"><font size=-1>32     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#459">JLIST_STANDARD</a>       </span><span class="number">0</span>
+<a name="33"><font size=-1>33     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_J.html#456">JLIST_LONG</a>	     </span><span class="number">1</span>
+<a name="34"><font size=-1>34     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_J.html#458">JLIST_PID_ONLY</a>	     </span><span class="number">2</span>
+<a name="35"><font size=-1>35     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_J.html#455">JLIST_CHANGED_ONLY</a>   </span><span class="number">3</span>
+<a name="36"><font size=-1>36     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_J.html#457">JLIST_NONINTERACTIVE</a> </span><span class="number">4</span>
+<a name="37"><font size=-1>37     </font></a><span class="number"></span>
+<a name="38"><font size=-1>38     </font></a><span class="number"></span><span class="comment">/* I looked it up.  For pretty_print_job ().  The real answer is 24. */</span>
+<a name="39"><font size=-1>39     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_L.html#468">LONGEST_SIGNAL_DESC</a> </span><span class="number">24</span>
+<a name="40"><font size=-1>40     </font></a><span class="number"></span>
+<a name="41"><font size=-1>41     </font></a><span class="number"></span><span class="comment">/* The max time to sleep while retrying fork() on EAGAIN failure */</span>
+<a name="42"><font size=-1>42     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_F.html#451">FORKSLEEP_MAX</a>	</span><span class="number">16</span>
+<a name="43"><font size=-1>43     </font></a><span class="number"></span>
+<a name="44"><font size=-1>44     </font></a><span class="number"></span><span class="comment">/* We keep an array of jobs.  Each entry in the array is a linked list</span>
+<a name="45"><font size=-1>45     </font></a><span class="comment">   of processes that are piped together.  The first process encountered is</span>
+<a name="46"><font size=-1>46     </font></a><span class="comment">   the group leader. */</span>
+<a name="47"><font size=-1>47     </font></a><span class="comment"></span>
+<a name="48"><font size=-1>48     </font></a><span class="comment">/* Values for the `running' field of a struct process. */</span>
+<a name="49"><font size=-1>49     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_P.html#477">PS_DONE</a>		</span><span class="number">0</span>
+<a name="50"><font size=-1>50     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_P.html#478">PS_RUNNING</a>	</span><span class="number">1</span>
+<a name="51"><font size=-1>51     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_P.html#1556">PS_STOPPED</a>	</span><span class="number">2</span>
+<a name="52"><font size=-1>52     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_P.html#1555">PS_RECYCLED</a>	</span><span class="number">4</span>
+<a name="53"><font size=-1>53     </font></a><span class="number"></span>
+<a name="54"><font size=-1>54     </font></a><span class="number"></span><span class="comment">/* Each child of the shell is remembered in a STRUCT PROCESS.  A circular</span>
+<a name="55"><font size=-1>55     </font></a><span class="comment">   chain of such structures is a pipeline. */</span>
+<a name="56"><font size=-1>56     </font></a><span class="comment"></span><span class="keyword">typedef struct <a href="dictionary_P.html#520">process</a> </span><span class="default">{</span>
+<a name="57"><font size=-1>57     </font></a><span class="default">  </span><span class="keyword">struct <a href="dictionary_P.html#520">process</a> </span><span class="default">*<a href="dictionary_P.html#522">next</a>;	</span><span class="comment">/* Next process in the pipeline.  A circular chain. */</span>
+<a name="58"><font size=-1>58     </font></a><span class="comment">  </span><span class="default">pid_t pid;		</span><span class="comment">/* Process ID. */</span>
+<a name="59"><font size=-1>59     </font></a><span class="comment">  <a href="dictionary_W.html#613">WAIT</a> <a href="dictionary_P.html#524">status</a></span><span class="default">;		</span><span class="comment">/* The status of this command as returned by wait. */</span>
+<a name="60"><font size=-1>60     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_P.html#523">running</a></span><span class="default">;		</span><span class="comment">/* Non-zero if this process is running. */</span>
+<a name="61"><font size=-1>61     </font></a><span class="comment">  </span><span class="keyword">char </span><span class="default">*<a href="dictionary_P.html#521">command</a>;	</span><span class="comment">/* The particular program that is running. */</span>
+<a name="62"><font size=-1>62     </font></a><span class="comment"></span><span class="default">} <a href="dictionary_P.html#474">PROCESS</a>;</span>
+<a name="63"><font size=-1>63     </font></a><span class="default"></span>
+<a name="64"><font size=-1>64     </font></a><span class="default"></span><span class="comment">/* PALIVE really means `not exited' */</span>
+<a name="65"><font size=-1>65     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_P.html#476">PSTOPPED</a></span><span class="default">(p)	(<a href="dictionary_W.html#578">WIFSTOPPED</a>((p)-&gt;status))</span>
+<a name="66"><font size=-1>66     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_P.html#475">PRUNNING</a></span><span class="default">(p)	((p)-&gt;running == <a href="dictionary_P.html#478">PS_RUNNING</a>)</span>
+<a name="67"><font size=-1>67     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_P.html#471">PALIVE</a></span><span class="default">(p)	(<a href="dictionary_P.html#475">PRUNNING</a>(p) || <a href="dictionary_P.html#476">PSTOPPED</a>(p))</span>
+<a name="68"><font size=-1>68     </font></a><span class="default"></span>
+<a name="69"><font size=-1>69     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_P.html#472">PEXITED</a></span><span class="default">(p)	((p)-&gt;running == <a href="dictionary_P.html#477">PS_DONE</a>)</span>
+<a name="70"><font size=-1>70     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_R.html#1557">RECYCLES_PIDS</a>)</span>
+<a name="71"><font size=-1>71     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_P.html#473">PRECYCLED</a></span><span class="default">(p)	((p)-&gt;running == <a href="dictionary_P.html#1555">PS_RECYCLED</a>)</span>
+<a name="72"><font size=-1>72     </font></a><span class="default"></span><span class="preproc">#else</span>
+<a name="73"><font size=-1>73     </font></a><span class="preproc">#  define <a href="dictionary_P.html#473">PRECYCLED</a></span><span class="default">(p)	(</span><span class="number">0</span><span class="default">)</span>
+<a name="74"><font size=-1>74     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="75"><font size=-1>75     </font></a><span class="preproc">#define <a href="dictionary_P.html#1554">PDEADPROC</a></span><span class="default">(p)	(<a href="dictionary_P.html#472">PEXITED</a>(p) || <a href="dictionary_P.html#473">PRECYCLED</a>(p))</span>
+<a name="76"><font size=-1>76     </font></a><span class="default"></span>
+<a name="77"><font size=-1>77     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_G.html#1566">get_job_by_jid</a></span><span class="default">(ind)	(jobs[(ind)])</span>
+<a name="78"><font size=-1>78     </font></a><span class="default"></span>
+<a name="79"><font size=-1>79     </font></a><span class="default"></span><span class="comment">/* A description of a pipeline's state. */</span>
+<a name="80"><font size=-1>80     </font></a><span class="comment"></span><span class="keyword">typedef enum </span><span class="default">{ JNONE = -</span><span class="number">1</span><span class="default">, JRUNNING = </span><span class="number">1</span><span class="default">, JSTOPPED = </span><span class="number">2</span><span class="default">, JDEAD = </span><span class="number">4</span><span class="default">, JMIXED = </span><span class="number">8 </span><span class="default">} <a href="dictionary_J.html#462">JOB_STATE</a>;</span>
+<a name="81"><font size=-1>81     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_J.html#461">JOBSTATE</a></span><span class="default">(job)	(jobs[(job)]-&gt;state)</span>
+<a name="82"><font size=-1>82     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_J.html#1552">J_JOBSTATE</a></span><span class="default">(j)	((j)-&gt;state)</span>
+<a name="83"><font size=-1>83     </font></a><span class="default"></span>
+<a name="84"><font size=-1>84     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_S.html#480">STOPPED</a></span><span class="default">(j)	(jobs[(j)]-&gt;state == JSTOPPED)</span>
+<a name="85"><font size=-1>85     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_R.html#479">RUNNING</a></span><span class="default">(j)	(jobs[(j)]-&gt;state == JRUNNING)</span>
+<a name="86"><font size=-1>86     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_D.html#450">DEADJOB</a></span><span class="default">(j)	(jobs[(j)]-&gt;state == JDEAD)</span>
+<a name="87"><font size=-1>87     </font></a><span class="default"></span>
+<a name="88"><font size=-1>88     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_I.html#1549">INVALID_JOB</a></span><span class="default">(j)	((j) &lt; </span><span class="number">0 </span><span class="default">|| (j) &gt;= js.j_jobslots || <a href="dictionary_G.html#1566">get_job_by_jid</a>(j) == </span><span class="number">0</span><span class="default">)</span>
+<a name="89"><font size=-1>89     </font></a><span class="default"></span>
+<a name="90"><font size=-1>90     </font></a><span class="default"></span><span class="comment">/* Values for the FLAGS field in the JOB struct below. */</span>
+<a name="91"><font size=-1>91     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#464">J_FOREGROUND</a> </span><span class="number">0x01 </span><span class="comment">/* Non-zero if this is running in the foreground.  */</span>
+<a name="92"><font size=-1>92     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#467">J_NOTIFIED</a>   </span><span class="number">0x02 </span><span class="comment">/* Non-zero if already notified about job state.   */</span>
+<a name="93"><font size=-1>93     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#465">J_JOBCONTROL</a> </span><span class="number">0x04 </span><span class="comment">/* Non-zero if this job started under job control. */</span>
+<a name="94"><font size=-1>94     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#466">J_NOHUP</a>      </span><span class="number">0x08 </span><span class="comment">/* Don't send SIGHUP to job if shell gets SIGHUP. */</span>
+<a name="95"><font size=-1>95     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#1553">J_STATSAVED</a>  </span><span class="number">0x10 </span><span class="comment">/* A process in this job had had status saved via $! */</span>
+<a name="96"><font size=-1>96     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_J.html#463">J_ASYNC</a>	     </span><span class="number">0x20 </span><span class="comment">/* Job was started asynchronously */</span>
+<a name="97"><font size=-1>97     </font></a><span class="comment"></span>
+<a name="98"><font size=-1>98     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_I.html#452">IS_FOREGROUND</a></span><span class="default">(j)	((jobs[j]-&gt;flags &amp; <a href="dictionary_J.html#464">J_FOREGROUND</a>) != </span><span class="number">0</span><span class="default">)</span>
+<a name="99"><font size=-1>99     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_I.html#454">IS_NOTIFIED</a></span><span class="default">(j)		((jobs[j]-&gt;flags &amp; <a href="dictionary_J.html#467">J_NOTIFIED</a>) != </span><span class="number">0</span><span class="default">)</span>
+<a name="100"><font size=-1>100     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_I.html#453">IS_JOBCONTROL</a></span><span class="default">(j)	((jobs[j]-&gt;flags &amp; <a href="dictionary_J.html#465">J_JOBCONTROL</a>) != </span><span class="number">0</span><span class="default">)</span>
+<a name="101"><font size=-1>101     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_I.html#1550">IS_ASYNC</a></span><span class="default">(j)		((jobs[j]-&gt;flags &amp; <a href="dictionary_J.html#463">J_ASYNC</a>) != </span><span class="number">0</span><span class="default">)</span>
+<a name="102"><font size=-1>102     </font></a><span class="default"></span>
+<a name="103"><font size=-1>103     </font></a><span class="default"></span><span class="keyword">typedef struct <a href="dictionary_J.html#498">job</a> </span><span class="default">{</span>
+<a name="104"><font size=-1>104     </font></a><span class="default">  </span><span class="keyword">char </span><span class="default">*<a href="dictionary_J.html#502">wd</a>;	   </span><span class="comment">/* The working directory at time of invocation. */</span>
+<a name="105"><font size=-1>105     </font></a><span class="comment">  <a href="dictionary_P.html#474">PROCESS</a> </span><span class="default">*<a href="dictionary_J.html#500">pipe</a>;   </span><span class="comment">/* The pipeline of processes that make up this job. */</span>
+<a name="106"><font size=-1>106     </font></a><span class="comment">  </span><span class="default">pid_t pgrp;	   </span><span class="comment">/* The process ID of the process group (necessary). */</span>
+<a name="107"><font size=-1>107     </font></a><span class="comment">  <a href="dictionary_J.html#462">JOB_STATE</a> <a href="dictionary_J.html#501">state</a></span><span class="default">; </span><span class="comment">/* The state that this job is in. */</span>
+<a name="108"><font size=-1>108     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#499">flags</a></span><span class="default">;	   </span><span class="comment">/* Flags word: J_NOTIFIED, J_FOREGROUND, or J_JOBCONTROL. */</span>
+<a name="109"><font size=-1>109     </font></a><span class="comment"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_J.html#1551">JOB_CONTROL</a>)</span>
+<a name="110"><font size=-1>110     </font></a><span class="default">  COMMAND *deferred;	</span><span class="comment">/* Commands that will execute when this job is done. */</span>
+<a name="111"><font size=-1>111     </font></a><span class="comment">  </span><span class="default">sh_vptrfunc_t *j_cleanup; </span><span class="comment">/* Cleanup function to call when job marked JDEAD */</span>
+<a name="112"><font size=-1>112     </font></a><span class="comment">  </span><span class="default">PTR_T cleanarg;	</span><span class="comment">/* Argument passed to (*j_cleanup)() */</span>
+<a name="113"><font size=-1>113     </font></a><span class="comment"></span><span class="preproc">#endif </span><span class="comment">/* JOB_CONTROL */</span>
+<a name="114"><font size=-1>114     </font></a><span class="comment"></span><span class="default">} <a href="dictionary_J.html#460">JOB</a>;</span>
+<a name="115"><font size=-1>115     </font></a><span class="default"></span>
+<a name="116"><font size=-1>116     </font></a><span class="default"></span><span class="keyword">struct <a href="dictionary_J.html#503">jobstats</a> </span><span class="default">{</span>
+<a name="117"><font size=-1>117     </font></a><span class="default">  </span><span class="comment">/* limits */</span>
+<a name="118"><font size=-1>118     </font></a><span class="comment">  </span><span class="keyword">long <a href="dictionary_J.html#504">c_childmax</a></span><span class="default">;</span>
+<a name="119"><font size=-1>119     </font></a><span class="default">  </span><span class="comment">/* child process statistics */</span>
+<a name="120"><font size=-1>120     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#506">c_living</a></span><span class="default">;		</span><span class="comment">/* running or stopped child processes */</span>
+<a name="121"><font size=-1>121     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#507">c_reaped</a></span><span class="default">;		</span><span class="comment">/* exited child processes still in jobs list */</span>
+<a name="122"><font size=-1>122     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#505">c_injobs</a></span><span class="default">;		</span><span class="comment">/* total number of child processes in jobs list */</span>
+<a name="123"><font size=-1>123     </font></a><span class="comment">  /* child process totals */</span>
+<a name="124"><font size=-1>124     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#508">c_totforked</a></span><span class="default">;	</span><span class="comment">/* total number of children this shell has forked */</span>
+<a name="125"><font size=-1>125     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#1570">c_totreaped</a></span><span class="default">;	</span><span class="comment">/* total number of children this shell has reaped */</span>
+<a name="126"><font size=-1>126     </font></a><span class="comment">  /* job counters and indices */</span>
+<a name="127"><font size=-1>127     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#511">j_jobslots</a></span><span class="default">;	</span><span class="comment">/* total size of jobs array */</span>
+<a name="128"><font size=-1>128     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#513">j_lastj</a></span><span class="default">;		</span><span class="comment">/* last (newest) job allocated */</span>
+<a name="129"><font size=-1>129     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#510">j_firstj</a></span><span class="default">;		</span><span class="comment">/* first (oldest) job allocated */</span>
+<a name="130"><font size=-1>130     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#516">j_njobs</a></span><span class="default">;		</span><span class="comment">/* number of non-NULL jobs in jobs array */</span>
+<a name="131"><font size=-1>131     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#515">j_ndead</a></span><span class="default">;		</span><span class="comment">/* number of JDEAD jobs in jobs array */</span>
+<a name="132"><font size=-1>132     </font></a><span class="comment">  /* */</span>
+<a name="133"><font size=-1>133     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#509">j_current</a></span><span class="default">;	</span><span class="comment">/* current job */</span>
+<a name="134"><font size=-1>134     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_J.html#517">j_previous</a></span><span class="default">;	</span><span class="comment">/* previous job */</span>
+<a name="135"><font size=-1>135     </font></a><span class="comment">  /* */</span>
+<a name="136"><font size=-1>136     </font></a><span class="comment">  <a href="dictionary_J.html#460">JOB</a> </span><span class="default">*<a href="dictionary_J.html#514">j_lastmade</a>;	</span><span class="comment">/* last job allocated by stop_pipeline */</span>
+<a name="137"><font size=-1>137     </font></a><span class="comment">  <a href="dictionary_J.html#460">JOB</a> </span><span class="default">*<a href="dictionary_J.html#512">j_lastasync</a>;	</span><span class="comment">/* last async job allocated by stop_pipeline */</span>
+<a name="138"><font size=-1>138     </font></a><span class="comment"></span><span class="default">};</span>
+<a name="139"><font size=-1>139     </font></a><span class="default"></span>
+<a name="140"><font size=-1>140     </font></a><span class="default"></span><span class="keyword">struct <a href="dictionary_P.html#518">pidstat</a> </span><span class="default">{</span>
+<a name="141"><font size=-1>141     </font></a><span class="default"> </span><span class="keyword">struct <a href="dictionary_P.html#518">pidstat</a> </span><span class="default">*<a href="dictionary_P.html#519">next</a>;</span>
+<a name="142"><font size=-1>142     </font></a><span class="default"> pid_t pid;</span>
+<a name="143"><font size=-1>143     </font></a><span class="default"> </span><span class="keyword">int <a href="dictionary_P.html#1574">status</a></span><span class="default">;</span>
+<a name="144"><font size=-1>144     </font></a><span class="default">};</span>
+<a name="145"><font size=-1>145     </font></a><span class="default"></span>
+<a name="146"><font size=-1>146     </font></a><span class="default"></span><span class="keyword">struct <a href="dictionary_B.html#486">bgpids</a> </span><span class="default">{</span>
+<a name="147"><font size=-1>147     </font></a><span class="default">  </span><span class="keyword">struct <a href="dictionary_P.html#518">pidstat</a> </span><span class="default">*<a href="dictionary_B.html#488">list</a>;</span>
+<a name="148"><font size=-1>148     </font></a><span class="default">  </span><span class="keyword">struct <a href="dictionary_P.html#518">pidstat</a> </span><span class="default">*<a href="dictionary_B.html#487">end</a>;</span>
+<a name="149"><font size=-1>149     </font></a><span class="default">  </span><span class="keyword">int <a href="dictionary_B.html#489">npid</a></span><span class="default">;</span>
+<a name="150"><font size=-1>150     </font></a><span class="default">};</span>
+<a name="151"><font size=-1>151     </font></a><span class="default"></span>
+<a name="152"><font size=-1>152     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_N.html#469">NO_JOB</a>  </span><span class="default">-</span><span class="number">1	</span><span class="comment">/* An impossible job array index. */</span>
+<a name="153"><font size=-1>153     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_D.html#1547">DUP_JOB</a> </span><span class="default">-</span><span class="number">2	</span><span class="comment">/* A possible return value for get_job_spec (). */</span>
+<a name="154"><font size=-1>154     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_B.html#1546">BAD_JOBSPEC</a> </span><span class="default">-</span><span class="number">3	</span><span class="comment">/* Bad syntax for job spec. */</span>
+<a name="155"><font size=-1>155     </font></a><span class="comment"></span>
+<a name="156"><font size=-1>156     </font></a><span class="comment">/* A value which cannot be a process ID. */</span>
+<a name="157"><font size=-1>157     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_N.html#470">NO_PID</a> </span><span class="default">(pid_t)-</span><span class="number">1</span>
+<a name="158"><font size=-1>158     </font></a><span class="number"></span>
+<a name="159"><font size=-1>159     </font></a><span class="number"></span><span class="comment">/* System calls. */</span>
+<a name="160"><font size=-1>160     </font></a><span class="comment"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_H.html#1548">HAVE_UNISTD_H</a>)</span>
+<a name="161"><font size=-1>161     </font></a><span class="default"></span><span class="keyword">extern </span><span class="default">pid_t <a href="dictionary_F.html#1565">fork</a> (), getpid (), getpgrp ();</span>
+<a name="162"><font size=-1>162     </font></a><span class="default"></span><span class="preproc">#endif </span><span class="comment">/* !HAVE_UNISTD_H */</span>
+<a name="163"><font size=-1>163     </font></a><span class="comment"></span>
+<a name="164"><font size=-1>164     </font></a><span class="comment">/* Stuff from the jobs.c file. */</span>
+<a name="165"><font size=-1>165     </font></a><span class="comment"></span><span class="keyword">extern struct <a href="dictionary_J.html#503">jobstats</a> <a href="dictionary_J.html#750">js</a></span><span class="default">;</span>
+<a name="166"><font size=-1>166     </font></a><span class="default"></span>
+<a name="167"><font size=-1>167     </font></a><span class="default"></span><span class="keyword">extern </span><span class="default">pid_t <a href="dictionary_O.html#815">original_pgrp</a>, shell_pgrp, pipeline_pgrp;</span>
+<a name="168"><font size=-1>168     </font></a><span class="default"></span><span class="keyword">extern </span><span class="default">pid_t <a href="dictionary_L.html#757">last_made_pid</a>, last_asynchronous_pid;</span>
+<a name="169"><font size=-1>169     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_A.html#435">asynchronous_notification</a></span><span class="default">;</span>
+<a name="170"><font size=-1>170     </font></a><span class="default"></span>
+<a name="171"><font size=-1>171     </font></a><span class="default"></span><span class="keyword">extern <a href="dictionary_J.html#460">JOB</a> </span><span class="default">**<a href="dictionary_J.html#748">jobs</a>;</span>
+<a name="172"><font size=-1>172     </font></a><span class="default"></span>
+<a name="173"><font size=-1>173     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_M.html#776">making_children</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="174"><font size=-1>174     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#3252">stop_making_children</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="175"><font size=-1>175     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_C.html#670">cleanup_the_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="176"><font size=-1>176     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#883">save_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="177"><font size=-1>177     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_R.html#873">restore_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="178"><font size=-1>178     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#950">start_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="179"><font size=-1>179     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_S.html#8760">stop_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">, COMMAND *));</span>
+<a name="180"><font size=-1>180     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_A.html#1562">append_process</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">*, <a href="dictionary_P.html#1572">pid_t</a>, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="181"><font size=-1>181     </font></a><span class="default"></span>
+<a name="182"><font size=-1>182     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_D.html#491">delete_job</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="183"><font size=-1>183     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_N.html#800">nohup_job</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="184"><font size=-1>184     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_D.html#681">delete_all_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="185"><font size=-1>185     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_N.html#797">nohup_all_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="186"><font size=-1>186     </font></a><span class="default"></span>
+<a name="187"><font size=-1>187     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_C.html#3163">count_all_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="188"><font size=-1>188     </font></a><span class="default"></span>
+<a name="189"><font size=-1>189     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_T.html#975">terminate_current_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="190"><font size=-1>190     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_T.html#976">terminate_stopped_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="191"><font size=-1>191     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_H.html#715">hangup_all_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="192"><font size=-1>192     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_K.html#752">kill_current_pipeline</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="193"><font size=-1>193     </font></a><span class="default"></span>
+<a name="194"><font size=-1>194     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_&.html#1561">__STDC__</a>) &amp;&amp; </span><span class="preproc">defined </span><span class="default">(<a href="dictionary_P.html#1572">pid_t</a>)</span>
+<a name="195"><font size=-1>195     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_G.html#1567">get_job_by_pid</a> </span><span class="default">__P((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="196"><font size=-1>196     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_D.html#1564">describe_pid</a> </span><span class="default">__P((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="197"><font size=-1>197     </font></a><span class="default"></span><span class="preproc">#else</span>
+<a name="198"><font size=-1>198     </font></a><span class="preproc"></span><span class="keyword">extern int <a href="dictionary_G.html#1567">get_job_by_pid</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="199"><font size=-1>199     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_D.html#1564">describe_pid</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>));</span>
+<a name="200"><font size=-1>200     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="201"><font size=-1>201     </font></a><span class="preproc"></span>
+<a name="202"><font size=-1>202     </font></a><span class="preproc"></span><span class="keyword">extern void <a href="dictionary_L.html#761">list_one_job</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_J.html#460">JOB</a> *, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="203"><font size=-1>203     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_L.html#759">list_all_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="204"><font size=-1>204     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_L.html#768">list_stopped_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="205"><font size=-1>205     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_L.html#766">list_running_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="206"><font size=-1>206     </font></a><span class="default"></span>
+<a name="207"><font size=-1>207     </font></a><span class="default"></span><span class="keyword">extern </span><span class="default">pid_t <a href="dictionary_M.html#3227">make_child</a> <a href="dictionary_&.html#572">__P</a>((</span><span class="keyword">char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="208"><font size=-1>208     </font></a><span class="default"></span>
+<a name="209"><font size=-1>209     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_G.html#2962">get_tty_state</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="210"><font size=-1>210     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_S.html#14310">set_tty_state</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="211"><font size=-1>211     </font></a><span class="default"></span>
+<a name="212"><font size=-1>212     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_J.html#735">job_exit_status</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="213"><font size=-1>213     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_J.html#733">job_exit_signal</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="214"><font size=-1>214     </font></a><span class="default"></span>
+<a name="215"><font size=-1>215     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_W.html#1579">wait_for_single_pid</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>));</span>
+<a name="216"><font size=-1>216     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_W.html#3260">wait_for_background_pids</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="217"><font size=-1>217     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_W.html#1578">wait_for</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>));</span>
+<a name="218"><font size=-1>218     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_W.html#988">wait_for_job</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="219"><font size=-1>219     </font></a><span class="default"></span>
+<a name="220"><font size=-1>220     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_N.html#803">notify_and_cleanup</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="221"><font size=-1>221     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_R.html#3241">reap_dead_jobs</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="222"><font size=-1>222     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_S.html#940">start_job</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="223"><font size=-1>223     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_K.html#1571">kill_pid</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="224"><font size=-1>224     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_I.html#3214">initialize_job_control</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="225"><font size=-1>225     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_I.html#11048">initialize_job_signals</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="226"><font size=-1>226     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_G.html#1568">give_terminal_to</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((<a href="dictionary_P.html#1572">pid_t</a>, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="227"><font size=-1>227     </font></a><span class="default"></span>
+<a name="228"><font size=-1>228     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_R.html#878">run_sigchld_trap</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="229"><font size=-1>229     </font></a><span class="default"></span>
+<a name="230"><font size=-1>230     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_F.html#3164">freeze_jobs_list</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="231"><font size=-1>231     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_U.html#9871">unfreeze_jobs_list</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="232"><font size=-1>232     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_S.html#890">set_job_control</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="233"><font size=-1>233     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_W.html#998">without_job_control</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="234"><font size=-1>234     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_E.html#691">end_job_control</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="235"><font size=-1>235     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_R.html#872">restart_job_control</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="236"><font size=-1>236     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#910">set_sigchld_handler</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="237"><font size=-1>237     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_I.html#719">ignore_tty_job_signals</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="238"><font size=-1>238     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_D.html#9278">default_tty_job_signals</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="239"><font size=-1>239     </font></a><span class="default"></span>
+<a name="240"><font size=-1>240     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_I.html#718">init_job_stats</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="241"><font size=-1>241     </font></a><span class="default"></span>
+<a name="242"><font size=-1>242     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_C.html#1563">close_pgrp_pipe</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="243"><font size=-1>243     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#1577">save_pgrp_pipe</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int </span><span class="default">*, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="244"><font size=-1>244     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_R.html#1576">restore_pgrp_pipe</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int </span><span class="default">*));</span>
+<a name="245"><font size=-1>245     </font></a><span class="default"></span>
+<a name="246"><font size=-1>246     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_J.html#1551">JOB_CONTROL</a>)</span>
+<a name="247"><font size=-1>247     </font></a><span class="default"></span><span class="keyword">extern int </span><span class="default">job_control;</span>
+<a name="248"><font size=-1>248     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="249"><font size=-1>249     </font></a><span class="preproc"></span>
+<a name="250"><font size=-1>250     </font></a><span class="preproc">#endif </span><span class="comment">/* _JOBS_H_ */</span>
+<a name="251"><font size=-1>251     </font></a><span class="comment"></span>
+</pre></body></html>

@@ -1,0 +1,97 @@
+## layered pattern:
+
+The layered architecture pattern divides a system’s architecture into multiple layers, each performing a specific function. Each layer can only interact with the layer directly beneath it (vertical layering of services). The client communicates with the topmost layer of the system, which acts as the server to the next layer, and so on, continuing this process until reaching the final layer.
+
+In a typical layered architecture, layers are often divided into categories such as:
+
+Presentation Layer: Handles user interface and communication.
+Business Logic Layer: Contains the core business rules and logic.
+Persistence Layer: Manages data storage and retrieval.
+Database Layer: Stores data in databases.
+The exact number of layers may vary based on the complexity of the system. For example, smaller systems might only have three layers (presentation, business, and database), while larger, more complex systems may have more layers, such as separate layers for persistence logic or other concerns.
+
+In the layered architecture:
+
+The Presentation Layer interacts with the user but does not need to know how data is processed or stored.
+The Business Layer focuses on the logic specific to business operations and interacts with the persistence layer for data operations.
+The Persistence Layer manages data storage, retrieval, and operations such as queries or updates, independent of the business logic.
+Each layer abstracts the work of the layer below it, creating a clear separation of concerns. The layered architecture helps in maintaining modularity and ease of change since changes in one layer (like the database or presentation layer) do not directly impact others.
+
+## event-driven pattern:
+
+The event-driven architecture pattern is a popular distributed asynchronous architecture pattern used to produce highly scalable applications. It is also highly adaptable and can be used for small
+applications and as well as large, complex ones. The event-driven architecture is made up of highly decoupled, single-purpose event processing components that asynchronously receive and process
+events. 
+
+The event-driven architecture pattern consists of two main topologies, the mediator and the broker. The mediator topology is commonly used when you need to orchestrate multiple steps within an event through a central mediator, whereas the broker topology is used when you want to chain events together without the use of a central mediator. Because the architecture characteristics and implementation strategies differ between these two topologies, it is important to understand each one to know which is best suited for your particular situation.
+
+## microservice pattern:
+
+Regardless of the topology or implementation style you chose, there are several common core concepts that apply to the general architecture pattern. The first of these concepts is the notion of separately deployed units. As illustrated in Figure 4-1, each component of the microservices architecture is deployed as a separate unit, allowing for easier deployment through an effective and streamlined delivery pipeline, increased scalability, and a high degree of application and component decoupling within your application.
+
+Perhaps the most important concept to understand with this pattern is the notion of a service component. Rather than think about services within a microservices architecture, it is better to think about service components, which can vary in granularity from a single module to a large portion of the application. Service components contain one or more modules (e.g., Java classes) that represent either a single-purpose function (e.g., providing the weather for a specific city or town) or an independent portion of a large business application (e.g., stock trade placement or determining auto-insurance rates). Designing the right level of service component granularity is one of the biggest challenges within a microservices architecture. This challenge is discussed in more detail in the following service component orchestration subsection.
+
+## pipe and filter pattern:
+
+The system structure built using the Pipe and Filter architectural pattern is a chain-like structure organized according to the sequence of processing steps. The processing steps are coupled through input and output, where the output of one step serves as the input to the next, creating a data flow-oriented system architecture. The input to a filter is received as a data stream, and the filter performs its function on the incoming data. The processed data is then output and can be reused as a data stream in subsequent steps. Filters can process data in various ways, such as extracting specific data, adding supplementary information through calculations or appending, or modifying the data by consolidating existing data or transforming its representation. These types of processing can be combined in any way. A pipe is a passive element that transmits and buffers data, embodying the implementation of data flow. The entire process flow of sequential processing at different levels is called a data channel or filter chain. The data channel begins at the data source and ends at the data sink, with data being sent from the source into the pipe and received by the sink at the end. The data source can be either active or passive, with active sources providing data periodically or based on events. Passive sources require at least one active pipe element to request new data from the source according to the pull principle. The pipe connects two elements, which can be a data source, a filter, or a data sink, and operates based on the First In, First Out (FIFO) principle, providing asynchronous decoupling. Filters can be active or passive, with active filters being able to start in parallel as threads or operating system processes. They require cyclic or event-driven input data. Finally, a data sink is responsible for receiving the processed data, and like filters or data sources, it can be classified as either active or passive. An active data sink requests data periodically or through event triggers, adhering to the pull principle.
+
+## plugin pattern:
+
+The Plug-in architectural pattern embodies an adaptable system where third-party executable software can extend the functionality of existing software without requiring knowledge of the system’s internal structure. This design supports flexible system extensibility, making it suitable for scenarios where dynamic expansion is necessary. Plug-ins are tailored to integrate with specific software, offering new or additional functionalities rather than providing universal services. While they enhance existing systems, plug-ins typically cannot function independently. If an application exposes its interfaces or method signatures, third parties can implement extended functionalities as plug-ins without relying on the application’s internal workflows. A plug-in is a software component that extends or supplements the functionality of an existing application, requiring the implementation of specific interfaces to enable extensibility. Without such interfaces, the system cannot support component-based extensions, making these interfaces essential for the plug-in system.
+
+The Plug-in Manager oversees the runtime loading of plug-ins and identifies all available plug-ins that conform to the defined interfaces. Applications use the Plug-in Manager to locate and utilize the required plug-ins dynamically. A plug-in can also define its own extensibility interfaces, allowing additional plug-ins to extend its functionality. This creates a hierarchical system of plug-in layers, enabling applications to achieve varying levels of complexity through the combination of multiple plug-ins.
+
+The flexibility provided by plug-ins introduces management challenges, particularly in handling their implementation and execution. For instance, the system must manage the number and types of plug-ins available, and the Plug-in Manager must dynamically decide which plug-ins to use based on runtime tasks. This management process is typically determined by the underlying component model. With the use of an appropriate framework, these management mechanisms are often built-in, and the framework’s runtime environment provides information about the types and availability of plug-ins. By adopting the plug-in pattern, the interdependence between applications and plug-ins on shared interfaces is reduced. The instantiation of plug-in objects is handled by a specialized component within the runtime environment, which the Plug-in Manager can invoke. This separation simplifies the application design and ensures the scalability and maintainability of the system.
+
+## MVC pattern:
+
+The Model-View-Controller (MVC) pattern divides an interactive system into three core components:
+
+Model: Encapsulates the data and the business logic of the application.
+View: Responsible for rendering data and displaying the user interface.
+Controller: Manages user input and updates the Model and View accordingly.
+The MVC pattern is especially common in interactive or user-facing applications, where the interaction between the user and the system is dynamic. It was first introduced by Trygve Reenskaug in the 1970s for Smalltalk and has since become a fundamental concept in GUI architectures.
+
+In MVC:
+
+The Model contains the business logic and manages the data. It is independent of the user interface.
+The View is the display logic, responsible for presenting the data from the Model.
+The Controller processes user input, updates the Model, and may trigger changes in the View.
+Unlike layered architecture, MVC does not impose strict layers of responsibilities but focuses more on separating concerns related to data, presentation, and user input. The primary goal of MVC is to enable independent development and maintenance of the Model, View, and Controller, which can evolve separately but work together to create a cohesive interactive system.
+
+In the MVC pattern:
+
+The View reacts to user inputs and sends them to the Controller.
+The Controller updates the Model based on the input and may also update the View to reflect new data.
+The Model sends updates to the View, which is rendered accordingly.
+While both layered architecture and MVC promote separation of concerns, the layered architecture focuses on dividing the system into service-oriented layers, whereas MVC is about managing the interaction between data, user input, and display.
+
+## broker pattern:
+
+The Broker pattern constructs a distributed system composed of multiple clients and servers, with the mediator acting as an intermediary in the architecture. The mediator forwards the client's inquiries to the appropriate server and relays the server’s responses back to the client. The client and server components communicate only through the mediator. In the described pattern, the components communicating with each other are classified into two roles based on their communication relationship: the server component, which provides one or more services, and the client component, which requires one or more services from the server. Overall, the roles are not static, as a server component may provide services at runtime but may also require services from other server components, thus assuming the role of a client in the communication, similar to a client component.
+
+The services provided by the server must be registered with the mediator, awaiting client access. The client requests the service and makes inquiries to the mediator. The mediator then forwards the inquiry to the appropriate server, which provides the service. The response from the server is returned by the mediator to the client. Thus, the location where services are provided is transparent to the client. The advantage of using the Broker pattern is that the client and server do not need to know each other’s physical attributes, but only their logical characteristics. The mediator constructs logical names from physical addresses. Through the mediator, the client and server can communicate indirectly.
+
+Client:
+
+A client needs services provided by a server to fulfill its requirements. It sends the request to the server indirectly through a client-side proxy. The client does not need to know the location of the server but must know the corresponding server interface to communicate with the client-side proxy.
+
+Client-side Proxy:
+
+For the client, the client-side proxy represents the server. The client requests services from the server, which are received and serialized by the client-side proxy, and then forwarded to the mediator. From the client’s perspective, the client-side proxy behaves like the actual server. The proxy includes all the necessary functions for communication with the mediator, including the corresponding mediator, the serialized information format of the service call from the client, and a format that both the mediator and server-side proxy can understand. The client-side proxy is also responsible for deserializing the response from the mediator to obtain the results of the requested service, which are then returned to the client.
+
+Broker:
+
+The mediator is responsible for the communication between the server and the client. The server registers its services with the mediator. The client-side proxy forwards the request to the appropriate server-side proxy via the mediator. The mediator must manage the relationship between service providers (servers and server-side proxies) and the services they offer. The mediator also relays the server’s response back to the client, so it needs to store the corresponding client information.
+
+Server-side Proxy:
+
+For the server, the server-side proxy represents the client. The server-side proxy receives client calls to the server, so it appears to the server as if the client is directly calling it. The task of the server-side proxy is to deserialize the information from the client-side proxy, generate the call information for the server’s service methods, and then execute the call. The result of the service call is serialized by the server-side proxy and forwarded to the mediator.
+
+Server:
+
+The server is the class or component that provides the service. The client calls services from the server through the client-side proxy, the mediator, and the server-side proxy. The result of the service call is sent back to the client via the same route in reverse.
+
+## master-slave：
+
+Master-slave architecture is a widely adopted software design pattern comprising a single master node and multiple slave nodes. The master node is responsible for the overall coordination and management of the system, including task allocation, resource scheduling, and monitoring the operational status of the slave nodes. It receives requests from users or other systems, decomposes these requests into specific tasks, and assigns them to the appropriate slave nodes for execution. Multiple slave nodes focus on executing the tasks allocated by the master, processing data, and returning results back to the master node. The key components of master-slave architecture include the Master Controller, Slave Executors, and an efficient Communication Mechanism. The Master Controller handles the reception and distribution of tasks, the Slave Executors carry out the specific task executions, and the Communication Mechanism ensures smooth and reliable data transmission and command delivery between the master and slave nodes. By combining centralized management with distributed execution, master-slave architecture not only enhances the system's scalability and performance but also improves fault tolerance, making it suitable for applications that require high concurrency and high availability, such as distributed databases, load balancing systems, and big data processing platforms.

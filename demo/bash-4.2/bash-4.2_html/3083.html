@@ -1,0 +1,85 @@
+<html><head><title>mypid.c</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\examples\loadables\mypid.c</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\examples\\loadables\\mypid.c";
+top.document.title  = "mypid.c";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* This module should be dynamically loaded with enable -f</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"> * which would create a new builtin named mypid. You'll need</span>
+<a name="3"><font size=-1>3     </font></a><span class="comment"> * the source code for GNU bash to recompile this module.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"> *</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment"> * Then, from within bash, enable -f ./mypid enable_mypid, where ./mypid</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"> * is the binary obtained from running make. Hereafter, `${MYPID}'</span>
+<a name="7"><font size=-1>7     </font></a><span class="comment"> * is a shell builtin variable.</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment"> */</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment"></span>
+<a name="10"><font size=-1>10     </font></a><span class="comment"></span><span class="preproc">#include </span><span class="string">&lt;stdio.h&gt;</span>
+<a name="11"><font size=-1>11     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&lt;errno.h&gt;</span>
+<a name="12"><font size=-1>12     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&lt;string.h&gt;</span>
+<a name="13"><font size=-1>13     </font></a><span class="string"></span>
+<a name="14"><font size=-1>14     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;builtins.h&quot;</span>
+<a name="15"><font size=-1>15     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;shell.h&quot;</span>
+<a name="16"><font size=-1>16     </font></a><span class="string"></span>
+<a name="17"><font size=-1>17     </font></a><span class="string"></span><span class="preproc">#define <a href="dictionary_I.html#3091">INIT_DYNAMIC_VAR</a></span><span class="default">(var, val, gfunc, afunc) </span><span class="preproc">\</span>
+<a name="18"><font size=-1>18     </font></a><span class="preproc">  </span><span class="default">do </span><span class="preproc">\</span>
+<a name="19"><font size=-1>19     </font></a><span class="preproc">    </span><span class="default">{ SHELL_VAR *v = bind_variable (var, (val), </span><span class="number">0</span><span class="default">); </span><span class="preproc">\</span>
+<a name="20"><font size=-1>20     </font></a><span class="preproc">      </span><span class="default">v-&gt;dynamic_value = gfunc; </span><span class="preproc">\</span>
+<a name="21"><font size=-1>21     </font></a><span class="preproc">      </span><span class="default">v-&gt;assign_func = afunc; </span><span class="preproc">\</span>
+<a name="22"><font size=-1>22     </font></a><span class="preproc">    </span><span class="default">} </span><span class="preproc">\</span>
+<a name="23"><font size=-1>23     </font></a><span class="preproc">  </span><span class="default">while (</span><span class="number">0</span><span class="default">)</span>
+<a name="24"><font size=-1>24     </font></a><span class="default"></span>
+<a name="25"><font size=-1>25     </font></a><span class="default"></span><span class="keyword">static <a href="dictionary_S.html#2722">SHELL_VAR</a> </span><span class="default">*</span>
+<a name="26"><font size=-1>26     </font></a><span class="default"><a href="dictionary_A.html#3092">assign_mypid</a> (</span>
+<a name="27"><font size=-1>27     </font></a><span class="default">     <a href="dictionary_S.html#2722">SHELL_VAR</a> *<a href="dictionary_S.html#3094">self</a>,</span>
+<a name="28"><font size=-1>28     </font></a><span class="default">     </span><span class="keyword">char </span><span class="default">*<a href="dictionary_V.html#3096">value</a>,</span>
+<a name="29"><font size=-1>29     </font></a><span class="default">     <a href="dictionary_A.html#2706">arrayind_t</a> <a href="dictionary_U.html#3095">unused</a>,</span>
+<a name="30"><font size=-1>30     </font></a><span class="default">     </span><span class="keyword">char </span><span class="default">*<a href="dictionary_K.html#3093">key</a> )</span>
+<a name="31"><font size=-1>31     </font></a><span class="default">{</span>
+<a name="32"><font size=-1>32     </font></a><span class="default">  </span><span class="keyword">return </span><span class="default">(<a href="dictionary_S.html#3094">self</a>);</span>
+<a name="33"><font size=-1>33     </font></a><span class="default">}</span>
+<a name="34"><font size=-1>34     </font></a><span class="default"></span>
+<a name="35"><font size=-1>35     </font></a><span class="default"></span><span class="keyword">static <a href="dictionary_S.html#2722">SHELL_VAR</a> </span><span class="default">*</span>
+<a name="36"><font size=-1>36     </font></a><span class="default"><a href="dictionary_G.html#3102">get_mypid</a> (<a href="dictionary_S.html#2722">SHELL_VAR</a> *<a href="dictionary_V.html#3105">var</a>)</span>
+<a name="37"><font size=-1>37     </font></a><span class="default">{</span>
+<a name="38"><font size=-1>38     </font></a><span class="default">  </span><span class="keyword">int <a href="dictionary_R.html#3104">rv</a></span><span class="default">;</span>
+<a name="39"><font size=-1>39     </font></a><span class="default">  </span><span class="keyword">char </span><span class="default">*<a href="dictionary_P.html#3103">p</a>;</span>
+<a name="40"><font size=-1>40     </font></a><span class="default"></span>
+<a name="41"><font size=-1>41     </font></a><span class="default">  <a href="dictionary_R.html#3104">rv</a> = <a href="dictionary_G.html#713">getpid</a>();</span>
+<a name="42"><font size=-1>42     </font></a><span class="default">  <a href="dictionary_P.html#3103">p</a> = <a href="dictionary_I.html#2648">itos</a> (<a href="dictionary_R.html#3104">rv</a>);</span>
+<a name="43"><font size=-1>43     </font></a><span class="default"></span>
+<a name="44"><font size=-1>44     </font></a><span class="default">  <a href="dictionary_F.html#441">FREE</a> (<a href="dictionary_V.html#3086">value_cell</a> (<a href="dictionary_V.html#3105">var</a>));</span>
+<a name="45"><font size=-1>45     </font></a><span class="default"></span>
+<a name="46"><font size=-1>46     </font></a><span class="default">  <a href="dictionary_V.html#3084">VSETATTR</a> (<a href="dictionary_V.html#3105">var</a>, <a href="dictionary_A.html#3085">att_integer</a>);</span>
+<a name="47"><font size=-1>47     </font></a><span class="default">  <a href="dictionary_V.html#3087">var_setvalue</a> (<a href="dictionary_V.html#3105">var</a>, <a href="dictionary_P.html#3103">p</a>);</span>
+<a name="48"><font size=-1>48     </font></a><span class="default">  </span><span class="keyword">return </span><span class="default">(<a href="dictionary_V.html#3105">var</a>);</span>
+<a name="49"><font size=-1>49     </font></a><span class="default">}</span>
+<a name="50"><font size=-1>50     </font></a><span class="default"></span>
+<a name="51"><font size=-1>51     </font></a><span class="default"></span><span class="keyword">int</span>
+<a name="52"><font size=-1>52     </font></a><span class="keyword"><a href="dictionary_E.html#3097">enable_mypid_builtin</a></span><span class="default">(<a href="dictionary_W.html#421">WORD_LIST</a> *<a href="dictionary_L.html#3098">list</a>)</span>
+<a name="53"><font size=-1>53     </font></a><span class="default">{</span>
+<a name="54"><font size=-1>54     </font></a><span class="default">  <a href="dictionary_I.html#3091">INIT_DYNAMIC_VAR</a> (</span><span class="string">&quot;MYPID&quot;</span><span class="default">, (</span><span class="keyword">char </span><span class="default">*)<a href="dictionary_N.html#3">NULL</a>, <a href="dictionary_G.html#3102">get_mypid</a>, <a href="dictionary_A.html#3092">assign_mypid</a>);</span>
+<a name="55"><font size=-1>55     </font></a><span class="default"></span>
+<a name="56"><font size=-1>56     </font></a><span class="default">  </span><span class="keyword">return </span><span class="number">0</span><span class="default">;</span>
+<a name="57"><font size=-1>57     </font></a><span class="default">}</span>
+<a name="58"><font size=-1>58     </font></a><span class="default"></span>
+<a name="59"><font size=-1>59     </font></a><span class="default"></span><span class="keyword">char const </span><span class="default">*<a href="dictionary_E.html#3100">enable_mypid_doc</a>[] = {</span>
+<a name="60"><font size=-1>60     </font></a><span class="default">  </span><span class="string">&quot;Enable $MYPID.&quot;</span><span class="default">,</span>
+<a name="61"><font size=-1>61     </font></a><span class="default">  </span><span class="string">&quot;&quot;</span><span class="default">,</span>
+<a name="62"><font size=-1>62     </font></a><span class="default">  </span><span class="string">&quot;Enables use of the ${MYPID} dynamic variable.  &quot;</span><span class="default">,</span>
+<a name="63"><font size=-1>63     </font></a><span class="default">  </span><span class="string">&quot;It will yield the current pid of a subshell.&quot;</span><span class="default">,</span>
+<a name="64"><font size=-1>64     </font></a><span class="default">  (</span><span class="keyword">char </span><span class="default">*)</span><span class="number">0</span>
+<a name="65"><font size=-1>65     </font></a><span class="number"></span><span class="default">};</span>
+<a name="66"><font size=-1>66     </font></a><span class="default"></span>
+<a name="67"><font size=-1>67     </font></a><span class="default"></span><span class="keyword">struct <a href="dictionary_B.html#1108">builtin</a> <a href="dictionary_E.html#3101">enable_mypid_struct</a> </span><span class="default">= {</span>
+<a name="68"><font size=-1>68     </font></a><span class="default">  </span><span class="string">&quot;enable_mypid&quot;</span><span class="default">,</span>
+<a name="69"><font size=-1>69     </font></a><span class="default">  <a href="dictionary_E.html#3097">enable_mypid_builtin</a>,</span>
+<a name="70"><font size=-1>70     </font></a><span class="default">  <a href="dictionary_B.html#1411">BUILTIN_ENABLED</a>,</span>
+<a name="71"><font size=-1>71     </font></a><span class="default">  (</span><span class="keyword">char</span><span class="default">**)(</span><span class="keyword">void</span><span class="default">*)<a href="dictionary_E.html#3100">enable_mypid_doc</a>,</span>
+<a name="72"><font size=-1>72     </font></a><span class="default">  </span><span class="string">&quot;enable_mypid N&quot;</span><span class="default">,</span>
+<a name="73"><font size=-1>73     </font></a><span class="default">  </span><span class="number">0</span>
+<a name="74"><font size=-1>74     </font></a><span class="number"></span><span class="default">};</span>
+<a name="75"><font size=-1>75     </font></a><span class="default"></span>
+</pre></body></html>

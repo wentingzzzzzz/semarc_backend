@@ -1,0 +1,107 @@
+<html><head><title>winsize.c</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\lib\sh\winsize.c</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\lib\\sh\\winsize.c";
+top.document.title  = "winsize.c";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* winsize.c - handle window size changes and information. */</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"></span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">/* Copyright (C) 2005 Free Software Foundation, Inc.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"></span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">   This file is part of GNU Bash, the Bourne Again SHell.</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"></span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">   Bash is free software: you can redistribute it and/or modify</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">   it under the terms of the GNU General Public License as published by</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">   the Free Software Foundation, either version 3 of the License, or</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">   (at your option) any later version.</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment"></span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">   Bash is distributed in the hope that it will be useful,</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">   GNU General Public License for more details.</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment"></span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">   You should have received a copy of the GNU General Public License</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">   along with Bash.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">*/</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment"></span>
+<a name="21"><font size=-1>21     </font></a><span class="comment"></span><span class="preproc">#include </span><span class="string">&quot;config.h&quot;</span>
+<a name="22"><font size=-1>22     </font></a><span class="string"></span>
+<a name="23"><font size=-1>23     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&lt;stdc.h&gt;</span>
+<a name="24"><font size=-1>24     </font></a><span class="string"></span>
+<a name="25"><font size=-1>25     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&quot;bashtypes.h&quot;</span>
+<a name="26"><font size=-1>26     </font></a><span class="string"></span>
+<a name="27"><font size=-1>27     </font></a><span class="string"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_H.html#9149">HAVE_UNISTD_H</a>)</span>
+<a name="28"><font size=-1>28     </font></a><span class="default"></span><span class="preproc">#  include </span><span class="string">&lt;unistd.h&gt;</span>
+<a name="29"><font size=-1>29     </font></a><span class="string"></span><span class="preproc">#endif</span>
+<a name="30"><font size=-1>30     </font></a><span class="preproc"></span>
+<a name="31"><font size=-1>31     </font></a><span class="preproc">#include </span><span class="string">&lt;sys/ioctl.h&gt;</span>
+<a name="32"><font size=-1>32     </font></a><span class="string"></span>
+<a name="33"><font size=-1>33     </font></a><span class="string"></span><span class="comment">/* Try to find the definitions of `struct winsize' and TIOGCWINSZ */</span>
+<a name="34"><font size=-1>34     </font></a><span class="comment"></span>
+<a name="35"><font size=-1>35     </font></a><span class="comment"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_G.html#13618">GWINSZ_IN_SYS_IOCTL</a>) &amp;&amp; !</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_T.html#5771">TIOCGWINSZ</a>)</span>
+<a name="36"><font size=-1>36     </font></a><span class="default"></span><span class="preproc">#  include </span><span class="string">&lt;sys/ioctl.h&gt;</span>
+<a name="37"><font size=-1>37     </font></a><span class="string"></span><span class="preproc">#endif </span><span class="comment">/* GWINSZ_IN_SYS_IOCTL &amp;&amp; !TIOCGWINSZ */</span>
+<a name="38"><font size=-1>38     </font></a><span class="comment"></span>
+<a name="39"><font size=-1>39     </font></a><span class="comment"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_S.html#7072">STRUCT_WINSIZE_IN_TERMIOS</a>) &amp;&amp; !</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_S.html#7917">STRUCT_WINSIZE_IN_SYS_IOCTL</a>)</span>
+<a name="40"><font size=-1>40     </font></a><span class="default"></span><span class="preproc">#  include </span><span class="string">&lt;termios.h&gt;</span>
+<a name="41"><font size=-1>41     </font></a><span class="string"></span><span class="preproc">#endif </span><span class="comment">/* STRUCT_WINSIZE_IN_TERMIOS &amp;&amp; !STRUCT_WINSIZE_IN_SYS_IOCTL */</span>
+<a name="42"><font size=-1>42     </font></a><span class="comment"></span>
+<a name="43"><font size=-1>43     </font></a><span class="comment">/* Not in either of the standard places, look around. */</span>
+<a name="44"><font size=-1>44     </font></a><span class="comment"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_S.html#7072">STRUCT_WINSIZE_IN_TERMIOS</a>) &amp;&amp; !</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_S.html#7917">STRUCT_WINSIZE_IN_SYS_IOCTL</a>)</span>
+<a name="45"><font size=-1>45     </font></a><span class="default"></span><span class="preproc">#  if defined </span><span class="default">(<a href="dictionary_H.html#9858">HAVE_SYS_STREAM_H</a>)</span>
+<a name="46"><font size=-1>46     </font></a><span class="default"></span><span class="preproc">#    include </span><span class="string">&lt;sys/stream.h&gt;</span>
+<a name="47"><font size=-1>47     </font></a><span class="string"></span><span class="preproc">#  endif </span><span class="comment">/* HAVE_SYS_STREAM_H */</span>
+<a name="48"><font size=-1>48     </font></a><span class="comment"></span><span class="preproc">#  if defined </span><span class="default">(<a href="dictionary_H.html#13431">HAVE_SYS_PTEM_H</a>) </span><span class="comment">/* SVR4.2, at least, has it here */</span>
+<a name="49"><font size=-1>49     </font></a><span class="comment"></span><span class="preproc">#    include </span><span class="string">&lt;sys/ptem.h&gt;</span>
+<a name="50"><font size=-1>50     </font></a><span class="string"></span><span class="preproc">#    define </span><span class="default">_IO_PTEM_H          </span><span class="comment">/* work around SVR4.2 1.1.4 bug */</span>
+<a name="51"><font size=-1>51     </font></a><span class="comment"></span><span class="preproc">#  endif </span><span class="comment">/* HAVE_SYS_PTEM_H */</span>
+<a name="52"><font size=-1>52     </font></a><span class="comment"></span><span class="preproc">#  if defined </span><span class="default">(<a href="dictionary_H.html#11746">HAVE_SYS_PTE_H</a>)  </span><span class="comment">/* ??? */</span>
+<a name="53"><font size=-1>53     </font></a><span class="comment"></span><span class="preproc">#    include </span><span class="string">&lt;sys/pte.h&gt;</span>
+<a name="54"><font size=-1>54     </font></a><span class="string"></span><span class="preproc">#  endif </span><span class="comment">/* HAVE_SYS_PTE_H */</span>
+<a name="55"><font size=-1>55     </font></a><span class="comment"></span><span class="preproc">#endif </span><span class="comment">/* !STRUCT_WINSIZE_IN_TERMIOS &amp;&amp; !STRUCT_WINSIZE_IN_SYS_IOCTL */</span>
+<a name="56"><font size=-1>56     </font></a><span class="comment"></span>
+<a name="57"><font size=-1>57     </font></a><span class="comment"></span><span class="preproc">#include </span><span class="string">&lt;stdio.h&gt;</span>
+<a name="58"><font size=-1>58     </font></a><span class="string"></span>
+<a name="59"><font size=-1>59     </font></a><span class="string"></span><span class="comment">/* Return the fd from which we are actually getting input. */</span>
+<a name="60"><font size=-1>60     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_I.html#3198">input_tty</a></span><span class="default">() (shell_tty != -</span><span class="number">1</span><span class="default">) ? shell_tty : fileno (<a href="dictionary_S.html#376">stderr</a>)</span>
+<a name="61"><font size=-1>61     </font></a><span class="default"></span>
+<a name="62"><font size=-1>62     </font></a><span class="default"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_E.html#4974">errno</a>)</span>
+<a name="63"><font size=-1>63     </font></a><span class="default"></span><span class="keyword">extern int <a href="dictionary_E.html#12398">errno</a></span><span class="default">;</span>
+<a name="64"><font size=-1>64     </font></a><span class="default"></span><span class="preproc">#endif </span><span class="comment">/* !errno */</span>
+<a name="65"><font size=-1>65     </font></a><span class="comment"></span>
+<a name="66"><font size=-1>66     </font></a><span class="comment"></span><span class="keyword">extern int <a href="dictionary_S.html#923">shell_tty</a></span><span class="default">;</span>
+<a name="67"><font size=-1>67     </font></a><span class="default"></span>
+<a name="68"><font size=-1>68     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_R.html#8481">READLINE</a>)</span>
+<a name="69"><font size=-1>69     </font></a><span class="default"></span><span class="keyword">extern void </span><span class="default">rl_set_screen_size __P((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="70"><font size=-1>70     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="71"><font size=-1>71     </font></a><span class="preproc"></span><span class="keyword">extern void <a href="dictionary_S.html#16889">sh_set_lines_and_columns</a> <a href="dictionary_&.html#572">__P</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="72"><font size=-1>72     </font></a><span class="default"></span>
+<a name="73"><font size=-1>73     </font></a><span class="default"></span><span class="keyword">void</span>
+<a name="74"><font size=-1>74     </font></a><span class="keyword"><a href="dictionary_G.html#430">get_new_window_size</a> </span><span class="default">(from_sig, rp, cp)</span>
+<a name="75"><font size=-1>75     </font></a><span class="default">     </span><span class="keyword">int <a href="dictionary_F.html#3077">from_sig</a></span><span class="default">;</span>
+<a name="76"><font size=-1>76     </font></a><span class="default">     </span><span class="keyword">int </span><span class="default">*<a href="dictionary_R.html#1791">rp</a>, *<a href="dictionary_C.html#4488">cp</a>;</span>
+<a name="77"><font size=-1>77     </font></a><span class="default">{</span>
+<a name="78"><font size=-1>78     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_T.html#5771">TIOCGWINSZ</a>)</span>
+<a name="79"><font size=-1>79     </font></a><span class="default">  </span><span class="keyword">struct </span><span class="default">winsize win;</span>
+<a name="80"><font size=-1>80     </font></a><span class="default">  </span><span class="keyword">int </span><span class="default">tty;</span>
+<a name="81"><font size=-1>81     </font></a><span class="default"></span>
+<a name="82"><font size=-1>82     </font></a><span class="default">  tty = <a href="dictionary_I.html#3198">input_tty</a> ();</span>
+<a name="83"><font size=-1>83     </font></a><span class="default">  </span><span class="keyword">if </span><span class="default">(tty &gt;= </span><span class="number">0 </span><span class="default">&amp;&amp; (ioctl (tty, <a href="dictionary_T.html#5771">TIOCGWINSZ</a>, &amp;win) == </span><span class="number">0</span><span class="default">) &amp;&amp;</span>
+<a name="84"><font size=-1>84     </font></a><span class="default">      win.ws_row &gt; </span><span class="number">0 </span><span class="default">&amp;&amp; win.ws_col &gt; </span><span class="number">0</span><span class="default">)</span>
+<a name="85"><font size=-1>85     </font></a><span class="default">    {</span>
+<a name="86"><font size=-1>86     </font></a><span class="default">      <a href="dictionary_S.html#16889">sh_set_lines_and_columns</a> (win.ws_row, win.ws_col);</span>
+<a name="87"><font size=-1>87     </font></a><span class="default"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_R.html#8481">READLINE</a>)</span>
+<a name="88"><font size=-1>88     </font></a><span class="default">      rl_set_screen_size (win.ws_row, win.ws_col);</span>
+<a name="89"><font size=-1>89     </font></a><span class="default">      </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#1791">rp</a>)</span>
+<a name="90"><font size=-1>90     </font></a><span class="default">	*<a href="dictionary_R.html#1791">rp</a> = win.ws_row;</span>
+<a name="91"><font size=-1>91     </font></a><span class="default">      </span><span class="keyword">if </span><span class="default">(<a href="dictionary_C.html#4488">cp</a>)</span>
+<a name="92"><font size=-1>92     </font></a><span class="default">	*<a href="dictionary_C.html#4488">cp</a> = win.ws_col;</span>
+<a name="93"><font size=-1>93     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="94"><font size=-1>94     </font></a><span class="preproc">    </span><span class="default">}</span>
+<a name="95"><font size=-1>95     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="96"><font size=-1>96     </font></a><span class="preproc"></span><span class="default">}</span>
+<a name="97"><font size=-1>97     </font></a><span class="default"></span>
+</pre></body></html>

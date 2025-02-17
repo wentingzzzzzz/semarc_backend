@@ -1,0 +1,170 @@
+<html><head><title>loadinfo.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\lib\intl\loadinfo.h</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\lib\\intl\\loadinfo.h";
+top.document.title  = "loadinfo.h";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* loadinfo.c */</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"></span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">/* Copyright (C) 1996-1999, 2000-2002, 2005-2009 Free Software Foundation, Inc.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">   This file is part of the GNU C Library.</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">   Contributed by Ulrich Drepper &lt;drepper@cygnus.com&gt;, 1996.</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"></span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">   This file is part of GNU Bash.</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment"></span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">   Bash is free software: you can redistribute it and/or modify</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">   it under the terms of the GNU General Public License as published by</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">   the Free Software Foundation, either version 3 of the License, or</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">   (at your option) any later version.</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment"></span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">   Bash is distributed in the hope that it will be useful,</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">   GNU General Public License for more details.</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment"></span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">   You should have received a copy of the GNU General Public License</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment">   along with Bash.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment">*/</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span>
+<a name="23"><font size=-1>23     </font></a><span class="comment"></span><span class="preproc">#ifndef <a href="dictionary_&.html#16115">_LOADINFO_H</a></span>
+<a name="24"><font size=-1>24     </font></a><span class="preproc">#define <a href="dictionary_&.html#16115">_LOADINFO_H</a>	</span><span class="number">1</span>
+<a name="25"><font size=-1>25     </font></a><span class="number"></span>
+<a name="26"><font size=-1>26     </font></a><span class="number"></span><span class="comment">/* Declarations of locale dependent catalog lookup functions.</span>
+<a name="27"><font size=-1>27     </font></a><span class="comment">   Implemented in</span>
+<a name="28"><font size=-1>28     </font></a><span class="comment"></span>
+<a name="29"><font size=-1>29     </font></a><span class="comment">     localealias.c    Possibly replace a locale name by another.</span>
+<a name="30"><font size=-1>30     </font></a><span class="comment">     explodename.c    Split a locale name into its various fields.</span>
+<a name="31"><font size=-1>31     </font></a><span class="comment">     l10nflist.c      Generate a list of filenames of possible message catalogs.</span>
+<a name="32"><font size=-1>32     </font></a><span class="comment">     finddomain.c     Find and open the relevant message catalogs.</span>
+<a name="33"><font size=-1>33     </font></a><span class="comment"></span>
+<a name="34"><font size=-1>34     </font></a><span class="comment">   The main function _nl_find_domain() in finddomain.c is declared</span>
+<a name="35"><font size=-1>35     </font></a><span class="comment">   in gettextP.h.</span>
+<a name="36"><font size=-1>36     </font></a><span class="comment"> */</span>
+<a name="37"><font size=-1>37     </font></a><span class="comment"></span>
+<a name="38"><font size=-1>38     </font></a><span class="comment"></span><span class="preproc">#ifndef <a href="dictionary_P.html#16114">PARAMS</a></span>
+<a name="39"><font size=-1>39     </font></a><span class="preproc"># if </span><span class="default">__STDC__ || </span><span class="preproc">defined <a href="dictionary_&.html#16118">__GNUC__</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16119">__SUNPRO_C</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16122">__cplusplus</a> </span><span class="default">|| __PROTOTYPES</span>
+<a name="40"><font size=-1>40     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_P.html#16114">PARAMS</a></span><span class="default">(args) args</span>
+<a name="41"><font size=-1>41     </font></a><span class="default"></span><span class="preproc"># else</span>
+<a name="42"><font size=-1>42     </font></a><span class="preproc">#  define <a href="dictionary_P.html#16114">PARAMS</a></span><span class="default">(args) ()</span>
+<a name="43"><font size=-1>43     </font></a><span class="default"></span><span class="preproc"># endif</span>
+<a name="44"><font size=-1>44     </font></a><span class="preproc">#endif</span>
+<a name="45"><font size=-1>45     </font></a><span class="preproc"></span>
+<a name="46"><font size=-1>46     </font></a><span class="preproc">#ifndef <a href="dictionary_I.html#4044">internal_function</a></span>
+<a name="47"><font size=-1>47     </font></a><span class="preproc"># define <a href="dictionary_I.html#4044">internal_function</a></span>
+<a name="48"><font size=-1>48     </font></a><span class="preproc">#endif</span>
+<a name="49"><font size=-1>49     </font></a><span class="preproc"></span>
+<a name="50"><font size=-1>50     </font></a><span class="preproc"></span><span class="comment">/* Tell the compiler when a conditional or integer expression is</span>
+<a name="51"><font size=-1>51     </font></a><span class="comment">   almost always true or almost always false.  */</span>
+<a name="52"><font size=-1>52     </font></a><span class="comment"></span><span class="preproc">#ifndef <a href="dictionary_H.html#16113">HAVE_BUILTIN_EXPECT</a></span>
+<a name="53"><font size=-1>53     </font></a><span class="preproc"># define <a href="dictionary_&.html#16121">__builtin_expect</a></span><span class="default">(expr, val) (expr)</span>
+<a name="54"><font size=-1>54     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="55"><font size=-1>55     </font></a><span class="preproc"></span>
+<a name="56"><font size=-1>56     </font></a><span class="preproc"></span><span class="comment">/* Separator in PATH like lists of pathnames.  */</span>
+<a name="57"><font size=-1>57     </font></a><span class="comment"></span><span class="preproc">#if defined <a href="dictionary_&.html#4085">_WIN32</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16120">__WIN32__</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16117">__EMX__</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16116">__DJGPP__</a></span>
+<a name="58"><font size=-1>58     </font></a><span class="preproc">  </span><span class="comment">/* Win32, OS/2, DOS */</span>
+<a name="59"><font size=-1>59     </font></a><span class="comment"></span><span class="preproc"># define <a href="dictionary_P.html#8686">PATH_SEPARATOR</a> </span><span class="string">';'</span>
+<a name="60"><font size=-1>60     </font></a><span class="string"></span><span class="preproc">#else</span>
+<a name="61"><font size=-1>61     </font></a><span class="preproc">  </span><span class="comment">/* Unix */</span>
+<a name="62"><font size=-1>62     </font></a><span class="comment"></span><span class="preproc"># define <a href="dictionary_P.html#8686">PATH_SEPARATOR</a> </span><span class="string">':'</span>
+<a name="63"><font size=-1>63     </font></a><span class="string"></span><span class="preproc">#endif</span>
+<a name="64"><font size=-1>64     </font></a><span class="preproc"></span>
+<a name="65"><font size=-1>65     </font></a><span class="preproc"></span><span class="comment">/* Encoding of locale name parts.  */</span>
+<a name="66"><font size=-1>66     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_C.html#8682">CEN_REVISION</a>		</span><span class="number">1</span>
+<a name="67"><font size=-1>67     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_C.html#8685">CEN_SPONSOR</a>		</span><span class="number">2</span>
+<a name="68"><font size=-1>68     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_C.html#8683">CEN_SPECIAL</a>		</span><span class="number">4</span>
+<a name="69"><font size=-1>69     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_X.html#8690">XPG_NORM_CODESET</a>	</span><span class="number">8</span>
+<a name="70"><font size=-1>70     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_X.html#8688">XPG_CODESET</a>		</span><span class="number">16</span>
+<a name="71"><font size=-1>71     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_T.html#8687">TERRITORY</a>		</span><span class="number">32</span>
+<a name="72"><font size=-1>72     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_C.html#8681">CEN_AUDIENCE</a>		</span><span class="number">64</span>
+<a name="73"><font size=-1>73     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_X.html#8689">XPG_MODIFIER</a>		</span><span class="number">128</span>
+<a name="74"><font size=-1>74     </font></a><span class="number"></span>
+<a name="75"><font size=-1>75     </font></a><span class="number"></span><span class="preproc">#define <a href="dictionary_C.html#8684">CEN_SPECIFIC</a>	</span><span class="default">(<a href="dictionary_C.html#8682">CEN_REVISION</a>|<a href="dictionary_C.html#8685">CEN_SPONSOR</a>|<a href="dictionary_C.html#8683">CEN_SPECIAL</a>|<a href="dictionary_C.html#8681">CEN_AUDIENCE</a>)</span>
+<a name="76"><font size=-1>76     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_X.html#8691">XPG_SPECIFIC</a>	</span><span class="default">(<a href="dictionary_X.html#8688">XPG_CODESET</a>|<a href="dictionary_X.html#8690">XPG_NORM_CODESET</a>|<a href="dictionary_X.html#8689">XPG_MODIFIER</a>)</span>
+<a name="77"><font size=-1>77     </font></a><span class="default"></span>
+<a name="78"><font size=-1>78     </font></a><span class="default"></span>
+<a name="79"><font size=-1>79     </font></a><span class="default"></span><span class="keyword">struct <a href="dictionary_L.html#4045">loaded_l10nfile</a></span>
+<a name="80"><font size=-1>80     </font></a><span class="keyword"></span><span class="default">{</span>
+<a name="81"><font size=-1>81     </font></a><span class="default">  </span><span class="keyword">const char </span><span class="default">*<a href="dictionary_L.html#8692">filename</a>;</span>
+<a name="82"><font size=-1>82     </font></a><span class="default">  </span><span class="keyword">int <a href="dictionary_L.html#4047">decided</a></span><span class="default">;</span>
+<a name="83"><font size=-1>83     </font></a><span class="default"></span>
+<a name="84"><font size=-1>84     </font></a><span class="default">  </span><span class="keyword">const void </span><span class="default">*<a href="dictionary_L.html#4046">data</a>;</span>
+<a name="85"><font size=-1>85     </font></a><span class="default"></span>
+<a name="86"><font size=-1>86     </font></a><span class="default">  </span><span class="keyword">struct <a href="dictionary_L.html#4045">loaded_l10nfile</a> </span><span class="default">*<a href="dictionary_L.html#8693">next</a>;</span>
+<a name="87"><font size=-1>87     </font></a><span class="default">  </span><span class="keyword">struct <a href="dictionary_L.html#4045">loaded_l10nfile</a> </span><span class="default">*<a href="dictionary_L.html#4048">successor</a>[</span><span class="number">1</span><span class="default">];</span>
+<a name="88"><font size=-1>88     </font></a><span class="default">};</span>
+<a name="89"><font size=-1>89     </font></a><span class="default"></span>
+<a name="90"><font size=-1>90     </font></a><span class="default"></span>
+<a name="91"><font size=-1>91     </font></a><span class="default"></span><span class="comment">/* Normalize codeset name.  There is no standard for the codeset</span>
+<a name="92"><font size=-1>92     </font></a><span class="comment">   names.  Normalization allows the user to use any of the common</span>
+<a name="93"><font size=-1>93     </font></a><span class="comment">   names.  The return value is dynamically allocated and has to be</span>
+<a name="94"><font size=-1>94     </font></a><span class="comment">   freed by the caller.  */</span>
+<a name="95"><font size=-1>95     </font></a><span class="comment"></span><span class="keyword">extern const char </span><span class="default">*<a href="dictionary_&.html#8735">_nl_normalize_codeset</a> <a href="dictionary_P.html#16114">PARAMS</a> ((</span><span class="keyword">const char </span><span class="default">*codeset,</span>
+<a name="96"><font size=-1>96     </font></a><span class="default">						  size_t name_len));</span>
+<a name="97"><font size=-1>97     </font></a><span class="default"></span>
+<a name="98"><font size=-1>98     </font></a><span class="default"></span><span class="comment">/* Lookup a locale dependent file.</span>
+<a name="99"><font size=-1>99     </font></a><span class="comment">   *L10NFILE_LIST denotes a pool of lookup results of locale dependent</span>
+<a name="100"><font size=-1>100     </font></a><span class="comment">   files of the same kind, sorted in decreasing order of -&gt;filename.</span>
+<a name="101"><font size=-1>101     </font></a><span class="comment">   DIRLIST and DIRLIST_LEN are an argz list of directories in which to</span>
+<a name="102"><font size=-1>102     </font></a><span class="comment">   look, containing at least one directory (i.e. DIRLIST_LEN &gt; 0).</span>
+<a name="103"><font size=-1>103     </font></a><span class="comment">   MASK, LANGUAGE, TERRITORY, CODESET, NORMALIZED_CODESET, MODIFIER,</span>
+<a name="104"><font size=-1>104     </font></a><span class="comment">   SPECIAL, SPONSOR, REVISION are the pieces of the locale name, as</span>
+<a name="105"><font size=-1>105     </font></a><span class="comment">   produced by _nl_explode_name().  FILENAME is the filename suffix.</span>
+<a name="106"><font size=-1>106     </font></a><span class="comment">   The return value is the lookup result, either found in *L10NFILE_LIST,</span>
+<a name="107"><font size=-1>107     </font></a><span class="comment">   or - if DO_ALLOCATE is nonzero - freshly allocated, or possibly NULL.</span>
+<a name="108"><font size=-1>108     </font></a><span class="comment">   If the return value is non-NULL, it is added to *L10NFILE_LIST, and</span>
+<a name="109"><font size=-1>109     </font></a><span class="comment">   its -&gt;next field denotes the chaining inside *L10NFILE_LIST, and</span>
+<a name="110"><font size=-1>110     </font></a><span class="comment">   furthermore its -&gt;successor[] field contains a list of other lookup</span>
+<a name="111"><font size=-1>111     </font></a><span class="comment">   results from which this lookup result inherits.  */</span>
+<a name="112"><font size=-1>112     </font></a><span class="comment"></span><span class="keyword">extern struct <a href="dictionary_L.html#4045">loaded_l10nfile</a> </span><span class="default">*</span>
+<a name="113"><font size=-1>113     </font></a><span class="default"><a href="dictionary_&.html#8711">_nl_make_l10nflist</a> <a href="dictionary_P.html#16114">PARAMS</a> ((</span><span class="keyword">struct </span><span class="default">loaded_l10nfile **l10nfile_list,</span>
+<a name="114"><font size=-1>114     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*dirlist, size_t dirlist_len, </span><span class="keyword">int </span><span class="default">mask,</span>
+<a name="115"><font size=-1>115     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*language, </span><span class="keyword">const char </span><span class="default">*territory,</span>
+<a name="116"><font size=-1>116     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*codeset,</span>
+<a name="117"><font size=-1>117     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*normalized_codeset,</span>
+<a name="118"><font size=-1>118     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*modifier, </span><span class="keyword">const char </span><span class="default">*special,</span>
+<a name="119"><font size=-1>119     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*sponsor, </span><span class="keyword">const char </span><span class="default">*revision,</span>
+<a name="120"><font size=-1>120     </font></a><span class="default">			    </span><span class="keyword">const char </span><span class="default">*filename, </span><span class="keyword">int </span><span class="default">do_allocate));</span>
+<a name="121"><font size=-1>121     </font></a><span class="default"></span>
+<a name="122"><font size=-1>122     </font></a><span class="default"></span><span class="comment">/* Lookup the real locale name for a locale alias NAME, or NULL if</span>
+<a name="123"><font size=-1>123     </font></a><span class="comment">   NAME is not a locale alias (but possibly a real locale name).</span>
+<a name="124"><font size=-1>124     </font></a><span class="comment">   The return value is statically allocated and must not be freed.  */</span>
+<a name="125"><font size=-1>125     </font></a><span class="comment"></span><span class="keyword">extern const char </span><span class="default">*<a href="dictionary_&.html#9333">_nl_expand_alias</a> <a href="dictionary_P.html#16114">PARAMS</a> ((</span><span class="keyword">const char </span><span class="default">*name));</span>
+<a name="126"><font size=-1>126     </font></a><span class="default"></span>
+<a name="127"><font size=-1>127     </font></a><span class="default"></span><span class="comment">/* Split a locale name NAME into its pieces: language, modifier,</span>
+<a name="128"><font size=-1>128     </font></a><span class="comment">   territory, codeset, special, sponsor, revision.</span>
+<a name="129"><font size=-1>129     </font></a><span class="comment">   NAME gets destructively modified: NUL bytes are inserted here and</span>
+<a name="130"><font size=-1>130     </font></a><span class="comment">   there.  *LANGUAGE gets assigned NAME.  Each of *MODIFIER, *TERRITORY,</span>
+<a name="131"><font size=-1>131     </font></a><span class="comment">   *CODESET, *SPECIAL, *SPONSOR, *REVISION gets assigned either a</span>
+<a name="132"><font size=-1>132     </font></a><span class="comment">   pointer into the old NAME string, or NULL.  *NORMALIZED_CODESET</span>
+<a name="133"><font size=-1>133     </font></a><span class="comment">   gets assigned the expanded *CODESET, if it is different from *CODESET;</span>
+<a name="134"><font size=-1>134     </font></a><span class="comment">   this one is dynamically allocated and has to be freed by the caller.</span>
+<a name="135"><font size=-1>135     </font></a><span class="comment">   The return value is a bitmask, where each bit corresponds to one</span>
+<a name="136"><font size=-1>136     </font></a><span class="comment">   filled-in value:</span>
+<a name="137"><font size=-1>137     </font></a><span class="comment">     XPG_MODIFIER, CEN_AUDIENCE  for *MODIFIER,</span>
+<a name="138"><font size=-1>138     </font></a><span class="comment">     TERRITORY                   for *TERRITORY,</span>
+<a name="139"><font size=-1>139     </font></a><span class="comment">     XPG_CODESET                 for *CODESET,</span>
+<a name="140"><font size=-1>140     </font></a><span class="comment">     XPG_NORM_CODESET            for *NORMALIZED_CODESET,</span>
+<a name="141"><font size=-1>141     </font></a><span class="comment">     CEN_SPECIAL                 for *SPECIAL,</span>
+<a name="142"><font size=-1>142     </font></a><span class="comment">     CEN_SPONSOR                 for *SPONSOR,</span>
+<a name="143"><font size=-1>143     </font></a><span class="comment">     CEN_REVISION                for *REVISION.</span>
+<a name="144"><font size=-1>144     </font></a><span class="comment"> */</span>
+<a name="145"><font size=-1>145     </font></a><span class="comment"></span><span class="keyword">extern int <a href="dictionary_&.html#10556">_nl_explode_name</a> <a href="dictionary_P.html#16114">PARAMS</a> </span><span class="default">((</span><span class="keyword">char </span><span class="default">*name, </span><span class="keyword">const char </span><span class="default">**language,</span>
+<a name="146"><font size=-1>146     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**modifier,</span>
+<a name="147"><font size=-1>147     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**territory,</span>
+<a name="148"><font size=-1>148     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**codeset,</span>
+<a name="149"><font size=-1>149     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**normalized_codeset,</span>
+<a name="150"><font size=-1>150     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**special,</span>
+<a name="151"><font size=-1>151     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**sponsor,</span>
+<a name="152"><font size=-1>152     </font></a><span class="default">				     </span><span class="keyword">const char </span><span class="default">**revision));</span>
+<a name="153"><font size=-1>153     </font></a><span class="default"></span>
+<a name="154"><font size=-1>154     </font></a><span class="default"></span><span class="comment">/* Split a locale name NAME into a leading language part and all the</span>
+<a name="155"><font size=-1>155     </font></a><span class="comment">   rest.  Return a pointer to the first character after the language,</span>
+<a name="156"><font size=-1>156     </font></a><span class="comment">   i.e. to the first byte of the rest.  */</span>
+<a name="157"><font size=-1>157     </font></a><span class="comment"></span><span class="keyword">extern char </span><span class="default">*<a href="dictionary_&.html#12939">_nl_find_language</a> <a href="dictionary_P.html#16114">PARAMS</a> ((</span><span class="keyword">const char </span><span class="default">*name));</span>
+<a name="158"><font size=-1>158     </font></a><span class="default"></span>
+<a name="159"><font size=-1>159     </font></a><span class="default"></span><span class="preproc">#endif	</span><span class="comment">/* loadinfo.h */</span>
+<a name="160"><font size=-1>160     </font></a><span class="comment"></span>
+</pre></body></html>

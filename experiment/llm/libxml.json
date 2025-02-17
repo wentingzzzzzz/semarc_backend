@@ -1,0 +1,392 @@
+    {
+        "summary": [
+            {
+                "file": "acconfig.h",
+                "Functionality": "Configures and defines project-specific macros."
+            },
+            {
+                "file": "libxml.h",
+                "Functionality": "Internal header file for libxml project compilation, includes system-specific configuration files and libxml/xmlversion.h."
+            },
+            {
+                "file": "trio.h",
+                "Functionality": "Header file defining formatting input/output functions and error handling related macros and functions."
+            },
+            {
+                "file": "triodef.h",
+                "Functionality": "Header file for platform and compiler support detection macros, including C standard related macros."
+            },
+            {
+                "file": "trionan.h",
+                "Functionality": "Header file defining functions and enumerations related to floating point number handling and NaN."
+            },
+            {
+                "file": "triop.h",
+                "Functionality": "Header file defining private functions, types, and macros for callback functions registration and setting print format properties."
+            },
+            {
+                "file": "triostr.h",
+                "Functionality": "Header file including string processing function declarations and dynamic string type definitions and related functions.."
+            },
+            {
+                "file": "include\\win32config.h",
+                "Functionality": "Configuration header file for Win32 platform specific setup, including system-specific definitions and functions for libxml to work on Win32 platform."
+            },
+            {
+                "file": "include\\libxml\\c14n.h",
+                "Functionality": "File defining XML canonicalization methods and functions for manipulation of XML documents."
+            },
+            {
+                "file": "include\\libxml\\catalog.h",
+                "Functionality": "Interface file for XML Catalog management and entity resolution, including namespace and directive name macros and global operations functions."
+            },
+            {
+                "file": "include\\libxml\\debugXML.h",
+                "Functionality": "Interface file for debugging libxml library, includes routines for debugging the produced XML parsing tree and related structures."
+            },
+            {
+                "file": "include\\libxml\\DOCBparser.h",
+                "Functionality": "Interface file defining a non-validating parser for DocBook SGML documents, it references functions in libxml library for its implementation."
+            },
+            {
+                "file": "include\\libxml\\encoding.h",
+                "Functionality": "Interface file defining encoding conversion functions and data structures for handling non-UTF-8 encoding."
+            },
+            {
+                "file": "include\\libxml\\entities.h",
+                "Functionality": "Interface file for XML entity handling, including storage structures and operations functions for entities such as initialization and cleanup functions."
+            },
+            {
+                "file": "include\\libxml\\globals.h",
+                "Functionality": "Header file defining global variables, macros, functions, and types for the libxml library, including type definitions and some auto-generated code for multi-threading support."
+            },
+            {
+                "file": "include\\libxml\\hash.h",
+                "Functionality": "Header file implementing a chained hash table, including type definitions and functions for operations such as creation, insertion, deletion, and lookup of hash table elements."
+            },
+            {
+                "file": "HTMLparser.h",
+                "Functionality": "Interface for non-validating parser for HTML 4.0 documents."
+            },
+            {
+                "file": "HTMLtree.h",
+                "Functionality": "Defines XML tree structures for HTML document manipulation."
+            },
+            {
+                "file": "list.h",
+                "Functionality": "Provides interface for manipulating linked lists."
+            },
+            {
+                "file": "nanoftp.h",
+                "Functionality": "Implementation of FTP functionality for initializing, connecting, and retrieving file lists."
+            },
+            {
+                "file": "nanohttp.h",
+                "Functionality": "Implements basic HTTP functionality for fetching external subsets."
+            },
+            {
+                "file": "parser.h",
+                "Functionality": "Interface for XML parser, including input streams, context, and external entity handling."
+            },
+            {
+                "file": "parserInternals.h",
+                "Functionality": "Internal interface for XML parser, includes macro definitions, function declarations, and callbacks."
+            },
+            {
+                "file": "SAX.h",
+                "Functionality": "Defines default interface for a SAX handler, used for XML and HTML parsing and event handling."
+            },
+            {
+                "file": "schemasInternals.h",
+                "Functionality": "Internal interface for XML Schema processing and schema validation."
+            },
+            {
+                "file": "threads.h",
+                "Functionality": "Provides thread-related operations, including mutex and global state management."
+            },
+            {
+                "file": "tree.h",
+                "Functionality": "Defines data structures and functions for describing and interacting with XML tree structures."
+            },
+            {
+                "file": "uri.h",
+                "Functionality": "Handles parsing, construction, and normalization of Uniform Resource Identifiers (URI)."
+            },
+            {
+                "file": "valid.h",
+                "Functionality": "Interface for handling XML DTD and schema validation operations."
+            },
+            {
+                "file": "xinclude.h",
+                "Functionality": "API for handling XInclude processing within XML documents."
+            },
+            {
+                "file": "xlink.h",
+                "Functionality": "Provides interface for hyperlink detection and processing within XML documents."
+            },
+            {
+                "file": "xmlautomata.h",
+                "Functionality": "API for building regular expression automata for pattern matching and processing."
+            },
+            {
+                "file": "xmlerror.h",
+                "Functionality": "Defines enums, function pointers and error handling related function declarations for XML parsing and validation."
+            },
+            {
+                "file": "xmlIO.h",
+                "Functionality": "Contains I/O interface definitions and callback functions for input and output operations in the XML parser."
+            },
+            {
+                "file": "xmlmemory.h",
+                "Functionality": "Defines memory allocation debug interface, function pointers, and debug macro definitions for memory handling."
+            },
+            {
+                "file": "xmlregexp.h",
+                "Functionality": "Provides interfaces for compiling, releasing, and executing regular expressions for XML processing."
+            },
+            {
+                "file": "xmlschemas.h",
+                "Functionality": "Defines functions and data structures for parsing and validating XML schemas."
+            },
+            {
+                "file": "xmlschemastypes.h",
+                "Functionality": "Contains function declarations for initializing, clearing, and validating XML Schema data types."
+            },
+            {
+                "file": "xmlunicode.h",
+                "Functionality": "Provides functions for character property testing and handling of Unicode character codes."
+            },
+            {
+                "file": "xmlwin32version.h",
+                "Functionality": "Offers version information and configuration macros for Windows platform compilation."
+            },
+            {
+                "file": "xpath.h",
+                "Functionality": "Defines XPath object, functions, and macros for querying and navigating XML documents."
+            },
+            {
+                "file": "xpathInternals.h",
+                "Functionality": "Contains internal interfaces for building modules on top of the XPath implementation."
+            },
+            {
+                "file": "xpointer.h",
+                "Functionality": "API file for XML pointer handling, including location set processing and creation."
+            },
+            {
+                "file": "config-mac.h",
+                "Functionality": "Header file providing configuration macros for macOS platform compilation."
+            },
+            {
+                "file": "XMLTestPrefix.h",
+                "Functionality": "Declares a test_main function and redefines the main macro to use test_main."
+            },
+            {
+                "file": "XMLTestPrefix2.h",
+                "Functionality": "Defines the test_main function and redefines the main macro to use test_main."
+            },
+            {
+                "file": "libxml_wrap.h",
+                "Functionality": "C header file for creating a Python C extension module to interact with the libxml library."
+            },
+            {
+                "file": "c14n.c",
+                "Functionality": "Implements Canonical XML and Exclusive XML Canonicalization, including processing of various node types."
+            },
+            {
+                "file": "catalog.c",
+                "Functionality": "定义了用于解析、处理和验证HTML和XML文档的接口、数据结构和功能。"
+            },
+            {
+                "file": "debugXML.c",
+                "Functionality": "提供了用于调试XML解析器生成树的一组例程，包括打印XML元素、属性、DTD等的函数。"
+            },
+            {
+                "file": "DOCBparser.c",
+                "Functionality": "实现了XML和SGML目录的一些常见操作，包括读取、解析、序列化目录内容以及转换。"
+            },
+            {
+                "file": "encoding.c",
+                "Functionality": "实现了XML编码转换的功能，包括UTF-8编码字符串处理函数、UTF-8编码验证函数等。"
+            },
+            {
+                "file": "entities.c",
+                "Functionality": "处理XML实体的功能，包括对预定义的XML实体的处理、注册、查找等操作。"
+            },
+            {
+                "file": "error.c",
+                "Functionality": "实现了XML解析器错误信息显示和处理的模块，用于处理上下文错误、解析错误和验证错误。"
+            },
+            {
+                "file": "globals.c",
+                "Functionality": "定义和处理了一组库的全局变量，包括内存分配函数的定义和初始化、解析器的默认设置、错误处理和输出设置等。"
+            },
+            {
+                "file": "hash.c",
+                "Functionality": "提供了使用链式哈希表实现的功能，包括了哈希表的创建、扩展、释放、插入、更新、查找和扫描等操作。"
+            },
+            {
+                "file": "HTMLparser.c",
+                "Functionality": "实现了HTML 4.0非验证解析器，包括了解析注释、压栈出栈等操作的实现，以及对内容的访问宏定义和字符处理函数。"
+            },
+            {
+                "file": "HTMLtree.c",
+                "Functionality": "处理HTML树的功能，包括获取和设置HTML文档中meta标签中的编码信息，以及将HTML树内容输出到缓冲区和文件的功能。"
+            },
+            {
+                "file": "list.c",
+                "Functionality": "涉及列表处理的功能，包括了列表、链接、插入、搜索、删除、清空、检查列表是否为空、获取列表头部和尾部元素、反转列表、排序列表、遍历列表等操作。"
+            },
+            {
+                "file": "nanoftp.c",
+                "Functionality": "实现了一个简单的基本的FTP客户端支持程序，用于建立FTP连接、发送FTP命令、接收服务器响应和获取文件列表。"
+            },
+            {
+                "file": "nanohttp.c",
+                "Functionality": "实现了一个极简的HTTP GET请求功能，能够通过HTTP协议获取指定资源，支持重定向和保存内容至文件。"
+            },
+            {
+                "file": "parser.c",
+                "Functionality": "包含内部函数和过时函数的程序文件，用于比较、读取解析器实例的特性值，以及检查编译的libxml版本与包含的版本进行比较。"
+            },
+            {
+                "file": "parserInternals.c",
+                "Functionality": "包含了内部函数的程序文件，处理编译的libxml版本与包含的版本进行比较，管理解析器实例的特性值等。"
+            },
+            {
+                "file": "SAX.c",
+                "Functionality": "实现了一个SAX解析器的处理程序，定义了处理元素、属性、实体、注释等的回调函数，初始化默认的XML和HTML SAX处理程序。"
+            },
+            {
+                "file": "testAutomata.c",
+                "Functionality": "Test regular expressions and automata related functionality."
+            },
+            {
+                "file": "testC14N.c",
+                "Functionality": "Test XML Canonicalization functionality using libxml."
+            },
+            {
+                "file": "testDocbook.c",
+                "Functionality": "Test SGML Docbook parsing and processing using libxml."
+            },
+            {
+                "file": "testHTML.c",
+                "Functionality": "Test HTML parsing and processing with debugging, directory operations, encoding conversion, error handling, etc."
+            },
+            {
+                "file": "testRegexp.c",
+                "Functionality": "Test regular expression compilation, execution, and testing."
+            },
+            {
+                "file": "testSAX.c",
+                "Functionality": "Parse XML using SAX API and handle various events such as document start, tag start, tag end, etc."
+            },
+            {
+                "file": "testSchemas.c",
+                "Functionality": "Test XML Schema validation for multiple XML files using a specified schema."
+            },
+            {
+                "file": "testThreads.c",
+                "Functionality": "Example program using libxml for parsing XML files with multiple threads."
+            },
+            {
+                "file": "testThreadsWin32.c",
+                "Functionality": "Program using libxml and Windows API to create threads for parsing XML files."
+            },
+            {
+                "file": "testURI.c",
+                "Functionality": "Parse and process URIs using libxml functionality."
+            },
+            {
+                "file": "testXPath.c",
+                "Functionality": "Test program for parsing XML documents and executing XPath expressions using libxml."
+            },
+            {
+                "file": "threads.c",
+                "Functionality": "Part of the libxml2 library providing general-purpose functions for thread handling."
+            },
+            {
+                "file": "tree.c",
+                "Functionality": "Part of the libxml2 library providing data types, constants, and functions for handling tree structures."
+            },
+            {
+                "file": "trio.c",
+                "Functionality": "File containing common data type definitions, constants, and compiler-specific definitions."
+            },
+            {
+                "file": "trionan.c",
+                "Functionality": "File containing functions for handling special values in floating point numbers (NaN, infinity)."
+            },
+            {
+                "file": "triostr.c",
+                "Functionality": "File containing functions and macros for string handling and manipulation in C language."
+            },
+            {
+                "file": "uri.c",
+                "Functionality": "Implements URI parsing, composition, and manipulation functions."
+            },
+            {
+                "file": "valid.c",
+                "Functionality": "Handles DTD and performs validation checks."
+            },
+            {
+                "file": "xinclude.c",
+                "Functionality": "Implements XInclude processing including context handling, node copying, I/O handling, and processing routines."
+            },
+            {
+                "file": "xlink.c",
+                "Functionality": "Implements a hyperlink detection module supporting XML XLinks and HTML simple links."
+            },
+            {
+                "file": "xmlcatalog.c",
+                "Functionality": "Provides utilities for parsing and querying XML catalogs and SGML super catalogs, including add, remove, and resolution operations."
+            },
+            {
+                "file": "xmlIO.c",
+                "Functionality": "Implements I/O interfaces for parser, including input/output callback sets, standard file I/O, and channel operations."
+            },
+            {
+                "file": "xmllint.c",
+                "Functionality": "A small testing program for XML input, providing functionality for parsing XML files, outputting parsing results, and options for selective output, validation, and formatting."
+            },
+            {
+                "file": "xmlmemory.c",
+                "Functionality": "A memory allocator wrapper providing memory allocation, deallocation, and tracking functions."
+            },
+            {
+                "file": "xmlregexp.c",
+                "Functionality": "Implements regular expression compilation for XML-related specifications, including XML-1.0 DTD validation, XML schema structures part 1, XML schema data types part 2."
+            },
+            {
+                "file": "xmlschemas.c",
+                "Functionality": "Provides XML Schema and schema validation implementation, including parsing context, error handling, structures for patterns and types, and allocation/freeing functions."
+            },
+            {
+                "file": "xmlschemastypes.c",
+                "Functionality": "Implements XML schema data type definitions and validation checks, including functions for standard type initialization/cleanup, comparison, and value validation."
+            },
+            {
+                "file": "xmlunicode.c",
+                "Functionality": "Performs operations related to unicode support in XML, includes functions for unicode character handling and manipulation."
+            },
+            {
+                "file": "xpointer.c",
+                "Functionality": "Implements XML Pointer functionality, including functions for creating points, ranges, and handling node order."
+            },
+            {
+                "file": "example\\gjobread.c",
+                "Functionality": "A small program for parsing and printing GNOME job XML files, including structures for parsing personnel and job information, and functions for parsing and printing this information."
+            },
+            {
+                "file": "macos\\src\\macos_main.c",
+                "Functionality": "Likely serves as an entry point for a MacOS program based on GUSI command-line, includes macro declaration for a test function and calls exec_commands in the main function."
+            },
+            {
+                "file": "python\\libxml.c",
+                "Functionality": "Implements the interface between libxml2 library and the Python interpreter, providing functions for manipulating XML nodes and serializing them to strings or saving to files. Also includes interfaces for registering callback functions for use in XPath expressions."
+            },
+            {
+                "file": "python\\types.c",
+                "Functionality": "Provides a set of functions for converting between internal representations and Python objects, including integer, long, double, character pointer, constant character pointer, and various libxml structure pointers. Also includes debugging information macros and TODO comments for future work."
+            }
+        ]
+    }

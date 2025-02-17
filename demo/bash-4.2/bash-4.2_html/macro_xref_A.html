@@ -1,0 +1,1051 @@
+<!DOCTYPE html><html><head><title>Macro Cross Reference [A]</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script src="jquery-3.3.1.min.js" type="text/javascript"></script><script src="d3.js" type="text/javascript"></script><script src="d3pie.min.js" type="text/javascript"></script><script src="plotly.min.js" type="text/javascript"></script><link href="reportCSS.css" type="text/css" rel="stylesheet" /><script src="reportJS.js" type="text/javascript"></script><script src="table_of_contents.js" type="text/javascript"></script></head><body bgcolor="#ffffff" TEXT="#000000"><nav id="main-nav" class="nav"><div id="upper-nav"><img id=und-icon src="understand-logo.png" alt="Understand"></div><div class="navbar" style="position:relative;z-index:1003"><button onclick="pageToTop()" id="pagedesc" title="Return to top of page"><span id="descText">bash-4 - Macro Cross Reference</span></button></div><div id="lower-nav" class=navbar><div id="main-dropdown-html" class="dropdown" tabindex="0"><button id="dropdown-button" class="dropbtn">Contents <img id="dropdown-icon" src="ToCdropdown.png" style="height:12px"></button><div id="dropdown-buffer" class="dropdown-border" style="height:120px;width:300px;"></div><div id="nav-dropdown-content" class="dropdown-content"><a href="table_of_contents.html">Table of Contents</a><txt style="font-size: 12px; text-align: center">Enable javascript to use dropdown contents and other features.</txt></div></div><div class="rightspacer" id="rightspacer"><button id="buttonRight" onclick="scrollTableRight()"><img id="imgRight" src="ToCdropdown.png" /></button><button id="buttonLeft"  onclick="scrollTableLeft()" ><img id="imgLeft" src="ToCdropdown.png"  /></button></div><div class="navCenter">
+<a href="macro_xref_&.html">&</a><a href="macro_xref_A.html">A</a><a href="macro_xref_B.html">B</a><a href="macro_xref_C.html">C</a><a href="macro_xref_D.html">D</a><a href="macro_xref_E.html">E</a><a href="macro_xref_F.html">F</a><a href="macro_xref_G.html">G</a><a href="macro_xref_H.html">H</a><a href="macro_xref_I.html">I</a><a href="macro_xref_J.html">J</a><a href="macro_xref_K.html">K</a><a href="macro_xref_L.html">L</a><a href="macro_xref_M.html">M</a><a href="macro_xref_N.html">N</a><a href="macro_xref_O.html">O</a><a href="macro_xref_P.html">P</a><a href="macro_xref_Q.html">Q</a><a href="macro_xref_R.html">R</a><a href="macro_xref_S.html">S</a><a href="macro_xref_T.html">T</a><a href="macro_xref_U.html">U</a><a href="macro_xref_V.html">V</a><a href="macro_xref_W.html">W</a><a href="macro_xref_X.html">X</a><a href="macro_xref_Y.html">Y</a><a href="macro_xref_Z.html">Z</a></div></div></nav>
+<script type="text/javascript">navbar();</script><script type="text/javascript">if (typeof ToC === 'undefined') {document.getElementById("dropdown-button").remove();document.getElementById("dropdown-buffer").remove();document.getElementById("nav-dropdown-content").remove();}</script>
+<div id="main-content"><pre>
+<a href="dictionary_A.html#1897">ABORT_CHAR</a><a name="1897"> </a>
+  Declared as: CTRL('G')
+    Use   [<a href="1893.html#502">complete.c, 502</a>]            <a href="dictionary_G.html#2107">get_y_or_n</a>
+
+<a href="dictionary_A.html#11529">ABORT_CHAR</a><a name="11529"> </a>
+    Use   [<a href="37.html#144">chardefs.h, 144</a>]            chardefs.h
+    Define   [<a href="37.html#147">chardefs.h, 147</a>]         chardefs.h
+
+<a href="dictionary_A.html#10033">abs</a><a name="10033"> </a>
+    Use   [<a href="10001.html#50">search.c, 50</a>]               search.c
+    Define   [<a href="10001.html#53">search.c, 53</a>]            search.c
+    Use   [<a href="10001.html#569">search.c, 569</a>]              <a href="dictionary_R.html#10003">rl_history_search_backward</a>
+    Use   [<a href="10001.html#550">search.c, 550</a>]              <a href="dictionary_R.html#10059">rl_history_search_forward</a>
+
+<a href="dictionary_A.html#5110">ABSPATH</a><a name="5110"> </a>
+  Declared as: ((x)[0] == '/')
+    Define   [<a href="440.html#251">general.h, 251</a>]          general.h
+    Macro   [<a href="440.html#258">general.h, 258</a>]           <a href="dictionary_R.html#10694">ROOTEDPATH</a>
+    Use   [<a href="5107.html#213">pathphys.c, 213</a>]            <a href="dictionary_S.html#5123">sh_physpath</a>
+    Use   [<a href="5107.html#267">pathphys.c, 267</a>]            <a href="dictionary_S.html#5138">sh_realpath</a>
+    Use   [<a href="10692.html#117">pathcanon.c, 117</a>]           <a href="dictionary_S.html#5354">sh_canonpath</a>
+    Use   [<a href="13811.html#676">variables.c, 676</a>]           <a href="dictionary_G.html#14113">get_bash_name</a>
+    Use   [<a href="16901.html#587">general.c, 587</a>]             <a href="dictionary_A.html#16924">absolute_pathname</a>
+    Use   [<a href="16901.html#674">general.c, 674</a>]             <a href="dictionary_F.html#13819">full_pathname</a>
+    Use   [<a href="16901.html#625">general.c, 625</a>]             <a href="dictionary_M.html#13820">make_absolute</a>
+
+<a href="dictionary_A.html#3978">ADD_BLOCK</a><a name="3978"> </a>
+  Declared as: do { struct block_list *newp = (struct block_list *) malloc (sizeof (*newp)); if (newp != NULL) { newp->address = (addr); newp->next = (list); (list) = newp; } } while (0)
+    Define   [<a href="3976.html#342">dcigettext.c, 342</a>]       dcigettext.c
+    Use   [<a href="3976.html#556">dcigettext.c, 556</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+    Use   [<a href="3976.html#582">dcigettext.c, 582</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+    Use   [<a href="3976.html#590">dcigettext.c, 590</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+
+<a href="dictionary_A.html#4603">ADD_CHAR</a><a name="4603"> </a>
+  Declared as: do { if (j >= result_len - 1) result = (char *)xrealloc (result, result_len += 64); result[j++] = c; result[j] = '\0'; } while (0)
+    Define   [<a href="4602.html#915">histexpand.c, 915</a>]       histexpand.c
+    Use   [<a href="4602.html#1081">histexpand.c, 1081</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1117">histexpand.c, 1117</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1122">histexpand.c, 1122</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1127">histexpand.c, 1127</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1150">histexpand.c, 1150</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1164">histexpand.c, 1164</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1176">histexpand.c, 1176</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+
+<a href="dictionary_A.html#4604">ADD_STRING</a><a name="4604"> </a>
+  Declared as: do { int sl = strlen (s); j += sl; if (j >= result_len) { while (j >= result_len) result_len += 128; result = (char *)xrealloc (result, result_len); } strcpy (result + j - sl, s); } while (0)
+    Define   [<a href="4602.html#900">histexpand.c, 900</a>]       histexpand.c
+    Use   [<a href="4602.html#1146">histexpand.c, 1146</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1159">histexpand.c, 1159</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+    Use   [<a href="4602.html#1215">histexpand.c, 1215</a>]         <a href="dictionary_H.html#3943">history_expand</a>
+
+<a href="dictionary_A.html#5868">add_string_to_list</a><a name="5868"> </a>
+  Declared as: make_word_list (make_word(s), (l))
+    Define   [<a href="1174.html#36">make_cmd.h, 36</a>]          make_cmd.h
+    Use   [<a href="5823.html#2460">subst.c, 2460</a>]              <a href="dictionary_L.html#6320">list_string</a>
+    Use   [<a href="12178.html#2702">y.tab.c, 2702</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2710">y.tab.c, 2710</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2718">y.tab.c, 2718</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2726">y.tab.c, 2726</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2798">y.tab.c, 2798</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2806">y.tab.c, 2806</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2814">y.tab.c, 2814</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#2822">y.tab.c, 2822</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+
+<a href="dictionary_A.html#13982">add_to_export_env</a><a name="13982"> </a>
+  Declared as: do { if (export_env_index >= (export_env_size - 1)) { export_env_size += 16; export_env = strvec_resize (export_env, export_env_size); environ = export_env; } export_env[export_env_index++] = (do_alloc) ? savestring (envstr) : envstr; export_env[export_env_index] = (char *)NULL; } while (0)
+    Define   [<a href="13811.html#3561">variables.c, 3561</a>]       variables.c
+    Use   [<a href="13811.html#3604">variables.c, 3604</a>]          <a href="dictionary_A.html#13972">add_or_supercede_exported_var</a>
+    Use   [<a href="13811.html#3623">variables.c, 3623</a>]          <a href="dictionary_A.html#13977">add_temp_array_to_env</a>
+
+<a href="dictionary_A.html#528">ADDINTERRUPT</a><a name="528"> </a>
+  Declared as: interrupt_state++
+    Define   [<a href="527.html#42">quit.h, 42</a>]              quit.h
+    Use   [<a href="365.html#2572">jobs.c, 2572</a>]               jobs.c
+    Use   [<a href="365.html#2253">jobs.c, 2253</a>]               <a href="dictionary_W.html#15125">wait_sigint_handler</a>
+    Use   [<a href="3158.html#698">nojobs.c, 698</a>]              <a href="dictionary_W.html#570">wait_sigint_handler</a>
+    Use   [<a href="9712.html#571">sig.c, 571</a>]                 <a href="dictionary_S.html#9757">sigint_sighandler</a>
+
+<a href="dictionary_A.html#14928">ADDOP2</a><a name="14928"> </a>
+  Declared as: 260
+    Define   [<a href="14927.html#74">plural.c, 74</a>]            plural.c
+    Use   [<a href="14927.html#1636">plural.c, 1636</a>]             <a href="dictionary_&.html#15003">__gettextlex</a>
+    Use   [<a href="14927.html#1641">plural.c, 1641</a>]             <a href="dictionary_&.html#15003">__gettextlex</a>
+
+<a href="dictionary_A.html#10626">ADDRESS_FUNCTION</a><a name="10626"> </a>
+  Declared as: &(arg)
+    Define   [<a href="10625.html#57">alloca.c, 57</a>]            alloca.c
+    Use   [<a href="10625.html#163">alloca.c, 163</a>]              <a href="dictionary_A.html#3930">alloca</a>
+    Use   [<a href="10625.html#112">alloca.c, 112</a>]              <a href="dictionary_F.html#10642">find_stack_direction</a>
+    Use   [<a href="10625.html#119">alloca.c, 119</a>]              <a href="dictionary_F.html#10642">find_stack_direction</a>
+
+<a href="dictionary_A.html#12016">advance</a><a name="12016"> </a>
+  Declared as: do { ++pos; if (f && pos >= argc) beyond (); } while (0)
+    Define   [<a href="11971.html#161">test.c, 161</a>]             test.c
+    Use   [<a href="11971.html#211">test.c, 211</a>]                <a href="dictionary_A.html#12017">and</a>
+    Use   [<a href="11971.html#190">test.c, 190</a>]                <a href="dictionary_O.html#12050">or</a>
+    Use   [<a href="11971.html#776">test.c, 776</a>]                <a href="dictionary_P.html#12059">posixtest</a>
+    Use   [<a href="11971.html#250">test.c, 250</a>]                <a href="dictionary_T.html#12062">term</a>
+    Use   [<a href="11971.html#260">test.c, 260</a>]                <a href="dictionary_T.html#12062">term</a>
+    Use   [<a href="11971.html#266">test.c, 266</a>]                <a href="dictionary_T.html#12062">term</a>
+    Use   [<a href="11971.html#285">test.c, 285</a>]                <a href="dictionary_T.html#12062">term</a>
+    Use   [<a href="11971.html#732">test.c, 732</a>]                <a href="dictionary_T.html#12075">three_arguments</a>
+    Macro   [<a href="11971.html#162">test.c, 162</a>]              <a href="dictionary_U.html#12078">unary_advance</a>
+    Use   [<a href="11971.html#472">test.c, 472</a>]                <a href="dictionary_U.html#12079">unary_operator</a>
+    Use   [<a href="11971.html#477">test.c, 477</a>]                <a href="dictionary_U.html#12079">unary_operator</a>
+    Use   [<a href="11971.html#491">test.c, 491</a>]                <a href="dictionary_U.html#12079">unary_operator</a>
+
+<a href="dictionary_A.html#5950">ADVANCE_CHAR</a><a name="5950"> </a>
+  Declared as: (_i)++
+    Define   [<a href="4323.html#131">shmbutil.h, 131</a>]         shmbutil.h
+    Use   [<a href="5823.html#3710">subst.c, 3710</a>]              <a href="dictionary_R.html#5910">remove_quoted_nulls</a>
+    Use   [<a href="5823.html#6880">subst.c, 6880</a>]              <a href="dictionary_C.html#6018">chk_arithsub</a>
+    Use   [<a href="5823.html#6886">subst.c, 6886</a>]              <a href="dictionary_C.html#6018">chk_arithsub</a>
+    Use   [<a href="5823.html#1539">subst.c, 1539</a>]              <a href="dictionary_D.html#6043">de_backslash</a>
+    Use   [<a href="5823.html#3034">subst.c, 3034</a>]              <a href="dictionary_E.html#6112">expand_string_if_necessary</a>
+    Use   [<a href="5823.html#1242">subst.c, 1242</a>]              <a href="dictionary_E.html#6212">extract_delimited_string</a>
+    Use   [<a href="5823.html#1249">subst.c, 1249</a>]              <a href="dictionary_E.html#6212">extract_delimited_string</a>
+    Use   [<a href="5823.html#1258">subst.c, 1258</a>]              <a href="dictionary_E.html#6212">extract_delimited_string</a>
+    Use   [<a href="5823.html#1326">subst.c, 1326</a>]              <a href="dictionary_E.html#6212">extract_delimited_string</a>
+    Use   [<a href="5823.html#1393">subst.c, 1393</a>]              <a href="dictionary_E.html#6231">extract_dollar_brace_string</a>
+    Use   [<a href="5823.html#1466">subst.c, 1466</a>]              <a href="dictionary_E.html#6231">extract_dollar_brace_string</a>
+    Use   [<a href="5823.html#1478">subst.c, 1478</a>]              <a href="dictionary_E.html#6231">extract_dollar_brace_string</a>
+    Use   [<a href="5823.html#2580">subst.c, 2580</a>]              <a href="dictionary_G.html#6260">get_word_from_string</a>
+    Use   [<a href="5823.html#2485">subst.c, 2485</a>]              <a href="dictionary_L.html#6320">list_string</a>
+    Use   [<a href="5823.html#937">subst.c, 937</a>]               <a href="dictionary_S.html#6683">skip_double_quoted</a>
+    Use   [<a href="5823.html#950">subst.c, 950</a>]               <a href="dictionary_S.html#6683">skip_double_quoted</a>
+    Use   [<a href="5823.html#972">subst.c, 972</a>]               <a href="dictionary_S.html#6683">skip_double_quoted</a>
+    Use   [<a href="5823.html#1606">subst.c, 1606</a>]              <a href="dictionary_S.html#6693">skip_matched_pair</a>
+    Use   [<a href="5823.html#1619">subst.c, 1619</a>]              <a href="dictionary_S.html#6693">skip_matched_pair</a>
+    Use   [<a href="5823.html#1665">subst.c, 1665</a>]              <a href="dictionary_S.html#6693">skip_matched_pair</a>
+    Use   [<a href="5823.html#1025">subst.c, 1025</a>]              <a href="dictionary_S.html#6708">skip_single_quoted</a>
+    Use   [<a href="5823.html#1719">subst.c, 1719</a>]              <a href="dictionary_S.html#4535">skip_to_delim</a>
+    Use   [<a href="5823.html#1732">subst.c, 1732</a>]              <a href="dictionary_S.html#4535">skip_to_delim</a>
+    Use   [<a href="5823.html#1801">subst.c, 1801</a>]              <a href="dictionary_S.html#4535">skip_to_delim</a>
+    Use   [<a href="5823.html#6007">subst.c, 6007</a>]              <a href="dictionary_S.html#6728">skiparith</a>
+    Use   [<a href="5823.html#6026">subst.c, 6026</a>]              <a href="dictionary_S.html#6728">skiparith</a>
+    Use   [<a href="5823.html#738">subst.c, 738</a>]               <a href="dictionary_S.html#6735">string_extract</a>
+    Use   [<a href="5823.html#1003">subst.c, 1003</a>]              <a href="dictionary_S.html#6763">string_extract_single_quoted</a>
+    Use   [<a href="5823.html#1119">subst.c, 1119</a>]              <a href="dictionary_S.html#6769">string_extract_verbatim</a>
+    Use   [<a href="5823.html#569">subst.c, 569</a>]               <a href="dictionary_U.html#6824">unquoted_member</a>
+    Use   [<a href="5823.html#575">subst.c, 575</a>]               <a href="dictionary_U.html#6824">unquoted_member</a>
+    Use   [<a href="5823.html#614">subst.c, 614</a>]               <a href="dictionary_U.html#6830">unquoted_substring</a>
+    Use   [<a href="5823.html#626">subst.c, 626</a>]               <a href="dictionary_U.html#6830">unquoted_substring</a>
+    Use   [<a href="11564.html#137">make_cmd.c, 137</a>]            <a href="dictionary_M.html#11712">make_word_flags</a>
+    Use   [<a href="16024.html#143">casemod.c, 143</a>]             <a href="dictionary_S.html#5360">sh_modcase</a>
+    Use   [<a href="16024.html#150">casemod.c, 150</a>]             <a href="dictionary_S.html#5360">sh_modcase</a>
+    Use   [<a href="16024.html#247">casemod.c, 247</a>]             <a href="dictionary_S.html#5360">sh_modcase</a>
+
+<a href="dictionary_A.html#4537">ADVANCE_CHAR_P</a><a name="4537"> </a>
+    Define   [<a href="4323.html#167">shmbutil.h, 167</a>]         shmbutil.h
+    Use   [<a href="4499.html#112">pathexp.c, 112</a>]             <a href="dictionary_U.html#4596">unquoted_glob_pattern_p</a>
+
+<a href="dictionary_A.html#13130">AFS</a><a name="13130"> </a>
+    Use   [<a href="13129.html#112">findcmd.c, 112</a>]             <a href="dictionary_F.html#13160">file_status</a>
+
+<a href="dictionary_A.html#14598">AFS</a><a name="14598"> </a>
+    Use   [<a href="14597.html#311">glob.c, 311</a>]                glob.c
+
+<a href="dictionary_A.html#15568">AFS</a><a name="15568"> </a>
+    Use   [<a href="15567.html#636">redir.c, 636</a>]               <a href="dictionary_R.html#15665">redir_open</a>
+
+<a href="dictionary_A.html#10375">AL_BEINGEXPANDED</a><a name="10375"> </a>
+  Declared as: 0x2
+    Define   [<a href="8129.html#36">alias.h, 36</a>]             alias.h
+
+<a href="dictionary_A.html#10376">AL_EXPANDNEXT</a><a name="10376"> </a>
+  Declared as: 0x1
+    Define   [<a href="8129.html#35">alias.h, 35</a>]             alias.h
+
+<a href="dictionary_A.html#7972">ALIAS</a><a name="7972"> </a>
+    Use   [<a href="7971.html#93">execute_cmd.c, 93</a>]          execute_cmd.c
+    Use   [<a href="7971.html#4872">execute_cmd.c, 4872</a>]        <a href="dictionary_I.html#8378">initialize_subshell</a>
+
+<a href="dictionary_A.html#10204">ALIAS</a><a name="10204"> </a>
+    Use   [<a href="10203.html#24">alias.c, 24</a>]                alias.c
+
+<a href="dictionary_A.html#11964">ALIAS</a><a name="11964"> </a>
+    Use   [<a href="1107.html#33">builtins.h, 33</a>]             builtins.h
+
+<a href="dictionary_A.html#12179">ALIAS</a><a name="12179"> </a>
+    Use   [<a href="12178.html#224">y.tab.c, 224</a>]               y.tab.c
+    Use   [<a href="12178.html#311">y.tab.c, 311</a>]               y.tab.c
+    Use   [<a href="12178.html#3601">y.tab.c, 3601</a>]              y.tab.c
+    Use   [<a href="12178.html#4092">y.tab.c, 4092</a>]              y.tab.c
+    Use   [<a href="12178.html#4904">y.tab.c, 4904</a>]              y.tab.c
+    Use   [<a href="12178.html#4219">y.tab.c, 4219</a>]              <a href="dictionary_F.html#5327">free_pushed_string_input</a>
+    Use   [<a href="12178.html#5213">y.tab.c, 5213</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5244">y.tab.c, 5244</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5259">y.tab.c, 5259</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5292">y.tab.c, 5292</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5345">y.tab.c, 5345</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5359">y.tab.c, 5359</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#5393">y.tab.c, 5393</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#6983">y.tab.c, 6983</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+    Use   [<a href="12178.html#5148">y.tab.c, 5148</a>]              <a href="dictionary_R.html#5348">reset_parser</a>
+    Use   [<a href="12178.html#4493">y.tab.c, 4493</a>]              <a href="dictionary_S.html#12581">shell_getc</a>
+    Use   [<a href="12178.html#4680">y.tab.c, 4680</a>]              <a href="dictionary_S.html#12581">shell_getc</a>
+
+<a href="dictionary_A.html#10627">ALIGN_SIZE</a><a name="10627"> </a>
+    Use   [<a href="10625.html#135">alloca.c, 135</a>]              alloca.c
+    Define   [<a href="10625.html#136">alloca.c, 136</a>]           alloca.c
+    Use   [<a href="10625.html#141">alloca.c, 141</a>]              <a href="dictionary_H.html#10645">hdr</a>
+
+<a href="dictionary_A.html#4102">alignof</a><a name="4102"> </a>
+  Declared as: ((int) &((struct { char dummy1; TYPE dummy2; } *) 0)->dummy2)
+    Define   [<a href="3976.html#118">dcigettext.c, 118</a>]       dcigettext.c
+
+<a href="dictionary_A.html#4989">ALL_ELEMENT_SUB</a><a name="4989"> </a>
+  Declared as: ((c) == '@' || (c) == '*')
+    Define   [<a href="2705.html#117">array.h, 117</a>]            array.h
+
+<a href="dictionary_A.html#3929">alloca</a><a name="3929"> </a>
+    Use   [<a href="3921.html#48">memalloc.h, 48</a>]             memalloc.h
+    Use   [<a href="3921.html#51">memalloc.h, 51</a>]             memalloc.h
+
+<a href="dictionary_A.html#4103">alloca</a><a name="4103"> </a>
+  Declared as: _alloca
+    Define   [<a href="3976.html#40">dcigettext.c, 40</a>]        dcigettext.c
+    Define   [<a href="3976.html#363">dcigettext.c, 363</a>]       dcigettext.c
+    Use   [<a href="3976.html#555">dcigettext.c, 555</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+    Use   [<a href="3976.html#580">dcigettext.c, 580</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+    Use   [<a href="3976.html#589">dcigettext.c, 589</a>]          <a href="dictionary_L.html#1583">libintl_dcigettext</a>
+
+<a href="dictionary_A.html#9351">alloca</a><a name="9351"> </a>
+  Declared as: _alloca
+    Define   [<a href="9305.html#46">localealias.c, 46</a>]       localealias.c
+    Define   [<a href="9305.html#111">localealias.c, 111</a>]      localealias.c
+    Use   [<a href="9305.html#229">localealias.c, 229</a>]         <a href="dictionary_R.html#9360">read_alias_file</a>
+
+<a href="dictionary_A.html#10635">alloca</a><a name="10635"> </a>
+    Use   [<a href="10625.html#34">alloca.c, 34</a>]               alloca.c
+
+<a href="dictionary_A.html#10899">alloca</a><a name="10899"> </a>
+  Declared as: _alloca
+    Define   [<a href="10715.html#45">loadmsgcat.c, 45</a>]        loadmsgcat.c
+    Define   [<a href="10715.html#474">loadmsgcat.c, 474</a>]       loadmsgcat.c
+    Use   [<a href="10715.html#1090">loadmsgcat.c, 1090</a>]         <a href="dictionary_&.html#4017">_nl_load_domain</a>
+
+<a href="dictionary_A.html#14599">ALLOCA_MAX</a><a name="14599"> </a>
+    Use   [<a href="14597.html#74">glob.c, 74</a>]                 glob.c
+    Define   [<a href="14597.html#75">glob.c, 75</a>]              glob.c
+    Use   [<a href="14597.html#646">glob.c, 646</a>]                <a href="dictionary_G.html#14606">glob_vector</a>
+
+<a href="dictionary_A.html#8797">ALLOCATED_BYTES</a><a name="8797"> </a>
+  Declared as: (((n) + MOVERHEAD + MSLOP + MALIGN_MASK) & ~MALIGN_MASK)
+    Use   [<a href="8796.html#883">malloc.c, 883</a>]              <a href="dictionary_I.html#8895">internal_free</a>
+    Use   [<a href="8796.html#757">malloc.c, 757</a>]              <a href="dictionary_I.html#8908">internal_malloc</a>
+    Use   [<a href="8796.html#1004">malloc.c, 1004</a>]             <a href="dictionary_I.html#8928">internal_realloc</a>
+    Use   [<a href="8796.html#1033">malloc.c, 1033</a>]             <a href="dictionary_I.html#8928">internal_realloc</a>
+    Define   [<a href="8796.html#169">malloc.c, 169</a>]           <a href="dictionary_S.html#9001">sh_malloc</a>
+
+<a href="dictionary_A.html#17126">alpha</a><a name="17126"> </a>
+    Use   [<a href="440.html#60">general.h, 60</a>]              general.h
+
+<a href="dictionary_A.html#5152">ALPHABETIC</a><a name="5152"> </a>
+  Declared as: (NON_NEGATIVE(c) && ISALNUM(c))
+    Define   [<a href="37.html#103">chardefs.h, 103</a>]         chardefs.h
+    Use   [<a href="5151.html#75">util.c, 75</a>]                 <a href="dictionary_R.html#5231">rl_alphabetic</a>
+
+<a href="dictionary_A.html#6873">AMBIGUOUS_REDIRECT</a><a name="6873"> </a>
+  Declared as: -1
+    Define   [<a href="416.html#42">command.h, 42</a>]           command.h
+    Use   [<a href="6870.html#490">evalstring.c, 490</a>]          <a href="dictionary_C.html#6903">cat_file</a>
+    Use   [<a href="15567.html#698">redir.c, 698</a>]               <a href="dictionary_D.html#15627">do_redirection_internal</a>
+    Use   [<a href="15567.html#737">redir.c, 737</a>]               <a href="dictionary_D.html#15627">do_redirection_internal</a>
+    Use   [<a href="15567.html#792">redir.c, 792</a>]               <a href="dictionary_D.html#15627">do_redirection_internal</a>
+    Use   [<a href="15567.html#1077">redir.c, 1077</a>]              <a href="dictionary_D.html#15627">do_redirection_internal</a>
+    Use   [<a href="15567.html#526">redir.c, 526</a>]               <a href="dictionary_R.html#15672">redir_special_open</a>
+    Use   [<a href="15567.html#177">redir.c, 177</a>]               <a href="dictionary_R.html#6883">redirection_error</a>
+
+<a href="dictionary_A.html#7769">ANCHORED_SEARCH</a><a name="7769"> </a>
+  Declared as: 1
+    Define   [<a href="3811.html#72">histlib.h, 72</a>]           histlib.h
+    Use   [<a href="15541.html#108">histsearch.c, 108</a>]          <a href="dictionary_H.html#15549">history_search_internal</a>
+    Use   [<a href="15541.html#171">histsearch.c, 171</a>]          <a href="dictionary_H.html#3951">history_search_prefix</a>
+
+<a href="dictionary_A.html#4326">AND_AND</a><a name="4326"> </a>
+  Declared as: 288
+    Define   [<a href="4325.html#122">y.tab.h, 122</a>]            y.tab.h
+    Use   [<a href="4182.html#262">print_cmd.c, 262</a>]           <a href="dictionary_M.html#4375">make_command_string_internal</a>
+    Use   [<a href="7971.html#2351">execute_cmd.c, 2351</a>]        <a href="dictionary_E.html#8194">execute_connection</a>
+    Use   [<a href="7971.html#2376">execute_cmd.c, 2376</a>]        <a href="dictionary_E.html#8194">execute_connection</a>
+
+<a href="dictionary_A.html#12180">AND_AND</a><a name="12180"> </a>
+  Declared as: 288
+    Define   [<a href="12178.html#149">y.tab.c, 149</a>]            y.tab.c
+    Use   [<a href="12178.html#4390">y.tab.c, 4390</a>]              y.tab.c
+    Use   [<a href="12178.html#5306">y.tab.c, 5306</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#7090">y.tab.c, 7090</a>]              <a href="dictionary_R.html#12572">reserved_word_acceptable</a>
+    Use   [<a href="12178.html#3129">y.tab.c, 3129</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+    Use   [<a href="12178.html#3230">y.tab.c, 3230</a>]              <a href="dictionary_Y.html#3302">yyparse</a>
+
+<a href="dictionary_A.html#12181">AND_GREATER</a><a name="12181"> </a>
+  Declared as: 299
+    Define   [<a href="12178.html#160">y.tab.c, 160</a>]            y.tab.c
+    Use   [<a href="12178.html#4401">y.tab.c, 4401</a>]              y.tab.c
+    Use   [<a href="12178.html#5337">y.tab.c, 5337</a>]              <a href="dictionary_R.html#12536">read_token</a>
+
+<a href="dictionary_A.html#12782">AND_GREATER</a><a name="12782"> </a>
+  Declared as: 299
+    Define   [<a href="4325.html#133">y.tab.h, 133</a>]            y.tab.h
+
+<a href="dictionary_A.html#12182">AND_GREATER_GREATER</a><a name="12182"> </a>
+  Declared as: 300
+    Define   [<a href="12178.html#161">y.tab.c, 161</a>]            y.tab.c
+    Use   [<a href="12178.html#4402">y.tab.c, 4402</a>]              y.tab.c
+    Use   [<a href="12178.html#5333">y.tab.c, 5333</a>]              <a href="dictionary_R.html#12536">read_token</a>
+
+<a href="dictionary_A.html#12783">AND_GREATER_GREATER</a><a name="12783"> </a>
+  Declared as: 300
+    Define   [<a href="4325.html#134">y.tab.h, 134</a>]            y.tab.h
+
+<a href="dictionary_A.html#11972">ANDOR</a><a name="11972"> </a>
+  Declared as: (s[0] == '-' && !s[2] && (s[1] == 'a' || s[1] == 'o'))
+    Define   [<a href="11971.html#706">test.c, 706</a>]             test.c
+    Use   [<a href="11971.html#722">test.c, 722</a>]                <a href="dictionary_T.html#12075">three_arguments</a>
+
+<a href="dictionary_A.html#10123">any_typein</a><a name="10123"> </a>
+  Declared as: (push_index != pop_index)
+    Define   [<a href="10088.html#99">input.c, 99</a>]             input.c
+    Use   [<a href="10088.html#104">input.c, 104</a>]               <a href="dictionary_&.html#7255">_rl_any_typein</a>
+
+<a href="dictionary_A.html#1849">ANYOTHERKEY</a><a name="1849"> </a>
+  Declared as: KEYMAP_SIZE-1
+    Define   [<a href="1804.html#53">keymaps.h, 53</a>]           keymaps.h
+    Use   [<a href="11081.html#409">bind.c, 409</a>]                <a href="dictionary_R.html#11105">rl_generic_bind</a>
+    Use   [<a href="11081.html#420">bind.c, 420</a>]                <a href="dictionary_R.html#11105">rl_generic_bind</a>
+    Use   [<a href="12997.html#786">readline.c, 786</a>]            <a href="dictionary_&.html#7269">_rl_dispatch_subseq</a>
+    Use   [<a href="12997.html#826">readline.c, 826</a>]            <a href="dictionary_&.html#7269">_rl_dispatch_subseq</a>
+    Use   [<a href="12997.html#849">readline.c, 849</a>]            <a href="dictionary_&.html#7269">_rl_dispatch_subseq</a>
+    Use   [<a href="12997.html#865">readline.c, 865</a>]            <a href="dictionary_&.html#7269">_rl_dispatch_subseq</a>
+    Use   [<a href="12997.html#886">readline.c, 886</a>]            <a href="dictionary_&.html#7269">_rl_dispatch_subseq</a>
+    Use   [<a href="12997.html#912">readline.c, 912</a>]            <a href="dictionary_&.html#13059">_rl_subseq_result</a>
+    Use   [<a href="12997.html#913">readline.c, 913</a>]            <a href="dictionary_&.html#13059">_rl_subseq_result</a>
+    Use   [<a href="12997.html#931">readline.c, 931</a>]            <a href="dictionary_&.html#13059">_rl_subseq_result</a>
+    Use   [<a href="12997.html#933">readline.c, 933</a>]            <a href="dictionary_&.html#13059">_rl_subseq_result</a>
+
+<a href="dictionary_A.html#7096">ANYP</a><a name="7096"> </a>
+    Use   [<a href="7095.html#263">rltty.c, 263</a>]               <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+    Define   [<a href="7095.html#264">rltty.c, 264</a>]            <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+    Use   [<a href="7095.html#266">rltty.c, 266</a>]               <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+    Use   [<a href="7095.html#266">rltty.c, 266</a>]               <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+    Use   [<a href="7095.html#267">rltty.c, 267</a>]               <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+    Use   [<a href="7095.html#269">rltty.c, 269</a>]               <a href="dictionary_P.html#7162">prepare_terminal_settings</a>
+
+<a href="dictionary_A.html#12183">APPEND_NESTRET</a><a name="12183"> </a>
+  Declared as: do { if (nestlen) { RESIZE_MALLOCED_BUFFER (ret, retind, nestlen, retsize, 64); strcpy (ret + retind, nestret); retind += nestlen; } } while (0)
+    Define   [<a href="12178.html#5438">y.tab.c, 5438</a>]           y.tab.c
+    Use   [<a href="12178.html#6114">y.tab.c, 6114</a>]              <a href="dictionary_P.html#12448">parse_comsub</a>
+    Use   [<a href="12178.html#6130">y.tab.c, 6130</a>]              <a href="dictionary_P.html#12448">parse_comsub</a>
+    Use   [<a href="12178.html#5656">y.tab.c, 5656</a>]              <a href="dictionary_P.html#12476">parse_matched_pair</a>
+    Use   [<a href="12178.html#5670">y.tab.c, 5670</a>]              <a href="dictionary_P.html#12476">parse_matched_pair</a>
+    Use   [<a href="12178.html#5688">y.tab.c, 5688</a>]              <a href="dictionary_P.html#12476">parse_matched_pair</a>
+
+<a href="dictionary_A.html#10281">ARGS_FUNC</a><a name="10281"> </a>
+  Declared as: 0x02
+    Define   [<a href="410.html#57">common.h, 57</a>]            common.h
+    Use   [<a href="10270.html#428">common.c, 428</a>]              <a href="dictionary_S.html#10284">set_dollar_vars_changed</a>
+
+<a href="dictionary_A.html#10282">ARGS_INVOC</a><a name="10282"> </a>
+  Declared as: 0x01
+    Define   [<a href="410.html#56">common.h, 56</a>]            common.h
+    Use   [<a href="10270.html#432">common.c, 432</a>]              <a href="dictionary_S.html#10284">set_dollar_vars_changed</a>
+
+<a href="dictionary_A.html#10393">ARGS_NONE</a><a name="10393"> </a>
+  Declared as: 0x0
+    Define   [<a href="410.html#55">common.h, 55</a>]            common.h
+
+<a href="dictionary_A.html#10283">ARGS_SETBLTIN</a><a name="10283"> </a>
+  Declared as: 0x04
+    Define   [<a href="410.html#58">common.h, 58</a>]            common.h
+    Use   [<a href="10270.html#430">common.c, 430</a>]              <a href="dictionary_S.html#10284">set_dollar_vars_changed</a>
+
+<a href="dictionary_A.html#12184">ARITH_CMD</a><a name="12184"> </a>
+  Declared as: 285
+    Define   [<a href="12178.html#146">y.tab.c, 146</a>]            y.tab.c
+    Use   [<a href="12178.html#7775">y.tab.c, 7775</a>]              <a href="dictionary_E.html#12404">error_token_from_token</a>
+
+<a href="dictionary_A.html#12784">ARITH_CMD</a><a name="12784"> </a>
+  Declared as: 285
+    Define   [<a href="4325.html#119">y.tab.h, 119</a>]            y.tab.h
+
+<a href="dictionary_A.html#4183">ARITH_FOR_COMMAND</a><a name="4183"> </a>
+    Use   [<a href="4182.html#87">print_cmd.c, 87</a>]            print_cmd.c
+    Use   [<a href="4182.html#580">print_cmd.c, 580</a>]           print_cmd.c
+    Use   [<a href="4182.html#895">print_cmd.c, 895</a>]           print_cmd.c
+    Use   [<a href="4182.html#191">print_cmd.c, 191</a>]           <a href="dictionary_M.html#4375">make_command_string_internal</a>
+
+<a href="dictionary_A.html#7490">ARITH_FOR_COMMAND</a><a name="7490"> </a>
+    Use   [<a href="7489.html#66">dispose_cmd.c, 66</a>]          <a href="dictionary_D.html#3293">dispose_command</a>
+
+<a href="dictionary_A.html#7973">ARITH_FOR_COMMAND</a><a name="7973"> </a>
+    Use   [<a href="7971.html#161">execute_cmd.c, 161</a>]         execute_cmd.c
+    Use   [<a href="7971.html#2544">execute_cmd.c, 2544</a>]        execute_cmd.c
+    Use   [<a href="7971.html#806">execute_cmd.c, 806</a>]         <a href="dictionary_E.html#6878">execute_command_internal</a>
+    Use   [<a href="7971.html#351">execute_cmd.c, 351</a>]         <a href="dictionary_E.html#8361">executing_line_number</a>
+    Use   [<a href="7971.html#405">execute_cmd.c, 405</a>]         <a href="dictionary_S.html#8393">shell_control_structure</a>
+
+<a href="dictionary_A.html#11565">ARITH_FOR_COMMAND</a><a name="11565"> </a>
+    Use   [<a href="11564.html#68">make_cmd.c, 68</a>]             make_cmd.c
+    Use   [<a href="11564.html#252">make_cmd.c, 252</a>]            make_cmd.c
+    Use   [<a href="11564.html#279">make_cmd.c, 279</a>]            <a href="dictionary_M.html#11611">make_arith_for_command</a>
+
+<a href="dictionary_A.html#12185">ARITH_FOR_COMMAND</a><a name="12185"> </a>
+    Use   [<a href="12178.html#330">y.tab.c, 330</a>]               y.tab.c
+    Use   [<a href="12178.html#6216">y.tab.c, 6216</a>]              y.tab.c
+    Use   [<a href="12178.html#5311">y.tab.c, 5311</a>]              <a href="dictionary_R.html#12536">read_token</a>
+
+<a href="dictionary_A.html#16344">ARITH_FOR_COMMAND</a><a name="16344"> </a>
+    Use   [<a href="16343.html#38">copy_cmd.c, 38</a>]             copy_cmd.c
+    Use   [<a href="16343.html#186">copy_cmd.c, 186</a>]            copy_cmd.c
+    Use   [<a href="16343.html#379">copy_cmd.c, 379</a>]            <a href="dictionary_C.html#4247">copy_command</a>
+
+<a href="dictionary_A.html#17202">ARITH_FOR_COMMAND</a><a name="17202"> </a>
+    Use   [<a href="416.html#248">command.h, 248</a>]             command.h
+    Use   [<a href="416.html#199">command.h, 199</a>]             command::[unnamed]
+
+<a href="dictionary_A.html#12186">ARITH_FOR_EXPRS</a><a name="12186"> </a>
+  Declared as: 286
+    Define   [<a href="12178.html#147">y.tab.c, 147</a>]            y.tab.c
+    Use   [<a href="12178.html#7779">y.tab.c, 7779</a>]              <a href="dictionary_E.html#12404">error_token_from_token</a>
+    Use   [<a href="12178.html#5101">y.tab.c, 5101</a>]              <a href="dictionary_S.html#12598">special_case_tokens</a>
+    Use   [<a href="12178.html#5103">y.tab.c, 5103</a>]              <a href="dictionary_S.html#12598">special_case_tokens</a>
+
+<a href="dictionary_A.html#12785">ARITH_FOR_EXPRS</a><a name="12785"> </a>
+  Declared as: 286
+    Define   [<a href="4325.html#120">y.tab.h, 120</a>]            y.tab.h
+
+<a href="dictionary_A.html#14451">array_cell</a><a name="14451"> </a>
+  Declared as: (ARRAY *)((var)->value)
+    Define   [<a href="567.html#160">variables.h, 160</a>]        variables.h
+
+<a href="dictionary_A.html#5014">array_empty</a><a name="5014"> </a>
+  Declared as: ((a)->num_elements == 0)
+    Define   [<a href="2705.html#98">array.h, 98</a>]             array.h
+
+<a href="dictionary_A.html#5018">array_head</a><a name="5018"> </a>
+  Declared as: ((a)->head)
+    Define   [<a href="2705.html#97">array.h, 97</a>]             array.h
+
+<a href="dictionary_A.html#5021">array_max_index</a><a name="5021"> </a>
+  Declared as: ((a)->max_index)
+    Define   [<a href="2705.html#96">array.h, 96</a>]             array.h
+
+<a href="dictionary_A.html#5023">array_num_elements</a><a name="5023"> </a>
+  Declared as: ((a)->num_elements)
+    Define   [<a href="2705.html#95">array.h, 95</a>]             array.h
+
+<a href="dictionary_A.html#13841">array_p</a><a name="13841"> </a>
+  Declared as: ((((var)->attributes) & (att_array)))
+    Define   [<a href="567.html#138">variables.h, 138</a>]        variables.h
+    Use   [<a href="13811.html#2214">variables.c, 2214</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+
+<a href="dictionary_A.html#5025">array_pop</a><a name="5025"> </a>
+  Declared as: do { array_dispose_element (array_shift ((a), 1, 0)); } while (0)
+    Define   [<a href="2705.html#108">array.h, 108</a>]            array.h
+
+<a href="dictionary_A.html#5026">array_push</a><a name="5026"> </a>
+  Declared as: do { array_rshift ((a), 1, (v)); } while (0)
+    Define   [<a href="2705.html#106">array.h, 106</a>]            array.h
+
+<a href="dictionary_A.html#366">ARRAY_VARS</a><a name="366"> </a>
+    Use   [<a href="365.html#287">jobs.c, 287</a>]                jobs.c
+    Use   [<a href="365.html#3388">jobs.c, 3388</a>]               <a href="dictionary_S.html#913">setjstatus</a>
+
+<a href="dictionary_A.html#1075">ARRAY_VARS</a><a name="1075"> </a>
+    Use   [<a href="1074.html#1386">shell.c, 1386</a>]              <a href="dictionary_O.html#1316">open_shell_script</a>
+    Use   [<a href="1074.html#1425">shell.c, 1425</a>]              <a href="dictionary_O.html#1316">open_shell_script</a>
+
+<a href="dictionary_A.html#1592">ARRAY_VARS</a><a name="1592"> </a>
+    Use   [<a href="533.html#158">shell.h, 158</a>]               <a href="dictionary_&.html#1621">_sh_parser_state_t</a>
+
+<a href="dictionary_A.html#2692">ARRAY_VARS</a><a name="2692"> </a>
+    Use   [<a href="2691.html#220">expr.c, 220</a>]                expr.c
+    Use   [<a href="2691.html#999">expr.c, 999</a>]                <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="2691.html#1004">expr.c, 1004</a>]               <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="2691.html#1012">expr.c, 1012</a>]               <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="2691.html#1021">expr.c, 1021</a>]               <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="2691.html#1037">expr.c, 1037</a>]               <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="2691.html#1160">expr.c, 1160</a>]               <a href="dictionary_R.html#2891">readtok</a>
+
+<a href="dictionary_A.html#3065">ARRAY_VARS</a><a name="3065"> </a>
+    Use   [<a href="3064.html#30">assoc.c, 30</a>]                assoc.c
+
+<a href="dictionary_A.html#4951">ARRAY_VARS</a><a name="4951"> </a>
+    Use   [<a href="4950.html#32">array.c, 32</a>]                array.c
+
+<a href="dictionary_A.html#5824">ARRAY_VARS</a><a name="5824"> </a>
+    Use   [<a href="5823.html#224">subst.c, 224</a>]               subst.c
+    Use   [<a href="5823.html#259">subst.c, 259</a>]               subst.c
+    Use   [<a href="5823.html#268">subst.c, 268</a>]               subst.c
+    Use   [<a href="5823.html#313">subst.c, 313</a>]               subst.c
+    Use   [<a href="5823.html#1176">subst.c, 1176</a>]              subst.c
+    Use   [<a href="5823.html#1671">subst.c, 1671</a>]              subst.c
+    Use   [<a href="5823.html#2687">subst.c, 2687</a>]              subst.c
+    Use   [<a href="5823.html#4461">subst.c, 4461</a>]              subst.c
+    Use   [<a href="5823.html#5463">subst.c, 5463</a>]              subst.c
+    Use   [<a href="5823.html#6048">subst.c, 6048</a>]              subst.c
+    Use   [<a href="5823.html#6078">subst.c, 6078</a>]              subst.c
+    Use   [<a href="5823.html#6106">subst.c, 6106</a>]              subst.c
+    Use   [<a href="5823.html#6128">subst.c, 6128</a>]              subst.c
+    Use   [<a href="5823.html#9139">subst.c, 9139</a>]              subst.c
+    Use   [<a href="5823.html#5594">subst.c, 5594</a>]              <a href="dictionary_C.html#6023">chk_atstar</a>
+    Use   [<a href="5823.html#2730">subst.c, 2730</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#2756">subst.c, 2756</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#2790">subst.c, 2790</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#6176">subst.c, 6176</a>]              <a href="dictionary_G.html#6249">get_var_and_type</a>
+    Use   [<a href="5823.html#6187">subst.c, 6187</a>]              <a href="dictionary_G.html#6249">get_var_and_type</a>
+    Use   [<a href="5823.html#7773">subst.c, 7773</a>]              <a href="dictionary_P.html#6366">param_expand</a>
+    Use   [<a href="5823.html#6834">subst.c, 6834</a>]              <a href="dictionary_P.html#6392">parameter_brace_casemod</a>
+    Use   [<a href="5823.html#7111">subst.c, 7111</a>]              <a href="dictionary_P.html#6412">parameter_brace_expand</a>
+    Use   [<a href="5823.html#7166">subst.c, 7166</a>]              <a href="dictionary_P.html#6412">parameter_brace_expand</a>
+    Use   [<a href="5823.html#5891">subst.c, 5891</a>]              <a href="dictionary_P.html#6456">parameter_brace_expand_length</a>
+    Use   [<a href="5823.html#5926">subst.c, 5926</a>]              <a href="dictionary_P.html#6456">parameter_brace_expand_length</a>
+    Use   [<a href="5823.html#5942">subst.c, 5942</a>]              <a href="dictionary_P.html#6456">parameter_brace_expand_length</a>
+    Use   [<a href="5823.html#5825">subst.c, 5825</a>]              <a href="dictionary_P.html#6461">parameter_brace_expand_rhs</a>
+    Use   [<a href="5823.html#5667">subst.c, 5667</a>]              <a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+    Use   [<a href="5823.html#5688">subst.c, 5688</a>]              <a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+    Use   [<a href="5823.html#6690">subst.c, 6690</a>]              <a href="dictionary_P.html#6488">parameter_brace_patsub</a>
+    Use   [<a href="5823.html#4544">subst.c, 4544</a>]              <a href="dictionary_P.html#6507">parameter_brace_remove_pattern</a>
+    Use   [<a href="5823.html#6352">subst.c, 6352</a>]              <a href="dictionary_P.html#6522">parameter_brace_substring</a>
+    Use   [<a href="5823.html#9180">subst.c, 9180</a>]              <a href="dictionary_S.html#6669">shell_expand_word_list</a>
+    Use   [<a href="5823.html#722">subst.c, 722</a>]               <a href="dictionary_S.html#6735">string_extract</a>
+    Use   [<a href="5823.html#5550">subst.c, 5550</a>]              <a href="dictionary_V.html#6837">valid_brace_expansion_word</a>
+    Use   [<a href="5823.html#5876">subst.c, 5876</a>]              <a href="dictionary_V.html#6840">valid_length_expression</a>
+
+<a href="dictionary_A.html#6941">ARRAY_VARS</a><a name="6941"> </a>
+    Use   [<a href="1188.html#267">subst.h, 267</a>]               subst.h
+
+<a href="dictionary_A.html#7363">ARRAY_VARS</a><a name="7363"> </a>
+    Use   [<a href="7362.html#91">evalfile.c, 91</a>]             <a href="dictionary_&.html#7378">_evalfile</a>
+    Use   [<a href="7362.html#103">evalfile.c, 103</a>]            <a href="dictionary_&.html#7378">_evalfile</a>
+    Use   [<a href="7362.html#229">evalfile.c, 229</a>]            <a href="dictionary_&.html#7378">_evalfile</a>
+    Use   [<a href="7362.html#277">evalfile.c, 277</a>]            <a href="dictionary_&.html#7378">_evalfile</a>
+
+<a href="dictionary_A.html#7974">ARRAY_VARS</a><a name="7974"> </a>
+    Use   [<a href="7971.html#4136">execute_cmd.c, 4136</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+    Use   [<a href="7971.html#4154">execute_cmd.c, 4154</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+    Use   [<a href="7971.html#4237">execute_cmd.c, 4237</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+    Use   [<a href="7971.html#4317">execute_cmd.c, 4317</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+    Use   [<a href="7971.html#3598">execute_cmd.c, 3598</a>]        <a href="dictionary_F.html#8363">fix_assignment_words</a>
+    Use   [<a href="7971.html#3603">execute_cmd.c, 3603</a>]        <a href="dictionary_F.html#8363">fix_assignment_words</a>
+
+<a href="dictionary_A.html#9249">ARRAY_VARS</a><a name="9249"> </a>
+    Use   [<a href="9248.html#63">error.c, 63</a>]                error.c
+    Use   [<a href="9248.html#434">error.c, 434</a>]               error.c
+    Use   [<a href="9248.html#100">error.c, 100</a>]               <a href="dictionary_G.html#423">get_name_for_error</a>
+    Use   [<a href="9248.html#108">error.c, 108</a>]               <a href="dictionary_G.html#423">get_name_for_error</a>
+
+<a href="dictionary_A.html#11566">ARRAY_VARS</a><a name="11566"> </a>
+    Use   [<a href="11564.html#770">make_cmd.c, 770</a>]            <a href="dictionary_M.html#11647">make_function_def</a>
+    Use   [<a href="11564.html#784">make_cmd.c, 784</a>]            <a href="dictionary_M.html#11647">make_function_def</a>
+
+<a href="dictionary_A.html#11766">ARRAY_VARS</a><a name="11766"> </a>
+    Use   [<a href="11765.html#23">arrayfunc.c, 23</a>]            arrayfunc.c
+
+<a href="dictionary_A.html#11857">ARRAY_VARS</a><a name="11857"> </a>
+    Use   [<a href="1595.html#26">arrayfunc.h, 26</a>]            arrayfunc.h
+
+<a href="dictionary_A.html#12187">ARRAY_VARS</a><a name="12187"> </a>
+    Use   [<a href="12178.html#327">y.tab.c, 327</a>]               y.tab.c
+    Use   [<a href="12178.html#343">y.tab.c, 343</a>]               y.tab.c
+    Use   [<a href="12178.html#6573">y.tab.c, 6573</a>]              y.tab.c
+    Use   [<a href="12178.html#8252">y.tab.c, 8252</a>]              <a href="dictionary_R.html#1638">restore_parser_state</a>
+    Use   [<a href="12178.html#8210">y.tab.c, 8210</a>]              <a href="dictionary_S.html#1639">save_parser_state</a>
+    Use   [<a href="12178.html#6870">y.tab.c, 6870</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+
+<a href="dictionary_A.html#13633">ARRAY_VARS</a><a name="13633"> </a>
+    Use   [<a href="13632.html#780">trap.c, 780</a>]                <a href="dictionary_&.html#13664">_run_trap_internal</a>
+    Use   [<a href="13632.html#798">trap.c, 798</a>]                <a href="dictionary_&.html#13664">_run_trap_internal</a>
+    Use   [<a href="13632.html#827">trap.c, 827</a>]                <a href="dictionary_&.html#13664">_run_trap_internal</a>
+    Use   [<a href="13632.html#708">trap.c, 708</a>]                <a href="dictionary_R.html#1192">run_exit_trap</a>
+    Use   [<a href="13632.html#713">trap.c, 713</a>]                <a href="dictionary_R.html#1192">run_exit_trap</a>
+    Use   [<a href="13632.html#755">trap.c, 755</a>]                <a href="dictionary_R.html#1192">run_exit_trap</a>
+    Use   [<a href="13632.html#272">trap.c, 272</a>]                <a href="dictionary_R.html#3305">run_pending_traps</a>
+    Use   [<a href="13632.html#283">trap.c, 283</a>]                <a href="dictionary_R.html#3305">run_pending_traps</a>
+    Use   [<a href="13632.html#370">trap.c, 370</a>]                <a href="dictionary_R.html#3305">run_pending_traps</a>
+
+<a href="dictionary_A.html#13812">ARRAY_VARS</a><a name="13812"> </a>
+    Use   [<a href="13811.html#173">variables.c, 173</a>]           variables.c
+    Use   [<a href="13811.html#178">variables.c, 178</a>]           variables.c
+    Use   [<a href="13811.html#183">variables.c, 183</a>]           variables.c
+    Use   [<a href="13811.html#215">variables.c, 215</a>]           variables.c
+    Use   [<a href="13811.html#220">variables.c, 220</a>]           variables.c
+    Use   [<a href="13811.html#262">variables.c, 262</a>]           variables.c
+    Use   [<a href="13811.html#876">variables.c, 876</a>]           variables.c
+    Use   [<a href="13811.html#1114">variables.c, 1114</a>]          variables.c
+    Use   [<a href="13811.html#1135">variables.c, 1135</a>]          variables.c
+    Use   [<a href="13811.html#1463">variables.c, 1463</a>]          variables.c
+    Use   [<a href="13811.html#1491">variables.c, 1491</a>]          variables.c
+    Use   [<a href="13811.html#2027">variables.c, 2027</a>]          variables.c
+    Use   [<a href="13811.html#3199">variables.c, 3199</a>]          variables.c
+    Use   [<a href="13811.html#4648">variables.c, 4648</a>]          variables.c
+    Use   [<a href="13811.html#2754">variables.c, 2754</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#979">variables.c, 979</a>]           <a href="dictionary_P.html#13879">print_assignment</a>
+    Use   [<a href="13811.html#2368">variables.c, 2368</a>]          <a href="dictionary_B.html#2724">bind_int_variable</a>
+    Use   [<a href="13811.html#2384">variables.c, 2384</a>]          <a href="dictionary_B.html#2724">bind_int_variable</a>
+    Use   [<a href="13811.html#2239">variables.c, 2239</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2625">variables.c, 2625</a>]          <a href="dictionary_D.html#14071">dispose_variable_value</a>
+    Use   [<a href="13811.html#1629">variables.c, 1629</a>]          <a href="dictionary_G.html#14123">get_funcname</a>
+    Use   [<a href="13811.html#1849">variables.c, 1849</a>]          <a href="dictionary_G.html#2726">get_variable_value</a>
+    Use   [<a href="13811.html#1665">variables.c, 1665</a>]          <a href="dictionary_I.html#14154">init_funcname_var</a>
+    Use   [<a href="13811.html#1701">variables.c, 1701</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#1705">variables.c, 1705</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#369">variables.c, 369</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#503">variables.c, 503</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#3476">variables.c, 3476</a>]          <a href="dictionary_M.html#14177">make_env_array_from_var_list</a>
+    Use   [<a href="13811.html#4108">variables.c, 4108</a>]          <a href="dictionary_P.html#1198">pop_args</a>
+    Use   [<a href="13811.html#4083">variables.c, 4083</a>]          <a href="dictionary_P.html#1199">push_args</a>
+    Use   [<a href="13811.html#4752">variables.c, 4752</a>]          <a href="dictionary_S.html#5948">set_pipestatus_from_exit</a>
+
+<a href="dictionary_A.html#14428">ARRAY_VARS</a><a name="14428"> </a>
+    Use   [<a href="567.html#256">variables.h, 256</a>]           variables.h
+    Use   [<a href="567.html#327">variables.h, 327</a>]           variables.h
+
+<a href="dictionary_A.html#16902">ARRAY_VARS</a><a name="16902"> </a>
+    Use   [<a href="16901.html#271">general.c, 271</a>]             <a href="dictionary_A.html#5863">assignment</a>
+    Use   [<a href="16901.html#285">general.c, 285</a>]             <a href="dictionary_A.html#5863">assignment</a>
+
+<a href="dictionary_A.html#4992">AS_DISPOSE</a><a name="4992"> </a>
+  Declared as: 0x01
+    Define   [<a href="2705.html#93">array.h, 93</a>]             array.h
+
+<a href="dictionary_A.html#7532">ASBUFSIZE</a><a name="7532"> </a>
+  Declared as: 128
+    Define   [<a href="7531.html#178">snprintf.c, 178</a>]         snprintf.c
+    Macro   [<a href="7531.html#349">snprintf.c, 349</a>]          <a href="dictionary_P.html#7608">PUT_CHAR</a>
+    Use   [<a href="7531.html#970">snprintf.c, 970</a>]            <a href="dictionary_C.html#7627">chkinfnan</a>
+    Use   [<a href="7531.html#974">snprintf.c, 974</a>]            <a href="dictionary_C.html#7627">chkinfnan</a>
+    Use   [<a href="7531.html#1650">snprintf.c, 1650</a>]           <a href="dictionary_D.html#7636">dfallback</a>
+    Use   [<a href="7531.html#1067">snprintf.c, 1067</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1068">snprintf.c, 1068</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1069">snprintf.c, 1069</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1073">snprintf.c, 1073</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1078">snprintf.c, 1078</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1086">snprintf.c, 1086</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1090">snprintf.c, 1090</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1092">snprintf.c, 1092</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1096">snprintf.c, 1096</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1099">snprintf.c, 1099</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1107">snprintf.c, 1107</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1112">snprintf.c, 1112</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1116">snprintf.c, 1116</a>]           <a href="dictionary_E.html#7646">exponent</a>
+    Use   [<a href="7531.html#1016">snprintf.c, 1016</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1017">snprintf.c, 1017</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1018">snprintf.c, 1018</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1022">snprintf.c, 1022</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1028">snprintf.c, 1028</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1031">snprintf.c, 1031</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#1033">snprintf.c, 1033</a>]           <a href="dictionary_F.html#7653">floating</a>
+    Use   [<a href="7531.html#705">snprintf.c, 705</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#710">snprintf.c, 710</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#716">snprintf.c, 716</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#717">snprintf.c, 717</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#721">snprintf.c, 721</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#726">snprintf.c, 726</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#727">snprintf.c, 727</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#734">snprintf.c, 734</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#738">snprintf.c, 738</a>]            <a href="dictionary_N.html#7695">number</a>
+    Use   [<a href="7531.html#822">snprintf.c, 822</a>]            <a href="dictionary_P.html#7719">pointer</a>
+    Use   [<a href="7531.html#825">snprintf.c, 825</a>]            <a href="dictionary_P.html#7719">pointer</a>
+    Use   [<a href="7531.html#826">snprintf.c, 826</a>]            <a href="dictionary_P.html#7719">pointer</a>
+    Use   [<a href="7531.html#830">snprintf.c, 830</a>]            <a href="dictionary_P.html#7719">pointer</a>
+    Use   [<a href="7531.html#834">snprintf.c, 834</a>]            <a href="dictionary_P.html#7719">pointer</a>
+    Use   [<a href="7531.html#850">snprintf.c, 850</a>]            <a href="dictionary_S.html#7734">strings</a>
+    Use   [<a href="7531.html#850">snprintf.c, 850</a>]            <a href="dictionary_S.html#7734">strings</a>
+    Use   [<a href="7531.html#850">snprintf.c, 850</a>]            <a href="dictionary_S.html#7734">strings</a>
+    Use   [<a href="7531.html#1720">snprintf.c, 1720</a>]           <a href="dictionary_V.html#7739">vasprintf</a>
+    Use   [<a href="7531.html#1721">snprintf.c, 1721</a>]           <a href="dictionary_V.html#7739">vasprintf</a>
+    Use   [<a href="7531.html#1722">snprintf.c, 1722</a>]           <a href="dictionary_V.html#7739">vasprintf</a>
+    Use   [<a href="7531.html#1257">snprintf.c, 1257</a>]           <a href="dictionary_V.html#7752">vsnprintf_internal</a>
+    Use   [<a href="7531.html#1531">snprintf.c, 1531</a>]           <a href="dictionary_V.html#7752">vsnprintf_internal</a>
+    Use   [<a href="7531.html#1571">snprintf.c, 1571</a>]           <a href="dictionary_V.html#7752">vsnprintf_internal</a>
+
+<a href="dictionary_A.html#5872">ASS_APPEND</a><a name="5872"> </a>
+  Declared as: 0x01
+    Define   [<a href="1188.html#45">subst.h, 45</a>]             subst.h
+    Use   [<a href="5823.html#2788">subst.c, 2788</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="13811.html#2211">variables.c, 2211</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2327">variables.c, 2327</a>]          <a href="dictionary_B.html#14051">bind_variable_value</a>
+    Use   [<a href="13811.html#2114">variables.c, 2114</a>]          <a href="dictionary_M.html#14205">make_variable_value</a>
+    Use   [<a href="13811.html#2130">variables.c, 2130</a>]          <a href="dictionary_M.html#14205">make_variable_value</a>
+    Use   [<a href="13811.html#2164">variables.c, 2164</a>]          <a href="dictionary_M.html#14205">make_variable_value</a>
+
+<a href="dictionary_A.html#6942">ASS_MKASSOC</a><a name="6942"> </a>
+  Declared as: 0x04
+    Define   [<a href="1188.html#47">subst.h, 47</a>]             subst.h
+
+<a href="dictionary_A.html#6943">ASS_MKLOCAL</a><a name="6943"> </a>
+  Declared as: 0x02
+    Define   [<a href="1188.html#46">subst.h, 46</a>]             subst.h
+
+<a href="dictionary_A.html#8798">ASSERT</a><a name="8798"> </a>
+  Declared as: do { if (!(p)) xbotch((PTR_T)0, ERR_ASSERT_FAILED, __STRING(p), file, line); } while (0)
+    Use   [<a href="8796.html#880">malloc.c, 880</a>]              <a href="dictionary_I.html#8895">internal_free</a>
+    Use   [<a href="8796.html#927">malloc.c, 927</a>]              <a href="dictionary_I.html#8895">internal_free</a>
+    Use   [<a href="8796.html#997">malloc.c, 997</a>]              <a href="dictionary_I.html#8928">internal_realloc</a>
+    Use   [<a href="8796.html#1003">malloc.c, 1003</a>]             <a href="dictionary_I.html#8928">internal_realloc</a>
+    Define   [<a href="8796.html#172">malloc.c, 172</a>]           <a href="dictionary_S.html#9001">sh_malloc</a>
+
+<a href="dictionary_A.html#5825">ASSIGN_RETURN</a><a name="5825"> </a>
+  Declared as: do { FREE (value); free (name); return (r); } while (0)
+    Define   [<a href="5823.html#2785">subst.c, 2785</a>]           <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#2831">subst.c, 2831</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+
+<a href="dictionary_A.html#12385">assignment_acceptable</a><a name="12385"> </a>
+  Declared as: (command_token_position(token) && ((parser_state & PST_CASEPAT) == 0))
+    Define   [<a href="12178.html#4869">y.tab.c, 4869</a>]           y.tab.c
+    Use   [<a href="12178.html#7024">y.tab.c, 7024</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+
+<a href="dictionary_A.html#7991">ASSIGNMENT_BUILTIN</a><a name="7991"> </a>
+  Declared as: 0x10
+    Define   [<a href="1107.html#42">builtins.h, 42</a>]          builtins.h
+    Use   [<a href="7971.html#3592">execute_cmd.c, 3592</a>]        <a href="dictionary_F.html#8363">fix_assignment_words</a>
+    Use   [<a href="7971.html#3594">execute_cmd.c, 3594</a>]        <a href="dictionary_F.html#8363">fix_assignment_words</a>
+    Use   [<a href="12178.html#7032">y.tab.c, 7032</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+
+<a href="dictionary_A.html#12188">ASSIGNMENT_WORD</a><a name="12188"> </a>
+  Declared as: 282
+    Define   [<a href="12178.html#143">y.tab.c, 143</a>]            y.tab.c
+    Macro   [<a href="12178.html#4866">y.tab.c, 4866</a>]            <a href="dictionary_C.html#12386">command_token_position</a>
+    Use   [<a href="12178.html#7768">y.tab.c, 7768</a>]              <a href="dictionary_E.html#12404">error_token_from_token</a>
+    Use   [<a href="12178.html#8126">y.tab.c, 8126</a>]              <a href="dictionary_P.html#12437">parse_compound_assignment</a>
+    Use   [<a href="12178.html#8049">y.tab.c, 8049</a>]              <a href="dictionary_P.html#5345">parse_string_to_word_list</a>
+    Use   [<a href="12178.html#5187">y.tab.c, 5187</a>]              <a href="dictionary_R.html#12536">read_token</a>
+    Use   [<a href="12178.html#7024">y.tab.c, 7024</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+    Use   [<a href="12178.html#7028">y.tab.c, 7028</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+    Use   [<a href="12178.html#7054">y.tab.c, 7054</a>]              <a href="dictionary_R.html#12542">read_token_word</a>
+
+<a href="dictionary_A.html#12786">ASSIGNMENT_WORD</a><a name="12786"> </a>
+  Declared as: 282
+    Define   [<a href="4325.html#116">y.tab.h, 116</a>]            y.tab.h
+
+<a href="dictionary_A.html#14452">assoc_cell</a><a name="14452"> </a>
+  Declared as: (HASH_TABLE *)((var)->value)
+    Define   [<a href="567.html#161">variables.h, 161</a>]        variables.h
+
+<a href="dictionary_A.html#3112">assoc_copy</a><a name="3112"> </a>
+  Declared as: (hash_copy((h), 0))
+    Define   [<a href="3066.html#33">assoc.h, 33</a>]             assoc.h
+
+<a href="dictionary_A.html#3113">assoc_create</a><a name="3113"> </a>
+  Declared as: (hash_create((n)))
+    Define   [<a href="3066.html#31">assoc.h, 31</a>]             assoc.h
+
+<a href="dictionary_A.html#3117">assoc_empty</a><a name="3117"> </a>
+  Declared as: ((h)->nentries == 0)
+    Define   [<a href="3066.html#28">assoc.h, 28</a>]             assoc.h
+
+<a href="dictionary_A.html#3122">assoc_num_elements</a><a name="3122"> </a>
+  Declared as: ((h)->nentries)
+    Define   [<a href="3066.html#29">assoc.h, 29</a>]             assoc.h
+
+<a href="dictionary_A.html#13842">assoc_p</a><a name="13842"> </a>
+  Declared as: ((((var)->attributes) & (att_assoc)))
+    Define   [<a href="567.html#142">variables.h, 142</a>]        variables.h
+    Use   [<a href="13811.html#2212">variables.c, 2212</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+
+<a href="dictionary_A.html#3133">assoc_walk</a><a name="3133"> </a>
+  Declared as: (hash_walk((h), (f))
+    Define   [<a href="3066.html#35">assoc.h, 35</a>]             assoc.h
+
+<a href="dictionary_A.html#9183">AT_EACCESS</a><a name="9183"> </a>
+    Use   [<a href="9182.html#206">eaccess.c, 206</a>]             <a href="dictionary_S.html#5356">sh_eaccess</a>
+
+<a href="dictionary_A.html#16465">atime</a><a name="16465"> </a>
+  Declared as: mailfiles[i]->access_time
+    Define   [<a href="16436.html#437">mailcheck.c, 437</a>]        <a href="dictionary_C.html#12226">check_mail</a>
+    Use   [<a href="16436.html#452">mailcheck.c, 452</a>]           <a href="dictionary_C.html#12226">check_mail</a>
+    Use   [<a href="16436.html#457">mailcheck.c, 457</a>]           <a href="dictionary_C.html#12226">check_mail</a>
+
+<a href="dictionary_A.html#13843">att_array</a><a name="13843"> </a>
+  Declared as: 0x0000004
+    Define   [<a href="567.html#106">variables.h, 106</a>]        variables.h
+    Macro   [<a href="567.html#138">variables.h, 138</a>]         <a href="dictionary_A.html#13841">array_p</a>
+    Use   [<a href="13811.html#2214">variables.c, 2214</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+
+<a href="dictionary_A.html#13844">att_assoc</a><a name="13844"> </a>
+  Declared as: 0x0000040
+    Define   [<a href="567.html#110">variables.h, 110</a>]        variables.h
+    Macro   [<a href="567.html#142">variables.h, 142</a>]         <a href="dictionary_A.html#13842">assoc_p</a>
+    Use   [<a href="13811.html#2212">variables.c, 2212</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+
+<a href="dictionary_A.html#14453">att_capcase</a><a name="14453"> </a>
+  Declared as: 0x0000400
+    Define   [<a href="567.html#114">variables.h, 114</a>]        variables.h
+    Macro   [<a href="567.html#146">variables.h, 146</a>]         <a href="dictionary_C.html#14463">capcase_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+
+<a href="dictionary_A.html#8076">att_exported</a><a name="8076"> </a>
+  Declared as: 0x0000001
+    Define   [<a href="567.html#104">variables.h, 104</a>]        variables.h
+    Macro   [<a href="567.html#136">variables.h, 136</a>]         <a href="dictionary_E.html#10911">exported_p</a>
+    Macro   [<a href="567.html#174">variables.h, 174</a>]         <a href="dictionary_S.html#13887">set_auto_export</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+    Use   [<a href="7971.html#3495">execute_cmd.c, 3495</a>]        <a href="dictionary_B.html#8132">bind_lastarg</a>
+    Use   [<a href="10909.html#67">printenv.c, 67</a>]             <a href="dictionary_P.html#10915">printenv_builtin</a>
+    Use   [<a href="13811.html#2741">variables.c, 2741</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#2765">variables.c, 2765</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#2765">variables.c, 2765</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#846">variables.c, 846</a>]           <a href="dictionary_S.html#4913">set_ppid</a>
+    Use   [<a href="13811.html#816">variables.c, 816</a>]           <a href="dictionary_S.html#13894">set_pwd</a>
+    Use   [<a href="13811.html#824">variables.c, 824</a>]           <a href="dictionary_S.html#13894">set_pwd</a>
+    Use   [<a href="13811.html#833">variables.c, 833</a>]           <a href="dictionary_S.html#13894">set_pwd</a>
+    Use   [<a href="13811.html#781">variables.c, 781</a>]           <a href="dictionary_A.html#4912">adjust_shell_level</a>
+    Use   [<a href="13811.html#2542">variables.c, 2542</a>]          <a href="dictionary_A.html#5941">assign_in_env</a>
+    Use   [<a href="13811.html#2440">variables.c, 2440</a>]          <a href="dictionary_B.html#8078">bind_function</a>
+    Use   [<a href="13811.html#2444">variables.c, 2444</a>]          <a href="dictionary_B.html#8078">bind_function</a>
+    Use   [<a href="13811.html#2263">variables.c, 2263</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2265">variables.c, 2265</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2342">variables.c, 2342</a>]          <a href="dictionary_B.html#14051">bind_variable_value</a>
+    Use   [<a href="13811.html#2344">variables.c, 2344</a>]          <a href="dictionary_B.html#14051">bind_variable_value</a>
+    Use   [<a href="13811.html#2649">variables.c, 2649</a>]          <a href="dictionary_D.html#14069">dispose_variable</a>
+    Use   [<a href="13811.html#3137">variables.c, 3137</a>]          <a href="dictionary_E.html#14078">export_environment_candidate</a>
+    Use   [<a href="13811.html#359">variables.c, 359</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#393">variables.c, 393</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#395">variables.c, 395</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#3146">variables.c, 3146</a>]          <a href="dictionary_L.html#14174">local_and_exported</a>
+    Use   [<a href="13811.html#1965">variables.c, 1965</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#1965">variables.c, 1965</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#3954">variables.c, 3954</a>]          <a href="dictionary_P.html#14266">push_exported_var</a>
+    Use   [<a href="13811.html#2683">variables.c, 2683</a>]          <a href="dictionary_U.html#14332">unbind_func</a>
+    Use   [<a href="13811.html#3127">variables.c, 3127</a>]          <a href="dictionary_V.html#14352">visible_and_exported</a>
+
+<a href="dictionary_A.html#10910">att_function</a><a name="10910"> </a>
+  Declared as: 0x0000008
+    Define   [<a href="567.html#107">variables.h, 107</a>]        variables.h
+    Macro   [<a href="567.html#139">variables.h, 139</a>]         <a href="dictionary_F.html#10912">function_p</a>
+    Use   [<a href="10909.html#70">printenv.c, 70</a>]             <a href="dictionary_P.html#10915">printenv_builtin</a>
+    Use   [<a href="13811.html#973">variables.c, 973</a>]           <a href="dictionary_P.html#13879">print_assignment</a>
+    Use   [<a href="13811.html#1031">variables.c, 1031</a>]          <a href="dictionary_P.html#10913">print_var_function</a>
+    Use   [<a href="13811.html#2437">variables.c, 2437</a>]          <a href="dictionary_B.html#8078">bind_function</a>
+    Use   [<a href="13811.html#2623">variables.c, 2623</a>]          <a href="dictionary_D.html#14071">dispose_variable_value</a>
+    Use   [<a href="13811.html#403">variables.c, 403</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#3474">variables.c, 3474</a>]          <a href="dictionary_M.html#14177">make_env_array_from_var_list</a>
+
+<a href="dictionary_A.html#13845">att_imported</a><a name="13845"> </a>
+  Declared as: 0x0008000
+    Define   [<a href="567.html#124">variables.h, 124</a>]        variables.h
+    Macro   [<a href="567.html#151">variables.h, 151</a>]         <a href="dictionary_I.html#13859">imported_p</a>
+    Use   [<a href="13811.html#807">variables.c, 807</a>]           <a href="dictionary_S.html#13894">set_pwd</a>
+    Use   [<a href="13811.html#3137">variables.c, 3137</a>]          <a href="dictionary_E.html#14078">export_environment_candidate</a>
+    Use   [<a href="13811.html#359">variables.c, 359</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#393">variables.c, 393</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#395">variables.c, 395</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#515">variables.c, 515</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#546">variables.c, 546</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#595">variables.c, 595</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+
+<a href="dictionary_A.html#3085">att_integer</a><a name="3085"> </a>
+  Declared as: 0x0000010
+    Define   [<a href="567.html#108">variables.h, 108</a>]        variables.h
+    Macro   [<a href="567.html#140">variables.h, 140</a>]         <a href="dictionary_I.html#13860">integer_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+    Use   [<a href="3083.html#46">mypid.c, 46</a>]                <a href="dictionary_G.html#3102">get_mypid</a>
+    Use   [<a href="13811.html#848">variables.c, 848</a>]           <a href="dictionary_S.html#4913">set_ppid</a>
+    Use   [<a href="13811.html#2380">variables.c, 2380</a>]          <a href="dictionary_B.html#2724">bind_int_variable</a>
+    Use   [<a href="13811.html#2381">variables.c, 2381</a>]          <a href="dictionary_B.html#2724">bind_int_variable</a>
+    Use   [<a href="13811.html#2392">variables.c, 2392</a>]          <a href="dictionary_B.html#2724">bind_int_variable</a>
+    Use   [<a href="13811.html#1392">variables.c, 1392</a>]          <a href="dictionary_G.html#14119">get_bashpid</a>
+    Use   [<a href="13811.html#1319">variables.c, 1319</a>]          <a href="dictionary_G.html#14130">get_random</a>
+    Use   [<a href="13811.html#1205">variables.c, 1205</a>]          <a href="dictionary_G.html#14137">get_seconds</a>
+    Use   [<a href="13811.html#1685">variables.c, 1685</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#1687">variables.c, 1687</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#1690">variables.c, 1690</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#471">variables.c, 471</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#481">variables.c, 481</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#2112">variables.c, 2112</a>]          <a href="dictionary_M.html#14205">make_variable_value</a>
+    Use   [<a href="13811.html#862">variables.c, 862</a>]           <a href="dictionary_U.html#14329">uidset</a>
+    Use   [<a href="13811.html#872">variables.c, 872</a>]           <a href="dictionary_U.html#14329">uidset</a>
+
+<a href="dictionary_A.html#2723">att_invisible</a><a name="2723"> </a>
+  Declared as: 0x0001000
+    Define   [<a href="567.html#121">variables.h, 121</a>]        variables.h
+    Macro   [<a href="567.html#148">variables.h, 148</a>]         <a href="dictionary_I.html#2727">invisible_p</a>
+    Use   [<a href="2691.html#1010">expr.c, 1010</a>]               <a href="dictionary_E.html#2863">expr_streval</a>
+    Use   [<a href="5823.html#2829">subst.c, 2829</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#7771">subst.c, 7771</a>]              <a href="dictionary_P.html#6366">param_expand</a>
+    Use   [<a href="5823.html#5686">subst.c, 5686</a>]              <a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+    Use   [<a href="13811.html#2767">variables.c, 2767</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#833">variables.c, 833</a>]           <a href="dictionary_S.html#13894">set_pwd</a>
+    Macro   [<a href="13811.html#2846">variables.c, 2846</a>]        <a href="dictionary_F.html#13950">FIND_OR_MAKE_VARIABLE</a>
+    Use   [<a href="13811.html#2442">variables.c, 2442</a>]          <a href="dictionary_B.html#8078">bind_function</a>
+    Use   [<a href="13811.html#2232">variables.c, 2232</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2321">variables.c, 2321</a>]          <a href="dictionary_B.html#14051">bind_variable_value</a>
+    Use   [<a href="13811.html#3137">variables.c, 3137</a>]          <a href="dictionary_E.html#14078">export_environment_candidate</a>
+    Use   [<a href="13811.html#1670">variables.c, 1670</a>]          <a href="dictionary_I.html#14154">init_funcname_var</a>
+    Use   [<a href="13811.html#395">variables.c, 395</a>]           <a href="dictionary_I.html#1197">initialize_shell_variables</a>
+    Use   [<a href="13811.html#3146">variables.c, 3146</a>]          <a href="dictionary_L.html#14174">local_and_exported</a>
+    Use   [<a href="13811.html#1652">variables.c, 1652</a>]          <a href="dictionary_M.html#8081">make_funcname_visible</a>
+    Use   [<a href="13811.html#1654">variables.c, 1654</a>]          <a href="dictionary_M.html#8081">make_funcname_visible</a>
+    Use   [<a href="13811.html#1918">variables.c, 1918</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#942">variables.c, 942</a>]           <a href="dictionary_P.html#14255">print_var_list</a>
+    Use   [<a href="13811.html#2859">variables.c, 2859</a>]          <a href="dictionary_S.html#14307">set_var_read_only</a>
+    Use   [<a href="13811.html#3165">variables.c, 3165</a>]          <a href="dictionary_V.html#14350">variable_in_context</a>
+    Use   [<a href="13811.html#3127">variables.c, 3127</a>]          <a href="dictionary_V.html#14352">visible_and_exported</a>
+    Use   [<a href="13811.html#3106">variables.c, 3106</a>]          <a href="dictionary_V.html#14354">visible_var</a>
+    Use   [<a href="15567.html#1302">redir.c, 1302</a>]              <a href="dictionary_R.html#15684">redir_varvalue</a>
+
+<a href="dictionary_A.html#13846">att_local</a><a name="13846"> </a>
+  Declared as: 0x0000020
+    Define   [<a href="567.html#109">variables.h, 109</a>]        variables.h
+    Macro   [<a href="567.html#141">variables.h, 141</a>]         <a href="dictionary_L.html#13861">local_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+    Use   [<a href="13811.html#2750">variables.c, 2750</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#2766">variables.c, 2766</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#3146">variables.c, 3146</a>]          <a href="dictionary_L.html#14174">local_and_exported</a>
+    Use   [<a href="13811.html#1916">variables.c, 1916</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#1971">variables.c, 1971</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#3165">variables.c, 3165</a>]          <a href="dictionary_V.html#14350">variable_in_context</a>
+
+<a href="dictionary_A.html#14454">att_lowercase</a><a name="14454"> </a>
+  Declared as: 0x0000200
+    Define   [<a href="567.html#113">variables.h, 113</a>]        variables.h
+    Macro   [<a href="567.html#145">variables.h, 145</a>]         <a href="dictionary_L.html#14468">lowercase_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+
+<a href="dictionary_A.html#5942">att_noassign</a><a name="5942"> </a>
+  Declared as: 0x0004000
+    Define   [<a href="567.html#123">variables.h, 123</a>]        variables.h
+    Macro   [<a href="567.html#150">variables.h, 150</a>]         <a href="dictionary_N.html#5946">noassign_p</a>
+    Use   [<a href="5823.html#2820">subst.c, 2820</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="5823.html#2828">subst.c, 2828</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="7971.html#2486">execute_cmd.c, 2486</a>]        <a href="dictionary_E.html#8225">execute_for_command</a>
+    Use   [<a href="7971.html#5104">execute_cmd.c, 5104</a>]        <a href="dictionary_E.html#8270">execute_intern_function</a>
+    Use   [<a href="13811.html#2514">variables.c, 2514</a>]          <a href="dictionary_A.html#5941">assign_in_env</a>
+    Use   [<a href="13811.html#2224">variables.c, 2224</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#1670">variables.c, 1670</a>]          <a href="dictionary_I.html#14154">init_funcname_var</a>
+    Use   [<a href="13811.html#1945">variables.c, 1945</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="15567.html#1285">redir.c, 1285</a>]              <a href="dictionary_R.html#15679">redir_varassign</a>
+
+<a href="dictionary_A.html#13847">att_nofree</a><a name="13847"> </a>
+  Declared as: 0x0020000
+    Define   [<a href="567.html#126">variables.h, 126</a>]        variables.h
+    Macro   [<a href="567.html#153">variables.h, 153</a>]         <a href="dictionary_N.html#13877">nofree_p</a>
+    Use   [<a href="13811.html#2752">variables.c, 2752</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#2642">variables.c, 2642</a>]          <a href="dictionary_D.html#14069">dispose_variable</a>
+
+<a href="dictionary_A.html#14455">att_nounset</a><a name="14455"> </a>
+  Declared as: 0x0002000
+    Define   [<a href="567.html#122">variables.h, 122</a>]        variables.h
+    Macro   [<a href="567.html#149">variables.h, 149</a>]         <a href="dictionary_N.html#14472">non_unsettable_p</a>
+
+<a href="dictionary_A.html#13848">att_propagate</a><a name="13848"> </a>
+  Declared as: 0x0200000
+    Define   [<a href="567.html#132">variables.h, 132</a>]        variables.h
+    Use   [<a href="13811.html#3327">variables.c, 3327</a>]          <a href="dictionary_P.html#14259">propagate_temp_var</a>
+    Use   [<a href="13811.html#3954">variables.c, 3954</a>]          <a href="dictionary_P.html#14266">push_exported_var</a>
+    Use   [<a href="13811.html#3960">variables.c, 3960</a>]          <a href="dictionary_P.html#14266">push_exported_var</a>
+    Use   [<a href="13811.html#3860">variables.c, 3860</a>]          <a href="dictionary_P.html#14270">push_func_var</a>
+    Use   [<a href="13811.html#3870">variables.c, 3870</a>]          <a href="dictionary_P.html#14270">push_func_var</a>
+    Use   [<a href="13811.html#3305">variables.c, 3305</a>]          <a href="dictionary_P.html#14276">push_temp_var</a>
+    Use   [<a href="13811.html#3308">variables.c, 3308</a>]          <a href="dictionary_P.html#14276">push_temp_var</a>
+
+<a href="dictionary_A.html#5943">att_readonly</a><a name="5943"> </a>
+  Declared as: 0x0000002
+    Define   [<a href="567.html#105">variables.h, 105</a>]        variables.h
+    Macro   [<a href="567.html#137">variables.h, 137</a>]         <a href="dictionary_R.html#5947">readonly_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+    Use   [<a href="5823.html#2818">subst.c, 2818</a>]              <a href="dictionary_D.html#6068">do_assignment_internal</a>
+    Use   [<a href="7971.html#2486">execute_cmd.c, 2486</a>]        <a href="dictionary_E.html#8225">execute_for_command</a>
+    Use   [<a href="7971.html#2489">execute_cmd.c, 2489</a>]        <a href="dictionary_E.html#8225">execute_for_command</a>
+    Use   [<a href="7971.html#5104">execute_cmd.c, 5104</a>]        <a href="dictionary_E.html#8270">execute_intern_function</a>
+    Use   [<a href="7971.html#5106">execute_cmd.c, 5106</a>]        <a href="dictionary_E.html#8270">execute_intern_function</a>
+    Use   [<a href="13811.html#846">variables.c, 846</a>]           <a href="dictionary_S.html#4913">set_ppid</a>
+    Use   [<a href="13811.html#848">variables.c, 848</a>]           <a href="dictionary_S.html#4913">set_ppid</a>
+    Use   [<a href="13811.html#2514">variables.c, 2514</a>]          <a href="dictionary_A.html#5941">assign_in_env</a>
+    Use   [<a href="13811.html#2516">variables.c, 2516</a>]          <a href="dictionary_A.html#5941">assign_in_env</a>
+    Use   [<a href="13811.html#2224">variables.c, 2224</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#2226">variables.c, 2226</a>]          <a href="dictionary_B.html#14043">bind_variable_internal</a>
+    Use   [<a href="13811.html#1392">variables.c, 1392</a>]          <a href="dictionary_G.html#14119">get_bashpid</a>
+    Use   [<a href="13811.html#1690">variables.c, 1690</a>]          <a href="dictionary_I.html#14158">initialize_dynamic_variables</a>
+    Use   [<a href="13811.html#1946">variables.c, 1946</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#1948">variables.c, 1948</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#2860">variables.c, 2860</a>]          <a href="dictionary_S.html#14307">set_var_read_only</a>
+    Use   [<a href="13811.html#862">variables.c, 862</a>]           <a href="dictionary_U.html#14329">uidset</a>
+    Use   [<a href="13811.html#872">variables.c, 872</a>]           <a href="dictionary_U.html#14329">uidset</a>
+    Use   [<a href="15567.html#1285">redir.c, 1285</a>]              <a href="dictionary_R.html#15679">redir_varassign</a>
+
+<a href="dictionary_A.html#14456">att_special</a><a name="14456"> </a>
+  Declared as: 0x0010000
+    Define   [<a href="567.html#125">variables.h, 125</a>]        variables.h
+    Macro   [<a href="567.html#152">variables.h, 152</a>]         <a href="dictionary_S.html#14477">specialvar_p</a>
+
+<a href="dictionary_A.html#13139">att_tempvar</a><a name="13139"> </a>
+  Declared as: 0x0100000
+    Define   [<a href="567.html#131">variables.h, 131</a>]        variables.h
+    Macro   [<a href="567.html#155">variables.h, 155</a>]         <a href="dictionary_T.html#13141">tempvar_p</a>
+    Use   [<a href="13129.html#313">findcmd.c, 313</a>]             <a href="dictionary_S.html#8048">search_for_command</a>
+    Use   [<a href="13811.html#2765">variables.c, 2765</a>]          <a href="dictionary_M.html#13862">makunbound</a>
+    Use   [<a href="13811.html#2542">variables.c, 2542</a>]          <a href="dictionary_A.html#5941">assign_in_env</a>
+    Use   [<a href="13811.html#1922">variables.c, 1922</a>]          <a href="dictionary_M.html#14189">make_local_variable</a>
+    Use   [<a href="13811.html#3327">variables.c, 3327</a>]          <a href="dictionary_P.html#14259">propagate_temp_var</a>
+    Use   [<a href="13811.html#3954">variables.c, 3954</a>]          <a href="dictionary_P.html#14266">push_exported_var</a>
+    Use   [<a href="13811.html#3957">variables.c, 3957</a>]          <a href="dictionary_P.html#14266">push_exported_var</a>
+    Use   [<a href="13811.html#3860">variables.c, 3860</a>]          <a href="dictionary_P.html#14270">push_func_var</a>
+    Use   [<a href="13811.html#3870">variables.c, 3870</a>]          <a href="dictionary_P.html#14270">push_func_var</a>
+    Use   [<a href="13811.html#3305">variables.c, 3305</a>]          <a href="dictionary_P.html#14276">push_temp_var</a>
+
+<a href="dictionary_A.html#8077">att_trace</a><a name="8077"> </a>
+  Declared as: 0x0000080
+    Define   [<a href="567.html#111">variables.h, 111</a>]        variables.h
+    Macro   [<a href="567.html#143">variables.h, 143</a>]         <a href="dictionary_T.html#8088">trace_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+    Use   [<a href="7971.html#4196">execute_cmd.c, 4196</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+    Use   [<a href="7971.html#4224">execute_cmd.c, 4224</a>]        <a href="dictionary_E.html#8233">execute_function</a>
+
+<a href="dictionary_A.html#14457">att_uppercase</a><a name="14457"> </a>
+  Declared as: 0x0000100
+    Define   [<a href="567.html#112">variables.h, 112</a>]        variables.h
+    Macro   [<a href="567.html#144">variables.h, 144</a>]         <a href="dictionary_U.html#14479">uppercase_p</a>
+    Macro   [<a href="567.html#116">variables.h, 116</a>]         <a href="dictionary_U.html#14480">user_attrs</a>
+
+<a href="dictionary_A.html#14458">attmask_int</a><a name="14458"> </a>
+  Declared as: 0x00ff000
+    Define   [<a href="567.html#128">variables.h, 128</a>]        variables.h
+
+<a href="dictionary_A.html#14459">attmask_scope</a><a name="14459"> </a>
+  Declared as: 0x0f00000
+    Define   [<a href="567.html#134">variables.h, 134</a>]        variables.h
+
+<a href="dictionary_A.html#14460">attmask_user</a><a name="14460"> </a>
+  Declared as: 0x0000fff
+    Define   [<a href="567.html#118">variables.h, 118</a>]        variables.h
+
+<a href="dictionary_A.html#4019">attribute_hidden</a><a name="4019"> </a>
+    Use   [<a href="1483.html#53">gettextP.h, 53</a>]             gettextP.h
+    Define   [<a href="1483.html#54">gettextP.h, 54</a>]          gettextP.h
+    Use   [<a href="3976.html#294">dcigettext.c, 294</a>]          dcigettext.c
+    Use   [<a href="3976.html#297">dcigettext.c, 297</a>]          dcigettext.c
+    Use   [<a href="4049.html#37">plural-exp.h, 37</a>]           plural-exp.h
+    Use   [<a href="4049.html#117">plural-exp.h, 117</a>]          plural-exp.h
+    Use   [<a href="14367.html#56">textdomain.c, 56</a>]           textdomain.c
+    Use   [<a href="14367.html#59">textdomain.c, 59</a>]           textdomain.c
+
+<a href="dictionary_A.html#2382">AUDIBLE_BELL</a><a name="2382"> </a>
+  Declared as: 1
+    Define   [<a href="110.html#124">rldefs.h, 124</a>]           rldefs.h
+    Use   [<a href="2362.html#670">terminal.c, 670</a>]            <a href="dictionary_R.html#1943">rl_ding</a>
+    Use   [<a href="11081.html#2281">bind.c, 2281</a>]               <a href="dictionary_&.html#11203">_rl_get_string_variable_value</a>
+    Use   [<a href="11081.html#1487">bind.c, 1487</a>]               <a href="dictionary_H.html#11260">hack_special_boolean_var</a>
+    Use   [<a href="11081.html#1718">bind.c, 1718</a>]               <a href="dictionary_S.html#11403">sv_bell_style</a>
+    Use   [<a href="11081.html#1722">bind.c, 1722</a>]               <a href="dictionary_S.html#11403">sv_bell_style</a>
+    Use   [<a href="12997.html#223">readline.c, 223</a>]            readline.c
+</pre>
+<p>
+<div class="footer"><b>Generated:</b> 2024年4月30日 8:39:35</div><center><p><div class="scitools-tag">Scientific Toolworks, Inc.<br></div><div class="scitools-link"><A target="_blank" href="mailto:support@scitools.com">support@scitools.com</A><br><A href="http://www.scitools.com">www.scitools.com</A></div></center></div></body></html>

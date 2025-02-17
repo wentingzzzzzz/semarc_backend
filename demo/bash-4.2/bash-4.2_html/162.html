@@ -1,0 +1,104 @@
+<html><head><title>rltypedefs.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\lib\readline\rltypedefs.h</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\lib\\readline\\rltypedefs.h";
+top.document.title  = "rltypedefs.h";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* rltypedefs.h -- Type declarations for readline functions. */</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"></span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">/* Copyright (C) 2000-2009 Free Software Foundation, Inc.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"></span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">   This file is part of the GNU Readline Library (Readline), a library</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment">   for reading lines of text with interactive input and history editing.      </span>
+<a name="7"><font size=-1>7     </font></a><span class="comment"></span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">   Readline is free software: you can redistribute it and/or modify</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">   it under the terms of the GNU General Public License as published by</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">   the Free Software Foundation, either version 3 of the License, or</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">   (at your option) any later version.</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment"></span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">   Readline is distributed in the hope that it will be useful,</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment">   GNU General Public License for more details.</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment"></span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">   You should have received a copy of the GNU General Public License</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">   along with Readline.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment">*/</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment"></span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span><span class="preproc">#ifndef <a href="dictionary_&.html#7351">_RL_TYPEDEFS_H_</a></span>
+<a name="23"><font size=-1>23     </font></a><span class="preproc">#define <a href="dictionary_&.html#7351">_RL_TYPEDEFS_H_</a></span>
+<a name="24"><font size=-1>24     </font></a><span class="preproc"></span>
+<a name="25"><font size=-1>25     </font></a><span class="preproc">#ifdef <a href="dictionary_&.html#7352">__cplusplus</a></span>
+<a name="26"><font size=-1>26     </font></a><span class="preproc"></span><span class="keyword">extern </span><span class="string">&quot;C&quot; </span><span class="default">{</span>
+<a name="27"><font size=-1>27     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="28"><font size=-1>28     </font></a><span class="preproc"></span>
+<a name="29"><font size=-1>29     </font></a><span class="preproc"></span><span class="comment">/* Old-style */</span>
+<a name="30"><font size=-1>30     </font></a><span class="comment"></span>
+<a name="31"><font size=-1>31     </font></a><span class="comment"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_&.html#7349">_FUNCTION_DEF</a>)</span>
+<a name="32"><font size=-1>32     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_&.html#7349">_FUNCTION_DEF</a></span>
+<a name="33"><font size=-1>33     </font></a><span class="preproc"></span>
+<a name="34"><font size=-1>34     </font></a><span class="preproc"></span><span class="keyword">typedef int <a href="dictionary_F.html#7348">Function</a> </span><span class="default">();</span>
+<a name="35"><font size=-1>35     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_V.html#4319">VFunction</a> </span><span class="default">();</span>
+<a name="36"><font size=-1>36     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_C.html#7346">CPFunction</a> ();</span>
+<a name="37"><font size=-1>37     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">**<a href="dictionary_C.html#7347">CPPFunction</a> ();</span>
+<a name="38"><font size=-1>38     </font></a><span class="default"></span>
+<a name="39"><font size=-1>39     </font></a><span class="default"></span><span class="preproc">#endif </span><span class="comment">/* _FUNCTION_DEF */</span>
+<a name="40"><font size=-1>40     </font></a><span class="comment"></span>
+<a name="41"><font size=-1>41     </font></a><span class="comment">/* New style. */</span>
+<a name="42"><font size=-1>42     </font></a><span class="comment"></span>
+<a name="43"><font size=-1>43     </font></a><span class="comment"></span><span class="preproc">#if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(<a href="dictionary_&.html#7350">_RL_FUNCTION_TYPEDEF</a>)</span>
+<a name="44"><font size=-1>44     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_&.html#7350">_RL_FUNCTION_TYPEDEF</a></span>
+<a name="45"><font size=-1>45     </font></a><span class="preproc"></span>
+<a name="46"><font size=-1>46     </font></a><span class="preproc"></span><span class="comment">/* Bindable functions */</span>
+<a name="47"><font size=-1>47     </font></a><span class="comment"></span><span class="keyword">typedef int <a href="dictionary_R.html#1817">rl_command_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="48"><font size=-1>48     </font></a><span class="default"></span>
+<a name="49"><font size=-1>49     </font></a><span class="default"></span><span class="comment">/* Typedefs for the completion system */</span>
+<a name="50"><font size=-1>50     </font></a><span class="comment"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#1982">rl_compentry_func_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">const char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="51"><font size=-1>51     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">**<a href="dictionary_R.html#1984">rl_completion_func_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">const char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="52"><font size=-1>52     </font></a><span class="default"></span>
+<a name="53"><font size=-1>53     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#1989">rl_quote_func_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">char </span><span class="default">*));</span>
+<a name="54"><font size=-1>54     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#1986">rl_dequote_func_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="55"><font size=-1>55     </font></a><span class="default"></span>
+<a name="56"><font size=-1>56     </font></a><span class="default"></span><span class="keyword">typedef int <a href="dictionary_R.html#1983">rl_compignore_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">**));</span>
+<a name="57"><font size=-1>57     </font></a><span class="default"></span>
+<a name="58"><font size=-1>58     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_R.html#1981">rl_compdisp_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">**, </span><span class="keyword">int</span><span class="default">, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="59"><font size=-1>59     </font></a><span class="default"></span>
+<a name="60"><font size=-1>60     </font></a><span class="default"></span><span class="comment">/* Type for input and pre-read hook functions like rl_event_hook */</span>
+<a name="61"><font size=-1>61     </font></a><span class="comment"></span><span class="keyword">typedef int <a href="dictionary_R.html#7357">rl_hook_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="62"><font size=-1>62     </font></a><span class="default"></span>
+<a name="63"><font size=-1>63     </font></a><span class="default"></span><span class="comment">/* Input function type */</span>
+<a name="64"><font size=-1>64     </font></a><span class="comment"></span><span class="keyword">typedef int <a href="dictionary_R.html#7356">rl_getc_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((FILE *));</span>
+<a name="65"><font size=-1>65     </font></a><span class="default"></span>
+<a name="66"><font size=-1>66     </font></a><span class="default"></span><span class="comment">/* Generic function that takes a character buffer (which could be the readline</span>
+<a name="67"><font size=-1>67     </font></a><span class="comment">   line buffer) and an index into it (which could be rl_point) and returns</span>
+<a name="68"><font size=-1>68     </font></a><span class="comment">   an int. */</span>
+<a name="69"><font size=-1>69     </font></a><span class="comment"></span><span class="keyword">typedef int <a href="dictionary_R.html#1988">rl_linebuf_func_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">*, </span><span class="keyword">int</span><span class="default">));</span>
+<a name="70"><font size=-1>70     </font></a><span class="default"></span>
+<a name="71"><font size=-1>71     </font></a><span class="default"></span><span class="comment">/* `Generic' function pointer typedefs */</span>
+<a name="72"><font size=-1>72     </font></a><span class="comment"></span><span class="keyword">typedef int <a href="dictionary_R.html#7358">rl_intfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="73"><font size=-1>73     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_R.html#7359">rl_ivoidfunc_t</a> </span><span class="default">rl_hook_func_t</span>
+<a name="74"><font size=-1>74     </font></a><span class="default"></span><span class="keyword">typedef int <a href="dictionary_R.html#7011">rl_icpfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">*));</span>
+<a name="75"><font size=-1>75     </font></a><span class="default"></span><span class="keyword">typedef int <a href="dictionary_R.html#1987">rl_icppfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">**));</span>
+<a name="76"><font size=-1>76     </font></a><span class="default"></span>
+<a name="77"><font size=-1>77     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_R.html#163">rl_voidfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="78"><font size=-1>78     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_R.html#7116">rl_vintfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="79"><font size=-1>79     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_R.html#7360">rl_vcpfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">*));</span>
+<a name="80"><font size=-1>80     </font></a><span class="default"></span><span class="keyword">typedef void <a href="dictionary_R.html#7361">rl_vcppfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a></span><span class="default">((</span><span class="keyword">char </span><span class="default">**));</span>
+<a name="81"><font size=-1>81     </font></a><span class="default"></span>
+<a name="82"><font size=-1>82     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#1985">rl_cpvfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">void</span><span class="default">));</span>
+<a name="83"><font size=-1>83     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#7355">rl_cpifunc_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">int</span><span class="default">));</span>
+<a name="84"><font size=-1>84     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#7353">rl_cpcpfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">char  </span><span class="default">*));</span>
+<a name="85"><font size=-1>85     </font></a><span class="default"></span><span class="keyword">typedef char </span><span class="default">*<a href="dictionary_R.html#7354">rl_cpcppfunc_t</a> <a href="dictionary_P.html#161">PARAMS</a>((</span><span class="keyword">char  </span><span class="default">**));</span>
+<a name="86"><font size=-1>86     </font></a><span class="default"></span>
+<a name="87"><font size=-1>87     </font></a><span class="default"></span><span class="preproc">#endif </span><span class="comment">/* _RL_FUNCTION_TYPEDEF */</span>
+<a name="88"><font size=-1>88     </font></a><span class="comment"></span>
+<a name="89"><font size=-1>89     </font></a><span class="comment"></span><span class="preproc">#ifdef <a href="dictionary_&.html#7352">__cplusplus</a></span>
+<a name="90"><font size=-1>90     </font></a><span class="preproc"></span><span class="default">}</span>
+<a name="91"><font size=-1>91     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="92"><font size=-1>92     </font></a><span class="preproc"></span>
+<a name="93"><font size=-1>93     </font></a><span class="preproc">#endif </span><span class="comment">/* _RL_TYPEDEFS_H_ */</span>
+<a name="94"><font size=-1>94     </font></a><span class="comment"></span>
+</pre></body></html>

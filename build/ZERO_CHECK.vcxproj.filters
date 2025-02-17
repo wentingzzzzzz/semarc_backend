@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\XJTU\架构逆向\lda_demoGPT\build\CMakeFiles\aadb1d8578b73bf203fd4faf765bb0a0\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{56028C96-6221-34BC-A307-6024F1969F5E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

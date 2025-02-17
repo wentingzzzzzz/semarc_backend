@@ -1,0 +1,785 @@
+<html><head><title>localename.c</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\lib\intl\localename.c</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\lib\\intl\\localename.c";
+top.document.title  = "localename.c";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* localename.c - Determine the current selected locale. */</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment"></span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">/* Copyright (C) 1995-1999, 2000-2002, 2005-2009 Free Software Foundation, Inc.</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"></span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">   This file is part of GNU Bash.</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment"></span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">   Bash is free software: you can redistribute it and/or modify</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">   it under the terms of the GNU General Public License as published by</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">   the Free Software Foundation, either version 3 of the License, or</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">   (at your option) any later version.</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment"></span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">   Bash is distributed in the hope that it will be useful,</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">   GNU General Public License for more details.</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment"></span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">   You should have received a copy of the GNU General Public License</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">   along with Bash.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">*/</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment"></span>
+<a name="21"><font size=-1>21     </font></a><span class="comment">/* Written by Ulrich Drepper &lt;drepper@gnu.org&gt;, 1995.  */</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment">/* Win32 code written by Tor Lillqvist &lt;tml@iki.fi&gt;.  */</span>
+<a name="23"><font size=-1>23     </font></a><span class="comment"></span>
+<a name="24"><font size=-1>24     </font></a><span class="comment"></span><span class="preproc">#ifdef <a href="dictionary_H.html#16795">HAVE_CONFIG_H</a></span>
+<a name="25"><font size=-1>25     </font></a><span class="preproc"># include </span><span class="string">&lt;config.h&gt;</span>
+<a name="26"><font size=-1>26     </font></a><span class="string"></span><span class="preproc">#endif</span>
+<a name="27"><font size=-1>27     </font></a><span class="preproc"></span>
+<a name="28"><font size=-1>28     </font></a><span class="preproc">#include </span><span class="string">&lt;stdlib.h&gt;</span>
+<a name="29"><font size=-1>29     </font></a><span class="string"></span><span class="preproc">#include </span><span class="string">&lt;locale.h&gt;</span>
+<a name="30"><font size=-1>30     </font></a><span class="string"></span>
+<a name="31"><font size=-1>31     </font></a><span class="string"></span><span class="preproc">#if defined <a href="dictionary_&.html#4085">_WIN32</a> </span><span class="default">|| </span><span class="preproc">defined <a href="dictionary_&.html#16801">__WIN32__</a></span>
+<a name="32"><font size=-1>32     </font></a><span class="preproc"># undef <a href="dictionary_W.html#16797">WIN32</a>   </span><span class="comment">/* avoid warning on mingw32 */</span>
+<a name="33"><font size=-1>33     </font></a><span class="comment"></span><span class="preproc"># define <a href="dictionary_W.html#16797">WIN32</a></span>
+<a name="34"><font size=-1>34     </font></a><span class="preproc">#endif</span>
+<a name="35"><font size=-1>35     </font></a><span class="preproc"></span>
+<a name="36"><font size=-1>36     </font></a><span class="preproc">#ifdef <a href="dictionary_W.html#16797">WIN32</a></span>
+<a name="37"><font size=-1>37     </font></a><span class="preproc"># define <a href="dictionary_W.html#16798">WIN32_LEAN_AND_MEAN</a></span>
+<a name="38"><font size=-1>38     </font></a><span class="preproc"># include </span><span class="string">&lt;windows.h&gt;</span>
+<a name="39"><font size=-1>39     </font></a><span class="string"></span><span class="comment">/* Mingw headers don't have latest language and sublanguage codes.  */</span>
+<a name="40"><font size=-1>40     </font></a><span class="comment"></span><span class="preproc"># ifndef <a href="dictionary_L.html#16630">LANG_AFRIKAANS</a></span>
+<a name="41"><font size=-1>41     </font></a><span class="preproc"># define </span><span class="default">LANG_AFRIKAANS </span><span class="number">0x36</span>
+<a name="42"><font size=-1>42     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="43"><font size=-1>43     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16631">LANG_ALBANIAN</a></span>
+<a name="44"><font size=-1>44     </font></a><span class="preproc"># define </span><span class="default">LANG_ALBANIAN </span><span class="number">0x1c</span>
+<a name="45"><font size=-1>45     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="46"><font size=-1>46     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16632">LANG_ARABIC</a></span>
+<a name="47"><font size=-1>47     </font></a><span class="preproc"># define </span><span class="default">LANG_ARABIC </span><span class="number">0x01</span>
+<a name="48"><font size=-1>48     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="49"><font size=-1>49     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16633">LANG_ARMENIAN</a></span>
+<a name="50"><font size=-1>50     </font></a><span class="preproc"># define </span><span class="default">LANG_ARMENIAN </span><span class="number">0x2b</span>
+<a name="51"><font size=-1>51     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="52"><font size=-1>52     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16634">LANG_ASSAMESE</a></span>
+<a name="53"><font size=-1>53     </font></a><span class="preproc"># define </span><span class="default">LANG_ASSAMESE </span><span class="number">0x4d</span>
+<a name="54"><font size=-1>54     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="55"><font size=-1>55     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16635">LANG_AZERI</a></span>
+<a name="56"><font size=-1>56     </font></a><span class="preproc"># define </span><span class="default">LANG_AZERI </span><span class="number">0x2c</span>
+<a name="57"><font size=-1>57     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="58"><font size=-1>58     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16636">LANG_BASQUE</a></span>
+<a name="59"><font size=-1>59     </font></a><span class="preproc"># define </span><span class="default">LANG_BASQUE </span><span class="number">0x2d</span>
+<a name="60"><font size=-1>60     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="61"><font size=-1>61     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16637">LANG_BELARUSIAN</a></span>
+<a name="62"><font size=-1>62     </font></a><span class="preproc"># define </span><span class="default">LANG_BELARUSIAN </span><span class="number">0x23</span>
+<a name="63"><font size=-1>63     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="64"><font size=-1>64     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16638">LANG_BENGALI</a></span>
+<a name="65"><font size=-1>65     </font></a><span class="preproc"># define </span><span class="default">LANG_BENGALI </span><span class="number">0x45</span>
+<a name="66"><font size=-1>66     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="67"><font size=-1>67     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16640">LANG_CATALAN</a></span>
+<a name="68"><font size=-1>68     </font></a><span class="preproc"># define </span><span class="default">LANG_CATALAN </span><span class="number">0x03</span>
+<a name="69"><font size=-1>69     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="70"><font size=-1>70     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16645">LANG_DIVEHI</a></span>
+<a name="71"><font size=-1>71     </font></a><span class="preproc"># define </span><span class="default">LANG_DIVEHI </span><span class="number">0x65</span>
+<a name="72"><font size=-1>72     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="73"><font size=-1>73     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16648">LANG_ESTONIAN</a></span>
+<a name="74"><font size=-1>74     </font></a><span class="preproc"># define </span><span class="default">LANG_ESTONIAN </span><span class="number">0x25</span>
+<a name="75"><font size=-1>75     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="76"><font size=-1>76     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16649">LANG_FAEROESE</a></span>
+<a name="77"><font size=-1>77     </font></a><span class="preproc"># define </span><span class="default">LANG_FAEROESE </span><span class="number">0x38</span>
+<a name="78"><font size=-1>78     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="79"><font size=-1>79     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16650">LANG_FARSI</a></span>
+<a name="80"><font size=-1>80     </font></a><span class="preproc"># define </span><span class="default">LANG_FARSI </span><span class="number">0x29</span>
+<a name="81"><font size=-1>81     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="82"><font size=-1>82     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16653">LANG_GALICIAN</a></span>
+<a name="83"><font size=-1>83     </font></a><span class="preproc"># define </span><span class="default">LANG_GALICIAN </span><span class="number">0x56</span>
+<a name="84"><font size=-1>84     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="85"><font size=-1>85     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16654">LANG_GEORGIAN</a></span>
+<a name="86"><font size=-1>86     </font></a><span class="preproc"># define </span><span class="default">LANG_GEORGIAN </span><span class="number">0x37</span>
+<a name="87"><font size=-1>87     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="88"><font size=-1>88     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16657">LANG_GUJARATI</a></span>
+<a name="89"><font size=-1>89     </font></a><span class="preproc"># define </span><span class="default">LANG_GUJARATI </span><span class="number">0x47</span>
+<a name="90"><font size=-1>90     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="91"><font size=-1>91     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16658">LANG_HEBREW</a></span>
+<a name="92"><font size=-1>92     </font></a><span class="preproc"># define </span><span class="default">LANG_HEBREW </span><span class="number">0x0d</span>
+<a name="93"><font size=-1>93     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="94"><font size=-1>94     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16659">LANG_HINDI</a></span>
+<a name="95"><font size=-1>95     </font></a><span class="preproc"># define </span><span class="default">LANG_HINDI </span><span class="number">0x39</span>
+<a name="96"><font size=-1>96     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="97"><font size=-1>97     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16662">LANG_INDONESIAN</a></span>
+<a name="98"><font size=-1>98     </font></a><span class="preproc"># define </span><span class="default">LANG_INDONESIAN </span><span class="number">0x21</span>
+<a name="99"><font size=-1>99     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="100"><font size=-1>100     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16665">LANG_KANNADA</a></span>
+<a name="101"><font size=-1>101     </font></a><span class="preproc"># define </span><span class="default">LANG_KANNADA </span><span class="number">0x4b</span>
+<a name="102"><font size=-1>102     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="103"><font size=-1>103     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16666">LANG_KASHMIRI</a></span>
+<a name="104"><font size=-1>104     </font></a><span class="preproc"># define </span><span class="default">LANG_KASHMIRI </span><span class="number">0x60</span>
+<a name="105"><font size=-1>105     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="106"><font size=-1>106     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16667">LANG_KAZAK</a></span>
+<a name="107"><font size=-1>107     </font></a><span class="preproc"># define </span><span class="default">LANG_KAZAK </span><span class="number">0x3f</span>
+<a name="108"><font size=-1>108     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="109"><font size=-1>109     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16668">LANG_KONKANI</a></span>
+<a name="110"><font size=-1>110     </font></a><span class="preproc"># define </span><span class="default">LANG_KONKANI </span><span class="number">0x57</span>
+<a name="111"><font size=-1>111     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="112"><font size=-1>112     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16670">LANG_KYRGYZ</a></span>
+<a name="113"><font size=-1>113     </font></a><span class="preproc"># define </span><span class="default">LANG_KYRGYZ </span><span class="number">0x40</span>
+<a name="114"><font size=-1>114     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="115"><font size=-1>115     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16671">LANG_LATVIAN</a></span>
+<a name="116"><font size=-1>116     </font></a><span class="preproc"># define </span><span class="default">LANG_LATVIAN </span><span class="number">0x26</span>
+<a name="117"><font size=-1>117     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="118"><font size=-1>118     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16672">LANG_LITHUANIAN</a></span>
+<a name="119"><font size=-1>119     </font></a><span class="preproc"># define </span><span class="default">LANG_LITHUANIAN </span><span class="number">0x27</span>
+<a name="120"><font size=-1>120     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="121"><font size=-1>121     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16673">LANG_MACEDONIAN</a></span>
+<a name="122"><font size=-1>122     </font></a><span class="preproc"># define </span><span class="default">LANG_MACEDONIAN </span><span class="number">0x2f</span>
+<a name="123"><font size=-1>123     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="124"><font size=-1>124     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16674">LANG_MALAY</a></span>
+<a name="125"><font size=-1>125     </font></a><span class="preproc"># define </span><span class="default">LANG_MALAY </span><span class="number">0x3e</span>
+<a name="126"><font size=-1>126     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="127"><font size=-1>127     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16675">LANG_MALAYALAM</a></span>
+<a name="128"><font size=-1>128     </font></a><span class="preproc"># define </span><span class="default">LANG_MALAYALAM </span><span class="number">0x4c</span>
+<a name="129"><font size=-1>129     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="130"><font size=-1>130     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16676">LANG_MANIPURI</a></span>
+<a name="131"><font size=-1>131     </font></a><span class="preproc"># define </span><span class="default">LANG_MANIPURI </span><span class="number">0x58</span>
+<a name="132"><font size=-1>132     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="133"><font size=-1>133     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16677">LANG_MARATHI</a></span>
+<a name="134"><font size=-1>134     </font></a><span class="preproc"># define </span><span class="default">LANG_MARATHI </span><span class="number">0x4e</span>
+<a name="135"><font size=-1>135     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="136"><font size=-1>136     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16678">LANG_MONGOLIAN</a></span>
+<a name="137"><font size=-1>137     </font></a><span class="preproc"># define </span><span class="default">LANG_MONGOLIAN </span><span class="number">0x50</span>
+<a name="138"><font size=-1>138     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="139"><font size=-1>139     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16679">LANG_NEPALI</a></span>
+<a name="140"><font size=-1>140     </font></a><span class="preproc"># define </span><span class="default">LANG_NEPALI </span><span class="number">0x61</span>
+<a name="141"><font size=-1>141     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="142"><font size=-1>142     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16681">LANG_ORIYA</a></span>
+<a name="143"><font size=-1>143     </font></a><span class="preproc"># define </span><span class="default">LANG_ORIYA </span><span class="number">0x48</span>
+<a name="144"><font size=-1>144     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="145"><font size=-1>145     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16684">LANG_PUNJABI</a></span>
+<a name="146"><font size=-1>146     </font></a><span class="preproc"># define </span><span class="default">LANG_PUNJABI </span><span class="number">0x46</span>
+<a name="147"><font size=-1>147     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="148"><font size=-1>148     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16687">LANG_SANSKRIT</a></span>
+<a name="149"><font size=-1>149     </font></a><span class="preproc"># define </span><span class="default">LANG_SANSKRIT </span><span class="number">0x4f</span>
+<a name="150"><font size=-1>150     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="151"><font size=-1>151     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16688">LANG_SERBIAN</a></span>
+<a name="152"><font size=-1>152     </font></a><span class="preproc"># define </span><span class="default">LANG_SERBIAN </span><span class="number">0x1a</span>
+<a name="153"><font size=-1>153     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="154"><font size=-1>154     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16689">LANG_SINDHI</a></span>
+<a name="155"><font size=-1>155     </font></a><span class="preproc"># define </span><span class="default">LANG_SINDHI </span><span class="number">0x59</span>
+<a name="156"><font size=-1>156     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="157"><font size=-1>157     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16690">LANG_SLOVAK</a></span>
+<a name="158"><font size=-1>158     </font></a><span class="preproc"># define </span><span class="default">LANG_SLOVAK </span><span class="number">0x1b</span>
+<a name="159"><font size=-1>159     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="160"><font size=-1>160     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16796">LANG_SORBIAN</a></span>
+<a name="161"><font size=-1>161     </font></a><span class="preproc"># define <a href="dictionary_L.html#16796">LANG_SORBIAN</a> </span><span class="number">0x2e</span>
+<a name="162"><font size=-1>162     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="163"><font size=-1>163     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16693">LANG_SWAHILI</a></span>
+<a name="164"><font size=-1>164     </font></a><span class="preproc"># define </span><span class="default">LANG_SWAHILI </span><span class="number">0x41</span>
+<a name="165"><font size=-1>165     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="166"><font size=-1>166     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16695">LANG_SYRIAC</a></span>
+<a name="167"><font size=-1>167     </font></a><span class="preproc"># define </span><span class="default">LANG_SYRIAC </span><span class="number">0x5a</span>
+<a name="168"><font size=-1>168     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="169"><font size=-1>169     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16696">LANG_TAMIL</a></span>
+<a name="170"><font size=-1>170     </font></a><span class="preproc"># define </span><span class="default">LANG_TAMIL </span><span class="number">0x49</span>
+<a name="171"><font size=-1>171     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="172"><font size=-1>172     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16697">LANG_TATAR</a></span>
+<a name="173"><font size=-1>173     </font></a><span class="preproc"># define </span><span class="default">LANG_TATAR </span><span class="number">0x44</span>
+<a name="174"><font size=-1>174     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="175"><font size=-1>175     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16698">LANG_TELUGU</a></span>
+<a name="176"><font size=-1>176     </font></a><span class="preproc"># define </span><span class="default">LANG_TELUGU </span><span class="number">0x4a</span>
+<a name="177"><font size=-1>177     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="178"><font size=-1>178     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16699">LANG_THAI</a></span>
+<a name="179"><font size=-1>179     </font></a><span class="preproc"># define </span><span class="default">LANG_THAI </span><span class="number">0x1e</span>
+<a name="180"><font size=-1>180     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="181"><font size=-1>181     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16701">LANG_UKRAINIAN</a></span>
+<a name="182"><font size=-1>182     </font></a><span class="preproc"># define </span><span class="default">LANG_UKRAINIAN </span><span class="number">0x22</span>
+<a name="183"><font size=-1>183     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="184"><font size=-1>184     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16702">LANG_URDU</a></span>
+<a name="185"><font size=-1>185     </font></a><span class="preproc"># define </span><span class="default">LANG_URDU </span><span class="number">0x20</span>
+<a name="186"><font size=-1>186     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="187"><font size=-1>187     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16703">LANG_UZBEK</a></span>
+<a name="188"><font size=-1>188     </font></a><span class="preproc"># define </span><span class="default">LANG_UZBEK </span><span class="number">0x43</span>
+<a name="189"><font size=-1>189     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="190"><font size=-1>190     </font></a><span class="preproc"># ifndef <a href="dictionary_L.html#16704">LANG_VIETNAMESE</a></span>
+<a name="191"><font size=-1>191     </font></a><span class="preproc"># define </span><span class="default">LANG_VIETNAMESE </span><span class="number">0x2a</span>
+<a name="192"><font size=-1>192     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="193"><font size=-1>193     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16719">SUBLANG_ARABIC_SAUDI_ARABIA</a></span>
+<a name="194"><font size=-1>194     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_SAUDI_ARABIA </span><span class="number">0x01</span>
+<a name="195"><font size=-1>195     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="196"><font size=-1>196     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16711">SUBLANG_ARABIC_IRAQ</a></span>
+<a name="197"><font size=-1>197     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_IRAQ </span><span class="number">0x02</span>
+<a name="198"><font size=-1>198     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="199"><font size=-1>199     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16710">SUBLANG_ARABIC_EGYPT</a></span>
+<a name="200"><font size=-1>200     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_EGYPT </span><span class="number">0x03</span>
+<a name="201"><font size=-1>201     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="202"><font size=-1>202     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16715">SUBLANG_ARABIC_LIBYA</a></span>
+<a name="203"><font size=-1>203     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_LIBYA </span><span class="number">0x04</span>
+<a name="204"><font size=-1>204     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="205"><font size=-1>205     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16708">SUBLANG_ARABIC_ALGERIA</a></span>
+<a name="206"><font size=-1>206     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_ALGERIA </span><span class="number">0x05</span>
+<a name="207"><font size=-1>207     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="208"><font size=-1>208     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16716">SUBLANG_ARABIC_MOROCCO</a></span>
+<a name="209"><font size=-1>209     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_MOROCCO </span><span class="number">0x06</span>
+<a name="210"><font size=-1>210     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="211"><font size=-1>211     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16721">SUBLANG_ARABIC_TUNISIA</a></span>
+<a name="212"><font size=-1>212     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_TUNISIA </span><span class="number">0x07</span>
+<a name="213"><font size=-1>213     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="214"><font size=-1>214     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16717">SUBLANG_ARABIC_OMAN</a></span>
+<a name="215"><font size=-1>215     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_OMAN </span><span class="number">0x08</span>
+<a name="216"><font size=-1>216     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="217"><font size=-1>217     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16723">SUBLANG_ARABIC_YEMEN</a></span>
+<a name="218"><font size=-1>218     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_YEMEN </span><span class="number">0x09</span>
+<a name="219"><font size=-1>219     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="220"><font size=-1>220     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16720">SUBLANG_ARABIC_SYRIA</a></span>
+<a name="221"><font size=-1>221     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_SYRIA </span><span class="number">0x0a</span>
+<a name="222"><font size=-1>222     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="223"><font size=-1>223     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16712">SUBLANG_ARABIC_JORDAN</a></span>
+<a name="224"><font size=-1>224     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_JORDAN </span><span class="number">0x0b</span>
+<a name="225"><font size=-1>225     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="226"><font size=-1>226     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16714">SUBLANG_ARABIC_LEBANON</a></span>
+<a name="227"><font size=-1>227     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_LEBANON </span><span class="number">0x0c</span>
+<a name="228"><font size=-1>228     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="229"><font size=-1>229     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16713">SUBLANG_ARABIC_KUWAIT</a></span>
+<a name="230"><font size=-1>230     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_KUWAIT </span><span class="number">0x0d</span>
+<a name="231"><font size=-1>231     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="232"><font size=-1>232     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16722">SUBLANG_ARABIC_UAE</a></span>
+<a name="233"><font size=-1>233     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_UAE </span><span class="number">0x0e</span>
+<a name="234"><font size=-1>234     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="235"><font size=-1>235     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16709">SUBLANG_ARABIC_BAHRAIN</a></span>
+<a name="236"><font size=-1>236     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_BAHRAIN </span><span class="number">0x0f</span>
+<a name="237"><font size=-1>237     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="238"><font size=-1>238     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16718">SUBLANG_ARABIC_QATAR</a></span>
+<a name="239"><font size=-1>239     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ARABIC_QATAR </span><span class="number">0x10</span>
+<a name="240"><font size=-1>240     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="241"><font size=-1>241     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16725">SUBLANG_AZERI_LATIN</a></span>
+<a name="242"><font size=-1>242     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_AZERI_LATIN </span><span class="number">0x01</span>
+<a name="243"><font size=-1>243     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="244"><font size=-1>244     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16724">SUBLANG_AZERI_CYRILLIC</a></span>
+<a name="245"><font size=-1>245     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_AZERI_CYRILLIC </span><span class="number">0x02</span>
+<a name="246"><font size=-1>246     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="247"><font size=-1>247     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16727">SUBLANG_CHINESE_MACAU</a></span>
+<a name="248"><font size=-1>248     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_CHINESE_MACAU </span><span class="number">0x05</span>
+<a name="249"><font size=-1>249     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="250"><font size=-1>250     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16742">SUBLANG_ENGLISH_SOUTH_AFRICA</a></span>
+<a name="251"><font size=-1>251     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_SOUTH_AFRICA </span><span class="number">0x07</span>
+<a name="252"><font size=-1>252     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="253"><font size=-1>253     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16739">SUBLANG_ENGLISH_JAMAICA</a></span>
+<a name="254"><font size=-1>254     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_JAMAICA </span><span class="number">0x08</span>
+<a name="255"><font size=-1>255     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="256"><font size=-1>256     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16737">SUBLANG_ENGLISH_CARIBBEAN</a></span>
+<a name="257"><font size=-1>257     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_CARIBBEAN </span><span class="number">0x09</span>
+<a name="258"><font size=-1>258     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="259"><font size=-1>259     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16735">SUBLANG_ENGLISH_BELIZE</a></span>
+<a name="260"><font size=-1>260     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_BELIZE </span><span class="number">0x0a</span>
+<a name="261"><font size=-1>261     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="262"><font size=-1>262     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16743">SUBLANG_ENGLISH_TRINIDAD</a></span>
+<a name="263"><font size=-1>263     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_TRINIDAD </span><span class="number">0x0b</span>
+<a name="264"><font size=-1>264     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="265"><font size=-1>265     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16746">SUBLANG_ENGLISH_ZIMBABWE</a></span>
+<a name="266"><font size=-1>266     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_ZIMBABWE </span><span class="number">0x0c</span>
+<a name="267"><font size=-1>267     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="268"><font size=-1>268     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16741">SUBLANG_ENGLISH_PHILIPPINES</a></span>
+<a name="269"><font size=-1>269     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_ENGLISH_PHILIPPINES </span><span class="number">0x0d</span>
+<a name="270"><font size=-1>270     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="271"><font size=-1>271     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16750">SUBLANG_FRENCH_LUXEMBOURG</a></span>
+<a name="272"><font size=-1>272     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_FRENCH_LUXEMBOURG </span><span class="number">0x05</span>
+<a name="273"><font size=-1>273     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="274"><font size=-1>274     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16751">SUBLANG_FRENCH_MONACO</a></span>
+<a name="275"><font size=-1>275     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_FRENCH_MONACO </span><span class="number">0x06</span>
+<a name="276"><font size=-1>276     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="277"><font size=-1>277     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16756">SUBLANG_GERMAN_LUXEMBOURG</a></span>
+<a name="278"><font size=-1>278     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_GERMAN_LUXEMBOURG </span><span class="number">0x04</span>
+<a name="279"><font size=-1>279     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="280"><font size=-1>280     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16755">SUBLANG_GERMAN_LIECHTENSTEIN</a></span>
+<a name="281"><font size=-1>281     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_GERMAN_LIECHTENSTEIN </span><span class="number">0x05</span>
+<a name="282"><font size=-1>282     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="283"><font size=-1>283     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16760">SUBLANG_KASHMIRI_INDIA</a></span>
+<a name="284"><font size=-1>284     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_KASHMIRI_INDIA </span><span class="number">0x02</span>
+<a name="285"><font size=-1>285     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="286"><font size=-1>286     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16762">SUBLANG_MALAY_MALAYSIA</a></span>
+<a name="287"><font size=-1>287     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_MALAY_MALAYSIA </span><span class="number">0x01</span>
+<a name="288"><font size=-1>288     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="289"><font size=-1>289     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16761">SUBLANG_MALAY_BRUNEI_DARUSSALAM</a></span>
+<a name="290"><font size=-1>290     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_MALAY_BRUNEI_DARUSSALAM </span><span class="number">0x02</span>
+<a name="291"><font size=-1>291     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="292"><font size=-1>292     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16763">SUBLANG_NEPALI_INDIA</a></span>
+<a name="293"><font size=-1>293     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_NEPALI_INDIA </span><span class="number">0x02</span>
+<a name="294"><font size=-1>294     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="295"><font size=-1>295     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16769">SUBLANG_SERBIAN_LATIN</a></span>
+<a name="296"><font size=-1>296     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SERBIAN_LATIN </span><span class="number">0x02</span>
+<a name="297"><font size=-1>297     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="298"><font size=-1>298     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16768">SUBLANG_SERBIAN_CYRILLIC</a></span>
+<a name="299"><font size=-1>299     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SERBIAN_CYRILLIC </span><span class="number">0x03</span>
+<a name="300"><font size=-1>300     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="301"><font size=-1>301     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16779">SUBLANG_SPANISH_GUATEMALA</a></span>
+<a name="302"><font size=-1>302     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_GUATEMALA </span><span class="number">0x04</span>
+<a name="303"><font size=-1>303     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="304"><font size=-1>304     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16775">SUBLANG_SPANISH_COSTA_RICA</a></span>
+<a name="305"><font size=-1>305     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_COSTA_RICA </span><span class="number">0x05</span>
+<a name="306"><font size=-1>306     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="307"><font size=-1>307     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16784">SUBLANG_SPANISH_PANAMA</a></span>
+<a name="308"><font size=-1>308     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_PANAMA </span><span class="number">0x06</span>
+<a name="309"><font size=-1>309     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="310"><font size=-1>310     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16776">SUBLANG_SPANISH_DOMINICAN_REPUBLIC</a></span>
+<a name="311"><font size=-1>311     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_DOMINICAN_REPUBLIC </span><span class="number">0x07</span>
+<a name="312"><font size=-1>312     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="313"><font size=-1>313     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16789">SUBLANG_SPANISH_VENEZUELA</a></span>
+<a name="314"><font size=-1>314     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_VENEZUELA </span><span class="number">0x08</span>
+<a name="315"><font size=-1>315     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="316"><font size=-1>316     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16774">SUBLANG_SPANISH_COLOMBIA</a></span>
+<a name="317"><font size=-1>317     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_COLOMBIA </span><span class="number">0x09</span>
+<a name="318"><font size=-1>318     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="319"><font size=-1>319     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16786">SUBLANG_SPANISH_PERU</a></span>
+<a name="320"><font size=-1>320     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_PERU </span><span class="number">0x0a</span>
+<a name="321"><font size=-1>321     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="322"><font size=-1>322     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16771">SUBLANG_SPANISH_ARGENTINA</a></span>
+<a name="323"><font size=-1>323     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_ARGENTINA </span><span class="number">0x0b</span>
+<a name="324"><font size=-1>324     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="325"><font size=-1>325     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16777">SUBLANG_SPANISH_ECUADOR</a></span>
+<a name="326"><font size=-1>326     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_ECUADOR </span><span class="number">0x0c</span>
+<a name="327"><font size=-1>327     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="328"><font size=-1>328     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16773">SUBLANG_SPANISH_CHILE</a></span>
+<a name="329"><font size=-1>329     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_CHILE </span><span class="number">0x0d</span>
+<a name="330"><font size=-1>330     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="331"><font size=-1>331     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16788">SUBLANG_SPANISH_URUGUAY</a></span>
+<a name="332"><font size=-1>332     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_URUGUAY </span><span class="number">0x0e</span>
+<a name="333"><font size=-1>333     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="334"><font size=-1>334     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16785">SUBLANG_SPANISH_PARAGUAY</a></span>
+<a name="335"><font size=-1>335     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_PARAGUAY </span><span class="number">0x0f</span>
+<a name="336"><font size=-1>336     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="337"><font size=-1>337     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16772">SUBLANG_SPANISH_BOLIVIA</a></span>
+<a name="338"><font size=-1>338     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_BOLIVIA </span><span class="number">0x10</span>
+<a name="339"><font size=-1>339     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="340"><font size=-1>340     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16778">SUBLANG_SPANISH_EL_SALVADOR</a></span>
+<a name="341"><font size=-1>341     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_EL_SALVADOR </span><span class="number">0x11</span>
+<a name="342"><font size=-1>342     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="343"><font size=-1>343     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16780">SUBLANG_SPANISH_HONDURAS</a></span>
+<a name="344"><font size=-1>344     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_HONDURAS </span><span class="number">0x12</span>
+<a name="345"><font size=-1>345     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="346"><font size=-1>346     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16783">SUBLANG_SPANISH_NICARAGUA</a></span>
+<a name="347"><font size=-1>347     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_NICARAGUA </span><span class="number">0x13</span>
+<a name="348"><font size=-1>348     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="349"><font size=-1>349     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16787">SUBLANG_SPANISH_PUERTO_RICO</a></span>
+<a name="350"><font size=-1>350     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SPANISH_PUERTO_RICO </span><span class="number">0x14</span>
+<a name="351"><font size=-1>351     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="352"><font size=-1>352     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16790">SUBLANG_SWEDISH_FINLAND</a></span>
+<a name="353"><font size=-1>353     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_SWEDISH_FINLAND </span><span class="number">0x02</span>
+<a name="354"><font size=-1>354     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="355"><font size=-1>355     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16792">SUBLANG_URDU_PAKISTAN</a></span>
+<a name="356"><font size=-1>356     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_URDU_PAKISTAN </span><span class="number">0x01</span>
+<a name="357"><font size=-1>357     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="358"><font size=-1>358     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16791">SUBLANG_URDU_INDIA</a></span>
+<a name="359"><font size=-1>359     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_URDU_INDIA </span><span class="number">0x02</span>
+<a name="360"><font size=-1>360     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="361"><font size=-1>361     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16794">SUBLANG_UZBEK_LATIN</a></span>
+<a name="362"><font size=-1>362     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_UZBEK_LATIN </span><span class="number">0x01</span>
+<a name="363"><font size=-1>363     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="364"><font size=-1>364     </font></a><span class="preproc"># ifndef <a href="dictionary_S.html#16793">SUBLANG_UZBEK_CYRILLIC</a></span>
+<a name="365"><font size=-1>365     </font></a><span class="preproc"># define </span><span class="default">SUBLANG_UZBEK_CYRILLIC </span><span class="number">0x02</span>
+<a name="366"><font size=-1>366     </font></a><span class="number"></span><span class="preproc"># endif</span>
+<a name="367"><font size=-1>367     </font></a><span class="preproc">#endif</span>
+<a name="368"><font size=-1>368     </font></a><span class="preproc"></span>
+<a name="369"><font size=-1>369     </font></a><span class="preproc"></span><span class="comment">/* XPG3 defines the result of 'setlocale (category, NULL)' as:</span>
+<a name="370"><font size=-1>370     </font></a><span class="comment">   &quot;Directs 'setlocale()' to query 'category' and return the current</span>
+<a name="371"><font size=-1>371     </font></a><span class="comment">    setting of 'local'.&quot;</span>
+<a name="372"><font size=-1>372     </font></a><span class="comment">   However it does not specify the exact format.  Neither do SUSV2 and</span>
+<a name="373"><font size=-1>373     </font></a><span class="comment">   ISO C 99.  So we can use this feature only on selected systems (e.g.</span>
+<a name="374"><font size=-1>374     </font></a><span class="comment">   those using GNU C Library).  */</span>
+<a name="375"><font size=-1>375     </font></a><span class="comment"></span><span class="preproc">#if defined <a href="dictionary_&.html#16799">_LIBC</a> </span><span class="default">|| (</span><span class="preproc">defined <a href="dictionary_&.html#16800">__GNU_LIBRARY__</a> </span><span class="default">&amp;&amp; __GNU_LIBRARY__ &gt;= </span><span class="number">2</span><span class="default">)</span>
+<a name="376"><font size=-1>376     </font></a><span class="default"></span><span class="preproc"># define </span><span class="default">HAVE_LOCALE_NULL</span>
+<a name="377"><font size=-1>377     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="378"><font size=-1>378     </font></a><span class="preproc"></span>
+<a name="379"><font size=-1>379     </font></a><span class="preproc"></span><span class="comment">/* Determine the current locale's name, and canonicalize it into XPG syntax</span>
+<a name="380"><font size=-1>380     </font></a><span class="comment">     language[_territory[.codeset]][@modifier]</span>
+<a name="381"><font size=-1>381     </font></a><span class="comment">   The codeset part in the result is not reliable; the locale_charset()</span>
+<a name="382"><font size=-1>382     </font></a><span class="comment">   should be used for codeset information instead.</span>
+<a name="383"><font size=-1>383     </font></a><span class="comment">   The result must not be freed; it is statically allocated.  */</span>
+<a name="384"><font size=-1>384     </font></a><span class="comment"></span>
+<a name="385"><font size=-1>385     </font></a><span class="comment"></span><span class="keyword">const char </span><span class="default">*</span>
+<a name="386"><font size=-1>386     </font></a><span class="default"><a href="dictionary_&.html#4018">_nl_locale_name</a> (category, categoryname)</span>
+<a name="387"><font size=-1>387     </font></a><span class="default">     </span><span class="keyword">int <a href="dictionary_C.html#16802">category</a></span><span class="default">;</span>
+<a name="388"><font size=-1>388     </font></a><span class="default">     </span><span class="keyword">const char </span><span class="default">*<a href="dictionary_C.html#16803">categoryname</a>;</span>
+<a name="389"><font size=-1>389     </font></a><span class="default">{</span>
+<a name="390"><font size=-1>390     </font></a><span class="default">  </span><span class="keyword">const char </span><span class="default">*<a href="dictionary_R.html#16807">retval</a>;</span>
+<a name="391"><font size=-1>391     </font></a><span class="default"></span>
+<a name="392"><font size=-1>392     </font></a><span class="default"></span><span class="preproc">#ifndef <a href="dictionary_W.html#16797">WIN32</a></span>
+<a name="393"><font size=-1>393     </font></a><span class="preproc"></span>
+<a name="394"><font size=-1>394     </font></a><span class="preproc">  </span><span class="comment">/* Use the POSIX methods of looking to 'LC_ALL', 'LC_xxx', and 'LANG'.</span>
+<a name="395"><font size=-1>395     </font></a><span class="comment">     On some systems this can be done by the 'setlocale' function itself.  */</span>
+<a name="396"><font size=-1>396     </font></a><span class="comment"></span><span class="preproc"># if defined </span><span class="default">HAVE_SETLOCALE &amp;&amp; </span><span class="preproc">defined </span><span class="default">HAVE_LC_MESSAGES &amp;&amp; </span><span class="preproc">defined </span><span class="default">HAVE_LOCALE_NULL</span>
+<a name="397"><font size=-1>397     </font></a><span class="default">  <a href="dictionary_R.html#16807">retval</a> = setlocale (<a href="dictionary_C.html#16802">category</a>, NULL);</span>
+<a name="398"><font size=-1>398     </font></a><span class="default"></span><span class="preproc"># else</span>
+<a name="399"><font size=-1>399     </font></a><span class="preproc">  </span><span class="comment">/* Setting of LC_ALL overwrites all other.  */</span>
+<a name="400"><font size=-1>400     </font></a><span class="comment">  <a href="dictionary_R.html#16807">retval</a> </span><span class="default">= getenv (</span><span class="string">&quot;LC_ALL&quot;</span><span class="default">);</span>
+<a name="401"><font size=-1>401     </font></a><span class="default">  </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> == NULL || <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] == </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="402"><font size=-1>402     </font></a><span class="default">    {</span>
+<a name="403"><font size=-1>403     </font></a><span class="default">      </span><span class="comment">/* Next comes the name of the desired category.  */</span>
+<a name="404"><font size=-1>404     </font></a><span class="comment">      <a href="dictionary_R.html#16807">retval</a> </span><span class="default">= getenv (<a href="dictionary_C.html#16803">categoryname</a>);</span>
+<a name="405"><font size=-1>405     </font></a><span class="default">      </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> == NULL || <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] == </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="406"><font size=-1>406     </font></a><span class="default">	{</span>
+<a name="407"><font size=-1>407     </font></a><span class="default">	  </span><span class="comment">/* Last possibility is the LANG environment variable.  */</span>
+<a name="408"><font size=-1>408     </font></a><span class="comment">	  <a href="dictionary_R.html#16807">retval</a> </span><span class="default">= getenv (</span><span class="string">&quot;LANG&quot;</span><span class="default">);</span>
+<a name="409"><font size=-1>409     </font></a><span class="default">	  </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> == NULL || <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] == </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="410"><font size=-1>410     </font></a><span class="default">	    </span><span class="comment">/* We use C as the default domain.  POSIX says this is</span>
+<a name="411"><font size=-1>411     </font></a><span class="comment">	       implementation defined.  */</span>
+<a name="412"><font size=-1>412     </font></a><span class="comment">	    <a href="dictionary_R.html#16807">retval</a> </span><span class="default">= </span><span class="string">&quot;C&quot;</span><span class="default">;</span>
+<a name="413"><font size=-1>413     </font></a><span class="default">	}</span>
+<a name="414"><font size=-1>414     </font></a><span class="default">    }</span>
+<a name="415"><font size=-1>415     </font></a><span class="default"></span><span class="preproc"># endif</span>
+<a name="416"><font size=-1>416     </font></a><span class="preproc"></span>
+<a name="417"><font size=-1>417     </font></a><span class="preproc">  </span><span class="keyword">return <a href="dictionary_R.html#16807">retval</a></span><span class="default">;</span>
+<a name="418"><font size=-1>418     </font></a><span class="default"></span>
+<a name="419"><font size=-1>419     </font></a><span class="default"></span><span class="preproc">#else </span><span class="comment">/* WIN32 */</span>
+<a name="420"><font size=-1>420     </font></a><span class="comment"></span>
+<a name="421"><font size=-1>421     </font></a><span class="comment">  /* Return an XPG style locale name language[_territory][@modifier].</span>
+<a name="422"><font size=-1>422     </font></a><span class="comment">     Don't even bother determining the codeset; it's not useful in this</span>
+<a name="423"><font size=-1>423     </font></a><span class="comment">     context, because message catalogs are not specific to a single</span>
+<a name="424"><font size=-1>424     </font></a><span class="comment">     codeset.  */</span>
+<a name="425"><font size=-1>425     </font></a><span class="comment"></span>
+<a name="426"><font size=-1>426     </font></a><span class="comment">  <a href="dictionary_L.html#16705">LCID</a> <a href="dictionary_L.html#16805">lcid</a></span><span class="default">;</span>
+<a name="427"><font size=-1>427     </font></a><span class="default">  <a href="dictionary_L.html#16628">LANGID</a> <a href="dictionary_L.html#16804">langid</a>;</span>
+<a name="428"><font size=-1>428     </font></a><span class="default">  </span><span class="keyword">int <a href="dictionary_P.html#16806">primary</a></span><span class="default">, <a href="dictionary_S.html#16808">sub</a>;</span>
+<a name="429"><font size=-1>429     </font></a><span class="default"></span>
+<a name="430"><font size=-1>430     </font></a><span class="default">  </span><span class="comment">/* Let the user override the system settings through environment</span>
+<a name="431"><font size=-1>431     </font></a><span class="comment">     variables, as on POSIX systems.  */</span>
+<a name="432"><font size=-1>432     </font></a><span class="comment">  <a href="dictionary_R.html#16807">retval</a> </span><span class="default">= <a href="dictionary_G.html#1206">getenv</a> (</span><span class="string">&quot;LC_ALL&quot;</span><span class="default">);</span>
+<a name="433"><font size=-1>433     </font></a><span class="default">  </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> != <a href="dictionary_N.html#1495">NULL</a> &amp;&amp; <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] != </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="434"><font size=-1>434     </font></a><span class="default">    </span><span class="keyword">return <a href="dictionary_R.html#16807">retval</a></span><span class="default">;</span>
+<a name="435"><font size=-1>435     </font></a><span class="default">  <a href="dictionary_R.html#16807">retval</a> = <a href="dictionary_G.html#1206">getenv</a> (<a href="dictionary_C.html#16803">categoryname</a>);</span>
+<a name="436"><font size=-1>436     </font></a><span class="default">  </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> != <a href="dictionary_N.html#1495">NULL</a> &amp;&amp; <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] != </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="437"><font size=-1>437     </font></a><span class="default">    </span><span class="keyword">return <a href="dictionary_R.html#16807">retval</a></span><span class="default">;</span>
+<a name="438"><font size=-1>438     </font></a><span class="default">  <a href="dictionary_R.html#16807">retval</a> = <a href="dictionary_G.html#1206">getenv</a> (</span><span class="string">&quot;LANG&quot;</span><span class="default">);</span>
+<a name="439"><font size=-1>439     </font></a><span class="default">  </span><span class="keyword">if </span><span class="default">(<a href="dictionary_R.html#16807">retval</a> != <a href="dictionary_N.html#1495">NULL</a> &amp;&amp; <a href="dictionary_R.html#16807">retval</a>[</span><span class="number">0</span><span class="default">] != </span><span class="string">'\0'</span><span class="default">)</span>
+<a name="440"><font size=-1>440     </font></a><span class="default">    </span><span class="keyword">return <a href="dictionary_R.html#16807">retval</a></span><span class="default">;</span>
+<a name="441"><font size=-1>441     </font></a><span class="default"></span>
+<a name="442"><font size=-1>442     </font></a><span class="default">  </span><span class="comment">/* Use native Win32 API locale ID.  */</span>
+<a name="443"><font size=-1>443     </font></a><span class="comment">  <a href="dictionary_L.html#16805">lcid</a> </span><span class="default">= <a href="dictionary_G.html#16626">GetThreadLocale</a> ();</span>
+<a name="444"><font size=-1>444     </font></a><span class="default"></span>
+<a name="445"><font size=-1>445     </font></a><span class="default">  </span><span class="comment">/* Strip off the sorting rules, keep only the language part.  */</span>
+<a name="446"><font size=-1>446     </font></a><span class="comment">  <a href="dictionary_L.html#16804">langid</a> </span><span class="default">= <a href="dictionary_L.html#16629">LANGIDFROMLCID</a> (<a href="dictionary_L.html#16805">lcid</a>);</span>
+<a name="447"><font size=-1>447     </font></a><span class="default"></span>
+<a name="448"><font size=-1>448     </font></a><span class="default">  </span><span class="comment">/* Split into language and territory part.  */</span>
+<a name="449"><font size=-1>449     </font></a><span class="comment">  <a href="dictionary_P.html#16806">primary</a> </span><span class="default">= <a href="dictionary_P.html#16706">PRIMARYLANGID</a> (<a href="dictionary_L.html#16804">langid</a>);</span>
+<a name="450"><font size=-1>450     </font></a><span class="default">  <a href="dictionary_S.html#16808">sub</a> = <a href="dictionary_S.html#16707">SUBLANGID</a> (<a href="dictionary_L.html#16804">langid</a>);</span>
+<a name="451"><font size=-1>451     </font></a><span class="default"></span>
+<a name="452"><font size=-1>452     </font></a><span class="default">  </span><span class="comment">/* Dispatch on language.</span>
+<a name="453"><font size=-1>453     </font></a><span class="comment">     See also http://www.unicode.org/unicode/onlinedat/languages.html .</span>
+<a name="454"><font size=-1>454     </font></a><span class="comment">     For details about languages, see http://www.ethnologue.com/ .  */</span>
+<a name="455"><font size=-1>455     </font></a><span class="comment">  </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_P.html#16806">primary</a>)</span>
+<a name="456"><font size=-1>456     </font></a><span class="default">    {</span>
+<a name="457"><font size=-1>457     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16630">LANG_AFRIKAANS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;af_ZA&quot;</span><span class="default">;</span>
+<a name="458"><font size=-1>458     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16631">LANG_ALBANIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sq_AL&quot;</span><span class="default">;</span>
+<a name="459"><font size=-1>459     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x5e</span><span class="default">: </span><span class="comment">/* AMHARIC */ </span><span class="keyword">return </span><span class="string">&quot;am_ET&quot;</span><span class="default">;</span>
+<a name="460"><font size=-1>460     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16632">LANG_ARABIC</a></span><span class="default">:</span>
+<a name="461"><font size=-1>461     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="462"><font size=-1>462     </font></a><span class="default">	{</span>
+<a name="463"><font size=-1>463     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16719">SUBLANG_ARABIC_SAUDI_ARABIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_SA&quot;</span><span class="default">;</span>
+<a name="464"><font size=-1>464     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16711">SUBLANG_ARABIC_IRAQ</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_IQ&quot;</span><span class="default">;</span>
+<a name="465"><font size=-1>465     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16710">SUBLANG_ARABIC_EGYPT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_EG&quot;</span><span class="default">;</span>
+<a name="466"><font size=-1>466     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16715">SUBLANG_ARABIC_LIBYA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_LY&quot;</span><span class="default">;</span>
+<a name="467"><font size=-1>467     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16708">SUBLANG_ARABIC_ALGERIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_DZ&quot;</span><span class="default">;</span>
+<a name="468"><font size=-1>468     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16716">SUBLANG_ARABIC_MOROCCO</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_MA&quot;</span><span class="default">;</span>
+<a name="469"><font size=-1>469     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16721">SUBLANG_ARABIC_TUNISIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_TN&quot;</span><span class="default">;</span>
+<a name="470"><font size=-1>470     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16717">SUBLANG_ARABIC_OMAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_OM&quot;</span><span class="default">;</span>
+<a name="471"><font size=-1>471     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16723">SUBLANG_ARABIC_YEMEN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_YE&quot;</span><span class="default">;</span>
+<a name="472"><font size=-1>472     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16720">SUBLANG_ARABIC_SYRIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_SY&quot;</span><span class="default">;</span>
+<a name="473"><font size=-1>473     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16712">SUBLANG_ARABIC_JORDAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_JO&quot;</span><span class="default">;</span>
+<a name="474"><font size=-1>474     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16714">SUBLANG_ARABIC_LEBANON</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_LB&quot;</span><span class="default">;</span>
+<a name="475"><font size=-1>475     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16713">SUBLANG_ARABIC_KUWAIT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_KW&quot;</span><span class="default">;</span>
+<a name="476"><font size=-1>476     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16722">SUBLANG_ARABIC_UAE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_AE&quot;</span><span class="default">;</span>
+<a name="477"><font size=-1>477     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16709">SUBLANG_ARABIC_BAHRAIN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_BH&quot;</span><span class="default">;</span>
+<a name="478"><font size=-1>478     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16718">SUBLANG_ARABIC_QATAR</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ar_QA&quot;</span><span class="default">;</span>
+<a name="479"><font size=-1>479     </font></a><span class="default">	}</span>
+<a name="480"><font size=-1>480     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ar&quot;</span><span class="default">;</span>
+<a name="481"><font size=-1>481     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16633">LANG_ARMENIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;hy_AM&quot;</span><span class="default">;</span>
+<a name="482"><font size=-1>482     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16634">LANG_ASSAMESE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;as_IN&quot;</span><span class="default">;</span>
+<a name="483"><font size=-1>483     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16635">LANG_AZERI</a></span><span class="default">:</span>
+<a name="484"><font size=-1>484     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="485"><font size=-1>485     </font></a><span class="default">	{</span>
+<a name="486"><font size=-1>486     </font></a><span class="default">	</span><span class="comment">/* FIXME: Adjust this when Azerbaijani locales appear on Unix.  */</span>
+<a name="487"><font size=-1>487     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16725">SUBLANG_AZERI_LATIN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;az_AZ@latin&quot;</span><span class="default">;</span>
+<a name="488"><font size=-1>488     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16724">SUBLANG_AZERI_CYRILLIC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;az_AZ@cyrillic&quot;</span><span class="default">;</span>
+<a name="489"><font size=-1>489     </font></a><span class="default">	}</span>
+<a name="490"><font size=-1>490     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;az&quot;</span><span class="default">;</span>
+<a name="491"><font size=-1>491     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16636">LANG_BASQUE</a></span><span class="default">:</span>
+<a name="492"><font size=-1>492     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;eu&quot;</span><span class="default">; </span><span class="comment">/* Ambiguous: could be &quot;eu_ES&quot; or &quot;eu_FR&quot;.  */</span>
+<a name="493"><font size=-1>493     </font></a><span class="comment">    </span><span class="keyword">case <a href="dictionary_L.html#16637">LANG_BELARUSIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;be_BY&quot;</span><span class="default">;</span>
+<a name="494"><font size=-1>494     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16638">LANG_BENGALI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;bn_IN&quot;</span><span class="default">;</span>
+<a name="495"><font size=-1>495     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16639">LANG_BULGARIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;bg_BG&quot;</span><span class="default">;</span>
+<a name="496"><font size=-1>496     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x55</span><span class="default">: </span><span class="comment">/* BURMESE */ </span><span class="keyword">return </span><span class="string">&quot;my_MM&quot;</span><span class="default">;</span>
+<a name="497"><font size=-1>497     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x53</span><span class="default">: </span><span class="comment">/* CAMBODIAN */ </span><span class="keyword">return </span><span class="string">&quot;km_KH&quot;</span><span class="default">;</span>
+<a name="498"><font size=-1>498     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16640">LANG_CATALAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ca_ES&quot;</span><span class="default">;</span>
+<a name="499"><font size=-1>499     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x5c</span><span class="default">: </span><span class="comment">/* CHEROKEE */ </span><span class="keyword">return </span><span class="string">&quot;chr_US&quot;</span><span class="default">;</span>
+<a name="500"><font size=-1>500     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16641">LANG_CHINESE</a></span><span class="default">:</span>
+<a name="501"><font size=-1>501     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="502"><font size=-1>502     </font></a><span class="default">	{</span>
+<a name="503"><font size=-1>503     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16730">SUBLANG_CHINESE_TRADITIONAL</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;zh_TW&quot;</span><span class="default">;</span>
+<a name="504"><font size=-1>504     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16728">SUBLANG_CHINESE_SIMPLIFIED</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;zh_CN&quot;</span><span class="default">;</span>
+<a name="505"><font size=-1>505     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16726">SUBLANG_CHINESE_HONGKONG</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;zh_HK&quot;</span><span class="default">;</span>
+<a name="506"><font size=-1>506     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16729">SUBLANG_CHINESE_SINGAPORE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;zh_SG&quot;</span><span class="default">;</span>
+<a name="507"><font size=-1>507     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16727">SUBLANG_CHINESE_MACAU</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;zh_MO&quot;</span><span class="default">;</span>
+<a name="508"><font size=-1>508     </font></a><span class="default">	}</span>
+<a name="509"><font size=-1>509     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;zh&quot;</span><span class="default">;</span>
+<a name="510"><font size=-1>510     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16642">LANG_CROATIAN</a></span><span class="default">:		</span><span class="comment">/* LANG_CROATIAN == LANG_SERBIAN</span>
+<a name="511"><font size=-1>511     </font></a><span class="comment">				 * What used to be called Serbo-Croatian</span>
+<a name="512"><font size=-1>512     </font></a><span class="comment">				 * should really now be two separate</span>
+<a name="513"><font size=-1>513     </font></a><span class="comment">				 * languages because of political reasons.</span>
+<a name="514"><font size=-1>514     </font></a><span class="comment">				 * (Says tml, who knows nothing about Serbian</span>
+<a name="515"><font size=-1>515     </font></a><span class="comment">				 * or Croatian.)</span>
+<a name="516"><font size=-1>516     </font></a><span class="comment">				 * (I can feel those flames coming already.)</span>
+<a name="517"><font size=-1>517     </font></a><span class="comment">				 */</span>
+<a name="518"><font size=-1>518     </font></a><span class="comment">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="519"><font size=-1>519     </font></a><span class="default">	{</span>
+<a name="520"><font size=-1>520     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16731">SUBLANG_DEFAULT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;hr_HR&quot;</span><span class="default">;</span>
+<a name="521"><font size=-1>521     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16769">SUBLANG_SERBIAN_LATIN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sr_YU&quot;</span><span class="default">;</span>
+<a name="522"><font size=-1>522     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16768">SUBLANG_SERBIAN_CYRILLIC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sr_YU@cyrillic&quot;</span><span class="default">;</span>
+<a name="523"><font size=-1>523     </font></a><span class="default">	}</span>
+<a name="524"><font size=-1>524     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;hr&quot;</span><span class="default">;</span>
+<a name="525"><font size=-1>525     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16643">LANG_CZECH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;cs_CZ&quot;</span><span class="default">;</span>
+<a name="526"><font size=-1>526     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16644">LANG_DANISH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;da_DK&quot;</span><span class="default">;</span>
+<a name="527"><font size=-1>527     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16645">LANG_DIVEHI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;div_MV&quot;</span><span class="default">;</span>
+<a name="528"><font size=-1>528     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16646">LANG_DUTCH</a></span><span class="default">:</span>
+<a name="529"><font size=-1>529     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="530"><font size=-1>530     </font></a><span class="default">	{</span>
+<a name="531"><font size=-1>531     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16732">SUBLANG_DUTCH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;nl_NL&quot;</span><span class="default">;</span>
+<a name="532"><font size=-1>532     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16733">SUBLANG_DUTCH_BELGIAN</a></span><span class="default">: </span><span class="comment">/* FLEMISH, VLAAMS */ </span><span class="keyword">return </span><span class="string">&quot;nl_BE&quot;</span><span class="default">;</span>
+<a name="533"><font size=-1>533     </font></a><span class="default">	}</span>
+<a name="534"><font size=-1>534     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;nl&quot;</span><span class="default">;</span>
+<a name="535"><font size=-1>535     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x66</span><span class="default">: </span><span class="comment">/* EDO */ </span><span class="keyword">return </span><span class="string">&quot;bin_NG&quot;</span><span class="default">;</span>
+<a name="536"><font size=-1>536     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16647">LANG_ENGLISH</a></span><span class="default">:</span>
+<a name="537"><font size=-1>537     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="538"><font size=-1>538     </font></a><span class="default">	{</span>
+<a name="539"><font size=-1>539     </font></a><span class="default">	</span><span class="comment">/* SUBLANG_ENGLISH_US == SUBLANG_DEFAULT. Heh. I thought</span>
+<a name="540"><font size=-1>540     </font></a><span class="comment">	 * English was the language spoken in England.</span>
+<a name="541"><font size=-1>541     </font></a><span class="comment">	 * Oh well.</span>
+<a name="542"><font size=-1>542     </font></a><span class="comment">	 */</span>
+<a name="543"><font size=-1>543     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16745">SUBLANG_ENGLISH_US</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_US&quot;</span><span class="default">;</span>
+<a name="544"><font size=-1>544     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16744">SUBLANG_ENGLISH_UK</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_GB&quot;</span><span class="default">;</span>
+<a name="545"><font size=-1>545     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16734">SUBLANG_ENGLISH_AUS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_AU&quot;</span><span class="default">;</span>
+<a name="546"><font size=-1>546     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16736">SUBLANG_ENGLISH_CAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_CA&quot;</span><span class="default">;</span>
+<a name="547"><font size=-1>547     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16740">SUBLANG_ENGLISH_NZ</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_NZ&quot;</span><span class="default">;</span>
+<a name="548"><font size=-1>548     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16738">SUBLANG_ENGLISH_EIRE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_IE&quot;</span><span class="default">;</span>
+<a name="549"><font size=-1>549     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16742">SUBLANG_ENGLISH_SOUTH_AFRICA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_ZA&quot;</span><span class="default">;</span>
+<a name="550"><font size=-1>550     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16739">SUBLANG_ENGLISH_JAMAICA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_JM&quot;</span><span class="default">;</span>
+<a name="551"><font size=-1>551     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16737">SUBLANG_ENGLISH_CARIBBEAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_GD&quot;</span><span class="default">; </span><span class="comment">/* Grenada? */</span>
+<a name="552"><font size=-1>552     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16735">SUBLANG_ENGLISH_BELIZE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_BZ&quot;</span><span class="default">;</span>
+<a name="553"><font size=-1>553     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16743">SUBLANG_ENGLISH_TRINIDAD</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_TT&quot;</span><span class="default">;</span>
+<a name="554"><font size=-1>554     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16746">SUBLANG_ENGLISH_ZIMBABWE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_ZW&quot;</span><span class="default">;</span>
+<a name="555"><font size=-1>555     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16741">SUBLANG_ENGLISH_PHILIPPINES</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;en_PH&quot;</span><span class="default">;</span>
+<a name="556"><font size=-1>556     </font></a><span class="default">	}</span>
+<a name="557"><font size=-1>557     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;en&quot;</span><span class="default">;</span>
+<a name="558"><font size=-1>558     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16648">LANG_ESTONIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;et_EE&quot;</span><span class="default">;</span>
+<a name="559"><font size=-1>559     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16649">LANG_FAEROESE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fo_FO&quot;</span><span class="default">;</span>
+<a name="560"><font size=-1>560     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16650">LANG_FARSI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fa_IR&quot;</span><span class="default">;</span>
+<a name="561"><font size=-1>561     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16651">LANG_FINNISH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fi_FI&quot;</span><span class="default">;</span>
+<a name="562"><font size=-1>562     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16652">LANG_FRENCH</a></span><span class="default">:</span>
+<a name="563"><font size=-1>563     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="564"><font size=-1>564     </font></a><span class="default">	{</span>
+<a name="565"><font size=-1>565     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16747">SUBLANG_FRENCH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fr_FR&quot;</span><span class="default">;</span>
+<a name="566"><font size=-1>566     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16748">SUBLANG_FRENCH_BELGIAN</a></span><span class="default">: </span><span class="comment">/* WALLOON */ </span><span class="keyword">return </span><span class="string">&quot;fr_BE&quot;</span><span class="default">;</span>
+<a name="567"><font size=-1>567     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16749">SUBLANG_FRENCH_CANADIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fr_CA&quot;</span><span class="default">;</span>
+<a name="568"><font size=-1>568     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16752">SUBLANG_FRENCH_SWISS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fr_CH&quot;</span><span class="default">;</span>
+<a name="569"><font size=-1>569     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16750">SUBLANG_FRENCH_LUXEMBOURG</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fr_LU&quot;</span><span class="default">;</span>
+<a name="570"><font size=-1>570     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16751">SUBLANG_FRENCH_MONACO</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;fr_MC&quot;</span><span class="default">;</span>
+<a name="571"><font size=-1>571     </font></a><span class="default">	}</span>
+<a name="572"><font size=-1>572     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;fr&quot;</span><span class="default">;</span>
+<a name="573"><font size=-1>573     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x62</span><span class="default">: </span><span class="comment">/* FRISIAN */ </span><span class="keyword">return </span><span class="string">&quot;fy_NL&quot;</span><span class="default">;</span>
+<a name="574"><font size=-1>574     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x67</span><span class="default">: </span><span class="comment">/* FULFULDE */ </span><span class="keyword">return </span><span class="string">&quot;ful_NG&quot;</span><span class="default">;</span>
+<a name="575"><font size=-1>575     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x3c</span><span class="default">: </span><span class="comment">/* GAELIC */</span>
+<a name="576"><font size=-1>576     </font></a><span class="comment">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="577"><font size=-1>577     </font></a><span class="default">	{</span>
+<a name="578"><font size=-1>578     </font></a><span class="default">	</span><span class="keyword">case </span><span class="number">0x01</span><span class="default">: </span><span class="comment">/* SCOTTISH */ </span><span class="keyword">return </span><span class="string">&quot;gd_GB&quot;</span><span class="default">;</span>
+<a name="579"><font size=-1>579     </font></a><span class="default">	</span><span class="keyword">case </span><span class="number">0x02</span><span class="default">: </span><span class="comment">/* IRISH */ </span><span class="keyword">return </span><span class="string">&quot;ga_IE&quot;</span><span class="default">;</span>
+<a name="580"><font size=-1>580     </font></a><span class="default">	}</span>
+<a name="581"><font size=-1>581     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;C&quot;</span><span class="default">;</span>
+<a name="582"><font size=-1>582     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16653">LANG_GALICIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;gl_ES&quot;</span><span class="default">;</span>
+<a name="583"><font size=-1>583     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16654">LANG_GEORGIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ka_GE&quot;</span><span class="default">;</span>
+<a name="584"><font size=-1>584     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16655">LANG_GERMAN</a></span><span class="default">:</span>
+<a name="585"><font size=-1>585     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="586"><font size=-1>586     </font></a><span class="default">	{</span>
+<a name="587"><font size=-1>587     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16753">SUBLANG_GERMAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;de_DE&quot;</span><span class="default">;</span>
+<a name="588"><font size=-1>588     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16757">SUBLANG_GERMAN_SWISS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;de_CH&quot;</span><span class="default">;</span>
+<a name="589"><font size=-1>589     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16754">SUBLANG_GERMAN_AUSTRIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;de_AT&quot;</span><span class="default">;</span>
+<a name="590"><font size=-1>590     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16756">SUBLANG_GERMAN_LUXEMBOURG</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;de_LU&quot;</span><span class="default">;</span>
+<a name="591"><font size=-1>591     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16755">SUBLANG_GERMAN_LIECHTENSTEIN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;de_LI&quot;</span><span class="default">;</span>
+<a name="592"><font size=-1>592     </font></a><span class="default">	}</span>
+<a name="593"><font size=-1>593     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;de&quot;</span><span class="default">;</span>
+<a name="594"><font size=-1>594     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16656">LANG_GREEK</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;el_GR&quot;</span><span class="default">;</span>
+<a name="595"><font size=-1>595     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x74</span><span class="default">: </span><span class="comment">/* GUARANI */ </span><span class="keyword">return </span><span class="string">&quot;gn_PY&quot;</span><span class="default">;</span>
+<a name="596"><font size=-1>596     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16657">LANG_GUJARATI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;gu_IN&quot;</span><span class="default">;</span>
+<a name="597"><font size=-1>597     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x68</span><span class="default">: </span><span class="comment">/* HAUSA */ </span><span class="keyword">return </span><span class="string">&quot;ha_NG&quot;</span><span class="default">;</span>
+<a name="598"><font size=-1>598     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x75</span><span class="default">: </span><span class="comment">/* HAWAIIAN */</span>
+<a name="599"><font size=-1>599     </font></a><span class="comment">      /* FIXME: Do they mean Hawaiian (&quot;haw_US&quot;, 1000 speakers)</span>
+<a name="600"><font size=-1>600     </font></a><span class="comment">	 or Hawaii Creole English (&quot;cpe_US&quot;, 600000 speakers)?  */</span>
+<a name="601"><font size=-1>601     </font></a><span class="comment">      </span><span class="keyword">return </span><span class="string">&quot;cpe_US&quot;</span><span class="default">;</span>
+<a name="602"><font size=-1>602     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16658">LANG_HEBREW</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;he_IL&quot;</span><span class="default">;</span>
+<a name="603"><font size=-1>603     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16659">LANG_HINDI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;hi_IN&quot;</span><span class="default">;</span>
+<a name="604"><font size=-1>604     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16660">LANG_HUNGARIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;hu_HU&quot;</span><span class="default">;</span>
+<a name="605"><font size=-1>605     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x69</span><span class="default">: </span><span class="comment">/* IBIBIO */ </span><span class="keyword">return </span><span class="string">&quot;nic_NG&quot;</span><span class="default">;</span>
+<a name="606"><font size=-1>606     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16661">LANG_ICELANDIC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;is_IS&quot;</span><span class="default">;</span>
+<a name="607"><font size=-1>607     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x70</span><span class="default">: </span><span class="comment">/* IGBO */ </span><span class="keyword">return </span><span class="string">&quot;ibo_NG&quot;</span><span class="default">;</span>
+<a name="608"><font size=-1>608     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16662">LANG_INDONESIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;id_ID&quot;</span><span class="default">;</span>
+<a name="609"><font size=-1>609     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x5d</span><span class="default">: </span><span class="comment">/* INUKTITUT */ </span><span class="keyword">return </span><span class="string">&quot;iu_CA&quot;</span><span class="default">;</span>
+<a name="610"><font size=-1>610     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16663">LANG_ITALIAN</a></span><span class="default">:</span>
+<a name="611"><font size=-1>611     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="612"><font size=-1>612     </font></a><span class="default">	{</span>
+<a name="613"><font size=-1>613     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16758">SUBLANG_ITALIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;it_IT&quot;</span><span class="default">;</span>
+<a name="614"><font size=-1>614     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16759">SUBLANG_ITALIAN_SWISS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;it_CH&quot;</span><span class="default">;</span>
+<a name="615"><font size=-1>615     </font></a><span class="default">	}</span>
+<a name="616"><font size=-1>616     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;it&quot;</span><span class="default">;</span>
+<a name="617"><font size=-1>617     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16664">LANG_JAPANESE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ja_JP&quot;</span><span class="default">;</span>
+<a name="618"><font size=-1>618     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16665">LANG_KANNADA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;kn_IN&quot;</span><span class="default">;</span>
+<a name="619"><font size=-1>619     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x71</span><span class="default">: </span><span class="comment">/* KANURI */ </span><span class="keyword">return </span><span class="string">&quot;kau_NG&quot;</span><span class="default">;</span>
+<a name="620"><font size=-1>620     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16666">LANG_KASHMIRI</a></span><span class="default">:</span>
+<a name="621"><font size=-1>621     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="622"><font size=-1>622     </font></a><span class="default">	{</span>
+<a name="623"><font size=-1>623     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16731">SUBLANG_DEFAULT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ks_PK&quot;</span><span class="default">;</span>
+<a name="624"><font size=-1>624     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16760">SUBLANG_KASHMIRI_INDIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ks_IN&quot;</span><span class="default">;</span>
+<a name="625"><font size=-1>625     </font></a><span class="default">	}</span>
+<a name="626"><font size=-1>626     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ks&quot;</span><span class="default">;</span>
+<a name="627"><font size=-1>627     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16667">LANG_KAZAK</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;kk_KZ&quot;</span><span class="default">;</span>
+<a name="628"><font size=-1>628     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16668">LANG_KONKANI</a></span><span class="default">:</span>
+<a name="629"><font size=-1>629     </font></a><span class="default">      </span><span class="comment">/* FIXME: Adjust this when such locales appear on Unix.  */</span>
+<a name="630"><font size=-1>630     </font></a><span class="comment">      </span><span class="keyword">return </span><span class="string">&quot;kok_IN&quot;</span><span class="default">;</span>
+<a name="631"><font size=-1>631     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16669">LANG_KOREAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ko_KR&quot;</span><span class="default">;</span>
+<a name="632"><font size=-1>632     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16670">LANG_KYRGYZ</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ky_KG&quot;</span><span class="default">;</span>
+<a name="633"><font size=-1>633     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x54</span><span class="default">: </span><span class="comment">/* LAO */ </span><span class="keyword">return </span><span class="string">&quot;lo_LA&quot;</span><span class="default">;</span>
+<a name="634"><font size=-1>634     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x76</span><span class="default">: </span><span class="comment">/* LATIN */ </span><span class="keyword">return </span><span class="string">&quot;la_VA&quot;</span><span class="default">;</span>
+<a name="635"><font size=-1>635     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16671">LANG_LATVIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;lv_LV&quot;</span><span class="default">;</span>
+<a name="636"><font size=-1>636     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16672">LANG_LITHUANIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;lt_LT&quot;</span><span class="default">;</span>
+<a name="637"><font size=-1>637     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16673">LANG_MACEDONIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;mk_MK&quot;</span><span class="default">;</span>
+<a name="638"><font size=-1>638     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16674">LANG_MALAY</a></span><span class="default">:</span>
+<a name="639"><font size=-1>639     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="640"><font size=-1>640     </font></a><span class="default">	{</span>
+<a name="641"><font size=-1>641     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16762">SUBLANG_MALAY_MALAYSIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ms_MY&quot;</span><span class="default">;</span>
+<a name="642"><font size=-1>642     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16761">SUBLANG_MALAY_BRUNEI_DARUSSALAM</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ms_BN&quot;</span><span class="default">;</span>
+<a name="643"><font size=-1>643     </font></a><span class="default">	}</span>
+<a name="644"><font size=-1>644     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ms&quot;</span><span class="default">;</span>
+<a name="645"><font size=-1>645     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16675">LANG_MALAYALAM</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ml_IN&quot;</span><span class="default">;</span>
+<a name="646"><font size=-1>646     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x3a</span><span class="default">: </span><span class="comment">/* MALTESE */ </span><span class="keyword">return </span><span class="string">&quot;mt_MT&quot;</span><span class="default">;</span>
+<a name="647"><font size=-1>647     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16676">LANG_MANIPURI</a></span><span class="default">:</span>
+<a name="648"><font size=-1>648     </font></a><span class="default">      </span><span class="comment">/* FIXME: Adjust this when such locales appear on Unix.  */</span>
+<a name="649"><font size=-1>649     </font></a><span class="comment">      </span><span class="keyword">return </span><span class="string">&quot;mni_IN&quot;</span><span class="default">;</span>
+<a name="650"><font size=-1>650     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16677">LANG_MARATHI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;mr_IN&quot;</span><span class="default">;</span>
+<a name="651"><font size=-1>651     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16678">LANG_MONGOLIAN</a></span><span class="default">:</span>
+<a name="652"><font size=-1>652     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;mn&quot;</span><span class="default">; </span><span class="comment">/* Ambiguous: could be &quot;mn_CN&quot; or &quot;mn_MN&quot;.  */</span>
+<a name="653"><font size=-1>653     </font></a><span class="comment">    </span><span class="keyword">case <a href="dictionary_L.html#16679">LANG_NEPALI</a></span><span class="default">:</span>
+<a name="654"><font size=-1>654     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="655"><font size=-1>655     </font></a><span class="default">	{</span>
+<a name="656"><font size=-1>656     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16731">SUBLANG_DEFAULT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ne_NP&quot;</span><span class="default">;</span>
+<a name="657"><font size=-1>657     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16763">SUBLANG_NEPALI_INDIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ne_IN&quot;</span><span class="default">;</span>
+<a name="658"><font size=-1>658     </font></a><span class="default">	}</span>
+<a name="659"><font size=-1>659     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ne&quot;</span><span class="default">;</span>
+<a name="660"><font size=-1>660     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16680">LANG_NORWEGIAN</a></span><span class="default">:</span>
+<a name="661"><font size=-1>661     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="662"><font size=-1>662     </font></a><span class="default">	{</span>
+<a name="663"><font size=-1>663     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16764">SUBLANG_NORWEGIAN_BOKMAL</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;no_NO&quot;</span><span class="default">;</span>
+<a name="664"><font size=-1>664     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16765">SUBLANG_NORWEGIAN_NYNORSK</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;nn_NO&quot;</span><span class="default">;</span>
+<a name="665"><font size=-1>665     </font></a><span class="default">	}</span>
+<a name="666"><font size=-1>666     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;no&quot;</span><span class="default">;</span>
+<a name="667"><font size=-1>667     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16681">LANG_ORIYA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;or_IN&quot;</span><span class="default">;</span>
+<a name="668"><font size=-1>668     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x72</span><span class="default">: </span><span class="comment">/* OROMO */ </span><span class="keyword">return </span><span class="string">&quot;om_ET&quot;</span><span class="default">;</span>
+<a name="669"><font size=-1>669     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x79</span><span class="default">: </span><span class="comment">/* PAPIAMENTU */ </span><span class="keyword">return </span><span class="string">&quot;pap_AN&quot;</span><span class="default">;</span>
+<a name="670"><font size=-1>670     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x63</span><span class="default">: </span><span class="comment">/* PASHTO */</span>
+<a name="671"><font size=-1>671     </font></a><span class="comment">      </span><span class="keyword">return </span><span class="string">&quot;ps&quot;</span><span class="default">; </span><span class="comment">/* Ambiguous: could be &quot;ps_PK&quot; or &quot;ps_AF&quot;.  */</span>
+<a name="672"><font size=-1>672     </font></a><span class="comment">    </span><span class="keyword">case <a href="dictionary_L.html#16682">LANG_POLISH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;pl_PL&quot;</span><span class="default">;</span>
+<a name="673"><font size=-1>673     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16683">LANG_PORTUGUESE</a></span><span class="default">:</span>
+<a name="674"><font size=-1>674     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="675"><font size=-1>675     </font></a><span class="default">	{</span>
+<a name="676"><font size=-1>676     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16766">SUBLANG_PORTUGUESE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;pt_PT&quot;</span><span class="default">;</span>
+<a name="677"><font size=-1>677     </font></a><span class="default">	</span><span class="comment">/* Hmm. SUBLANG_PORTUGUESE_BRAZILIAN == SUBLANG_DEFAULT.</span>
+<a name="678"><font size=-1>678     </font></a><span class="comment">	   Same phenomenon as SUBLANG_ENGLISH_US == SUBLANG_DEFAULT. */</span>
+<a name="679"><font size=-1>679     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16767">SUBLANG_PORTUGUESE_BRAZILIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;pt_BR&quot;</span><span class="default">;</span>
+<a name="680"><font size=-1>680     </font></a><span class="default">	}</span>
+<a name="681"><font size=-1>681     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;pt&quot;</span><span class="default">;</span>
+<a name="682"><font size=-1>682     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16684">LANG_PUNJABI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;pa_IN&quot;</span><span class="default">;</span>
+<a name="683"><font size=-1>683     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x17</span><span class="default">: </span><span class="comment">/* RHAETO-ROMANCE */ </span><span class="keyword">return </span><span class="string">&quot;rm_CH&quot;</span><span class="default">;</span>
+<a name="684"><font size=-1>684     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16685">LANG_ROMANIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ro_RO&quot;</span><span class="default">;</span>
+<a name="685"><font size=-1>685     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16686">LANG_RUSSIAN</a></span><span class="default">:</span>
+<a name="686"><font size=-1>686     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ru&quot;</span><span class="default">; </span><span class="comment">/* Ambiguous: could be &quot;ru_RU&quot; or &quot;ru_UA&quot;.  */</span>
+<a name="687"><font size=-1>687     </font></a><span class="comment">    </span><span class="keyword">case </span><span class="number">0x3b</span><span class="default">: </span><span class="comment">/* SAMI */ </span><span class="keyword">return </span><span class="string">&quot;se_NO&quot;</span><span class="default">;</span>
+<a name="688"><font size=-1>688     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16687">LANG_SANSKRIT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sa_IN&quot;</span><span class="default">;</span>
+<a name="689"><font size=-1>689     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16689">LANG_SINDHI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sd&quot;</span><span class="default">;</span>
+<a name="690"><font size=-1>690     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x5b</span><span class="default">: </span><span class="comment">/* SINHALESE */ </span><span class="keyword">return </span><span class="string">&quot;si_LK&quot;</span><span class="default">;</span>
+<a name="691"><font size=-1>691     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16690">LANG_SLOVAK</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sk_SK&quot;</span><span class="default">;</span>
+<a name="692"><font size=-1>692     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16691">LANG_SLOVENIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sl_SI&quot;</span><span class="default">;</span>
+<a name="693"><font size=-1>693     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x77</span><span class="default">: </span><span class="comment">/* SOMALI */ </span><span class="keyword">return </span><span class="string">&quot;so_SO&quot;</span><span class="default">;</span>
+<a name="694"><font size=-1>694     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16796">LANG_SORBIAN</a></span><span class="default">:</span>
+<a name="695"><font size=-1>695     </font></a><span class="default">      </span><span class="comment">/* FIXME: Adjust this when such locales appear on Unix.  */</span>
+<a name="696"><font size=-1>696     </font></a><span class="comment">      </span><span class="keyword">return </span><span class="string">&quot;wen_DE&quot;</span><span class="default">;</span>
+<a name="697"><font size=-1>697     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16692">LANG_SPANISH</a></span><span class="default">:</span>
+<a name="698"><font size=-1>698     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="699"><font size=-1>699     </font></a><span class="default">	{</span>
+<a name="700"><font size=-1>700     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16770">SUBLANG_SPANISH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_ES&quot;</span><span class="default">;</span>
+<a name="701"><font size=-1>701     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16781">SUBLANG_SPANISH_MEXICAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_MX&quot;</span><span class="default">;</span>
+<a name="702"><font size=-1>702     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16782">SUBLANG_SPANISH_MODERN</a></span><span class="default">:</span>
+<a name="703"><font size=-1>703     </font></a><span class="default">	  </span><span class="keyword">return </span><span class="string">&quot;es_ES@modern&quot;</span><span class="default">;	</span><span class="comment">/* not seen on Unix */</span>
+<a name="704"><font size=-1>704     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16779">SUBLANG_SPANISH_GUATEMALA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_GT&quot;</span><span class="default">;</span>
+<a name="705"><font size=-1>705     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16775">SUBLANG_SPANISH_COSTA_RICA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_CR&quot;</span><span class="default">;</span>
+<a name="706"><font size=-1>706     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16784">SUBLANG_SPANISH_PANAMA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_PA&quot;</span><span class="default">;</span>
+<a name="707"><font size=-1>707     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16776">SUBLANG_SPANISH_DOMINICAN_REPUBLIC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_DO&quot;</span><span class="default">;</span>
+<a name="708"><font size=-1>708     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16789">SUBLANG_SPANISH_VENEZUELA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_VE&quot;</span><span class="default">;</span>
+<a name="709"><font size=-1>709     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16774">SUBLANG_SPANISH_COLOMBIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_CO&quot;</span><span class="default">;</span>
+<a name="710"><font size=-1>710     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16786">SUBLANG_SPANISH_PERU</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_PE&quot;</span><span class="default">;</span>
+<a name="711"><font size=-1>711     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16771">SUBLANG_SPANISH_ARGENTINA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_AR&quot;</span><span class="default">;</span>
+<a name="712"><font size=-1>712     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16777">SUBLANG_SPANISH_ECUADOR</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_EC&quot;</span><span class="default">;</span>
+<a name="713"><font size=-1>713     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16773">SUBLANG_SPANISH_CHILE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_CL&quot;</span><span class="default">;</span>
+<a name="714"><font size=-1>714     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16788">SUBLANG_SPANISH_URUGUAY</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_UY&quot;</span><span class="default">;</span>
+<a name="715"><font size=-1>715     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16785">SUBLANG_SPANISH_PARAGUAY</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_PY&quot;</span><span class="default">;</span>
+<a name="716"><font size=-1>716     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16772">SUBLANG_SPANISH_BOLIVIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_BO&quot;</span><span class="default">;</span>
+<a name="717"><font size=-1>717     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16778">SUBLANG_SPANISH_EL_SALVADOR</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_SV&quot;</span><span class="default">;</span>
+<a name="718"><font size=-1>718     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16780">SUBLANG_SPANISH_HONDURAS</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_HN&quot;</span><span class="default">;</span>
+<a name="719"><font size=-1>719     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16783">SUBLANG_SPANISH_NICARAGUA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_NI&quot;</span><span class="default">;</span>
+<a name="720"><font size=-1>720     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16787">SUBLANG_SPANISH_PUERTO_RICO</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;es_PR&quot;</span><span class="default">;</span>
+<a name="721"><font size=-1>721     </font></a><span class="default">	}</span>
+<a name="722"><font size=-1>722     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;es&quot;</span><span class="default">;</span>
+<a name="723"><font size=-1>723     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x30</span><span class="default">: </span><span class="comment">/* SUTU */ </span><span class="keyword">return </span><span class="string">&quot;bnt_TZ&quot;</span><span class="default">;</span>
+<a name="724"><font size=-1>724     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16693">LANG_SWAHILI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sw_KE&quot;</span><span class="default">;</span>
+<a name="725"><font size=-1>725     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16694">LANG_SWEDISH</a></span><span class="default">:</span>
+<a name="726"><font size=-1>726     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="727"><font size=-1>727     </font></a><span class="default">	{</span>
+<a name="728"><font size=-1>728     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16731">SUBLANG_DEFAULT</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sv_SE&quot;</span><span class="default">;</span>
+<a name="729"><font size=-1>729     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16790">SUBLANG_SWEDISH_FINLAND</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;sv_FI&quot;</span><span class="default">;</span>
+<a name="730"><font size=-1>730     </font></a><span class="default">	}</span>
+<a name="731"><font size=-1>731     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;sv&quot;</span><span class="default">;</span>
+<a name="732"><font size=-1>732     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16695">LANG_SYRIAC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;syr_TR&quot;</span><span class="default">; </span><span class="comment">/* An extinct language.  */</span>
+<a name="733"><font size=-1>733     </font></a><span class="comment">    </span><span class="keyword">case </span><span class="number">0x64</span><span class="default">: </span><span class="comment">/* TAGALOG */ </span><span class="keyword">return </span><span class="string">&quot;tl_PH&quot;</span><span class="default">;</span>
+<a name="734"><font size=-1>734     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x28</span><span class="default">: </span><span class="comment">/* TAJIK */ </span><span class="keyword">return </span><span class="string">&quot;tg_TJ&quot;</span><span class="default">;</span>
+<a name="735"><font size=-1>735     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x5f</span><span class="default">: </span><span class="comment">/* TAMAZIGHT */ </span><span class="keyword">return </span><span class="string">&quot;ber_MA&quot;</span><span class="default">;</span>
+<a name="736"><font size=-1>736     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16696">LANG_TAMIL</a></span><span class="default">:</span>
+<a name="737"><font size=-1>737     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ta&quot;</span><span class="default">; </span><span class="comment">/* Ambiguous: could be &quot;ta_IN&quot; or &quot;ta_LK&quot; or &quot;ta_SG&quot;.  */</span>
+<a name="738"><font size=-1>738     </font></a><span class="comment">    </span><span class="keyword">case <a href="dictionary_L.html#16697">LANG_TATAR</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;tt_RU&quot;</span><span class="default">;</span>
+<a name="739"><font size=-1>739     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16698">LANG_TELUGU</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;te_IN&quot;</span><span class="default">;</span>
+<a name="740"><font size=-1>740     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16699">LANG_THAI</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;th_TH&quot;</span><span class="default">;</span>
+<a name="741"><font size=-1>741     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x51</span><span class="default">: </span><span class="comment">/* TIBETAN */ </span><span class="keyword">return </span><span class="string">&quot;bo_CN&quot;</span><span class="default">;</span>
+<a name="742"><font size=-1>742     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x73</span><span class="default">: </span><span class="comment">/* TIGRINYA */ </span><span class="keyword">return </span><span class="string">&quot;ti_ET&quot;</span><span class="default">;</span>
+<a name="743"><font size=-1>743     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x31</span><span class="default">: </span><span class="comment">/* TSONGA */ </span><span class="keyword">return </span><span class="string">&quot;ts_ZA&quot;</span><span class="default">;</span>
+<a name="744"><font size=-1>744     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16700">LANG_TURKISH</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;tr_TR&quot;</span><span class="default">;</span>
+<a name="745"><font size=-1>745     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x42</span><span class="default">: </span><span class="comment">/* TURKMEN */ </span><span class="keyword">return </span><span class="string">&quot;tk_TM&quot;</span><span class="default">;</span>
+<a name="746"><font size=-1>746     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16701">LANG_UKRAINIAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;uk_UA&quot;</span><span class="default">;</span>
+<a name="747"><font size=-1>747     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16702">LANG_URDU</a></span><span class="default">:</span>
+<a name="748"><font size=-1>748     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="749"><font size=-1>749     </font></a><span class="default">	{</span>
+<a name="750"><font size=-1>750     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16792">SUBLANG_URDU_PAKISTAN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ur_PK&quot;</span><span class="default">;</span>
+<a name="751"><font size=-1>751     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16791">SUBLANG_URDU_INDIA</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;ur_IN&quot;</span><span class="default">;</span>
+<a name="752"><font size=-1>752     </font></a><span class="default">	}</span>
+<a name="753"><font size=-1>753     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;ur&quot;</span><span class="default">;</span>
+<a name="754"><font size=-1>754     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16703">LANG_UZBEK</a></span><span class="default">:</span>
+<a name="755"><font size=-1>755     </font></a><span class="default">      </span><span class="keyword">switch </span><span class="default">(<a href="dictionary_S.html#16808">sub</a>)</span>
+<a name="756"><font size=-1>756     </font></a><span class="default">	{</span>
+<a name="757"><font size=-1>757     </font></a><span class="default">	</span><span class="comment">/* FIXME: Adjust this when Uzbek locales appear on Unix.  */</span>
+<a name="758"><font size=-1>758     </font></a><span class="comment">	</span><span class="keyword">case <a href="dictionary_S.html#16794">SUBLANG_UZBEK_LATIN</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;uz_UZ@latin&quot;</span><span class="default">;</span>
+<a name="759"><font size=-1>759     </font></a><span class="default">	</span><span class="keyword">case <a href="dictionary_S.html#16793">SUBLANG_UZBEK_CYRILLIC</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;uz_UZ@cyrillic&quot;</span><span class="default">;</span>
+<a name="760"><font size=-1>760     </font></a><span class="default">	}</span>
+<a name="761"><font size=-1>761     </font></a><span class="default">      </span><span class="keyword">return </span><span class="string">&quot;uz&quot;</span><span class="default">;</span>
+<a name="762"><font size=-1>762     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x33</span><span class="default">: </span><span class="comment">/* VENDA */ </span><span class="keyword">return </span><span class="string">&quot;ven_ZA&quot;</span><span class="default">;</span>
+<a name="763"><font size=-1>763     </font></a><span class="default">    </span><span class="keyword">case <a href="dictionary_L.html#16704">LANG_VIETNAMESE</a></span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;vi_VN&quot;</span><span class="default">;</span>
+<a name="764"><font size=-1>764     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x52</span><span class="default">: </span><span class="comment">/* WELSH */ </span><span class="keyword">return </span><span class="string">&quot;cy_GB&quot;</span><span class="default">;</span>
+<a name="765"><font size=-1>765     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x34</span><span class="default">: </span><span class="comment">/* XHOSA */ </span><span class="keyword">return </span><span class="string">&quot;xh_ZA&quot;</span><span class="default">;</span>
+<a name="766"><font size=-1>766     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x78</span><span class="default">: </span><span class="comment">/* YI */ </span><span class="keyword">return </span><span class="string">&quot;sit_CN&quot;</span><span class="default">;</span>
+<a name="767"><font size=-1>767     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x3d</span><span class="default">: </span><span class="comment">/* YIDDISH */ </span><span class="keyword">return </span><span class="string">&quot;yi_IL&quot;</span><span class="default">;</span>
+<a name="768"><font size=-1>768     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x6a</span><span class="default">: </span><span class="comment">/* YORUBA */ </span><span class="keyword">return </span><span class="string">&quot;yo_NG&quot;</span><span class="default">;</span>
+<a name="769"><font size=-1>769     </font></a><span class="default">    </span><span class="keyword">case </span><span class="number">0x35</span><span class="default">: </span><span class="comment">/* ZULU */ </span><span class="keyword">return </span><span class="string">&quot;zu_ZA&quot;</span><span class="default">;</span>
+<a name="770"><font size=-1>770     </font></a><span class="default">    </span><span class="keyword">default</span><span class="default">: </span><span class="keyword">return </span><span class="string">&quot;C&quot;</span><span class="default">;</span>
+<a name="771"><font size=-1>771     </font></a><span class="default">    }</span>
+<a name="772"><font size=-1>772     </font></a><span class="default"></span>
+<a name="773"><font size=-1>773     </font></a><span class="default"></span><span class="preproc">#endif</span>
+<a name="774"><font size=-1>774     </font></a><span class="preproc"></span><span class="default">}</span>
+<a name="775"><font size=-1>775     </font></a><span class="default"></span>
+</pre></body></html>

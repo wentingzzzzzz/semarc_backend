@@ -1,0 +1,1058 @@
+[
+    {
+        "qualifiedName": "uv__calloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__calloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strtok",
+        "file": "src/strtok.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__strtok",
+        "file": "src/strtok.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__process_endgames",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__reallocf",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__calloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__timer_close",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__reallocf",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_set_provider_entry_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_update_idle_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_update_idle_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__fs_poll_close",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__work_submit",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Requests",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_init",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_remove",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_get",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_get",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_get",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__fd_hash_add",
+        "file": "src/win/fs-fd-hash-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "I/O_Polling_Mechanism"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__work_submit",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__calloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__count_bufs",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__count_bufs",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__udp_is_connected",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__count_bufs",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__realloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__reallocf",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Thread_Pool",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__get_osfhandle",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__count_bufs",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__want_endgame",
+        "file": "src/win/handle-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Requests"
+    },
+    {
+        "qualifiedName": "uv__stream_init",
+        "file": "src/win/stream-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__connection_init",
+        "file": "src/win/stream-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__connection_init",
+        "file": "src/win/stream-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__connection_init",
+        "file": "src/win/stream-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__connection_init",
+        "file": "src/win/stream-inl.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_set_provider_entry_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_update_idle_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_update_idle_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__metrics_update_idle_time",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__count_bufs",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__udp_is_connected",
+        "file": "src/uv-common.h",
+        "src_layer": "Handles",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__work_submit",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__calloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__strdup",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__free",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    },
+    {
+        "qualifiedName": "uv__malloc",
+        "file": "src/uv-common.h",
+        "src_layer": "I/O_Polling_Mechanism",
+        "dest_layer": "Thread_Pool"
+    }
+]

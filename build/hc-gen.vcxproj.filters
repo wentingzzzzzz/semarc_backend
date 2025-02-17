@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\ast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\bytecode_gen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\decompile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\decompile_gen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\lexer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\macro_gen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\option.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\startup_cfg_gen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\text_gen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\src\token.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\XJTU\架构逆向\lda_demoGPT\local\data\drivers_framework\tools\hc-gen\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{042F6AEF-F77F-3DE5-860C-3E08A6E2489B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

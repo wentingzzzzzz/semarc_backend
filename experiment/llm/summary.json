@@ -1,0 +1,52 @@
+{
+    "summary": [
+        {
+            "file": "include/win32config.h",
+            "Functionality": "Configuration settings for the Win32 platform."
+        },
+        {
+            "file": "include/libxml/c14n.h",
+            "Functionality": "Header file for Canonicalization (c14n) operations."
+        },
+        {
+            "file": "include/libxml/list.h",
+            "Functionality": "Header file for linked list operations."
+        },
+        {
+            "file": "include/libxml/xmlwin32version.h",
+            "Functionality": "Header file for Win32 version-related operations."
+        },
+        {
+            "file": "include/libxml/xpath.h",
+            "Functionality": "Header file for XPath operations."
+        },
+        {
+            "file": "include/libxml/xpathInternals.h",
+            "Functionality": "Header file for internal XPath operations."
+        },
+        {
+            "file": "include/libxml/xpointer.h",
+            "Functionality": "Header file for XPointer operations."
+        },
+        {
+            "file": "macos/src/config-mac.h",
+            "Functionality": "Configuration settings for the macOS platform."
+        },
+        {
+            "file": "c14n.c",
+            "Functionality": "Implementation of Canonicalization (c14n) operations."
+        },
+        {
+            "file": "list.c",
+            "Functionality": "Implementation of linked list operations."
+        },
+        {
+            "file": "xpath.c",
+            "Functionality": "Implementation of XPath operations."
+        },
+        {
+            "file": "xpointer.c",
+            "Functionality": "Implementation of XPointer operations."
+        }
+    ]
+}

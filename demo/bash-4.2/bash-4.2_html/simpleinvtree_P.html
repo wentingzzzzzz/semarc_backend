@@ -1,0 +1,882 @@
+<!DOCTYPE html><html><head><title>Simple Invocation Tree [P]</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script src="jquery-3.3.1.min.js" type="text/javascript"></script><script src="d3.js" type="text/javascript"></script><script src="d3pie.min.js" type="text/javascript"></script><script src="plotly.min.js" type="text/javascript"></script><link href="reportCSS.css" type="text/css" rel="stylesheet" /><script src="reportJS.js" type="text/javascript"></script><script src="table_of_contents.js" type="text/javascript"></script></head><body bgcolor="#ffffff" TEXT="#000000"><nav id="main-nav" class="nav"><div id="upper-nav"><img id=und-icon src="understand-logo.png" alt="Understand"></div><div class="navbar" style="position:relative;z-index:1003"><button onclick="pageToTop()" id="pagedesc" title="Return to top of page"><span id="descText">bash-4 - Simple Invocation Tree</span></button></div><div id="lower-nav" class=navbar><div id="main-dropdown-html" class="dropdown" tabindex="0"><button id="dropdown-button" class="dropbtn">Contents <img id="dropdown-icon" src="ToCdropdown.png" style="height:12px"></button><div id="dropdown-buffer" class="dropdown-border" style="height:120px;width:300px;"></div><div id="nav-dropdown-content" class="dropdown-content"><a href="table_of_contents.html">Table of Contents</a><txt style="font-size: 12px; text-align: center">Enable javascript to use dropdown contents and other features.</txt></div></div><div class="rightspacer" id="rightspacer"><button id="buttonRight" onclick="scrollTableRight()"><img id="imgRight" src="ToCdropdown.png" /></button><button id="buttonLeft"  onclick="scrollTableLeft()" ><img id="imgLeft" src="ToCdropdown.png"  /></button></div><div class="navCenter">
+<a href="simpleinvtree_&.html">&</a><a href="simpleinvtree_A.html">A</a><a href="simpleinvtree_B.html">B</a><a href="simpleinvtree_C.html">C</a><a href="simpleinvtree_D.html">D</a><a href="simpleinvtree_E.html">E</a><a href="simpleinvtree_F.html">F</a><a href="simpleinvtree_G.html">G</a><a href="simpleinvtree_H.html">H</a><a href="simpleinvtree_I.html">I</a><a href="simpleinvtree_J.html">J</a><a href="simpleinvtree_K.html">K</a><a href="simpleinvtree_L.html">L</a><a href="simpleinvtree_M.html">M</a><a href="simpleinvtree_N.html">N</a><a href="simpleinvtree_O.html">O</a><a href="simpleinvtree_P.html">P</a><a href="simpleinvtree_Q.html">Q</a><a href="simpleinvtree_R.html">R</a><a href="simpleinvtree_S.html">S</a><a href="simpleinvtree_T.html">T</a><a href="simpleinvtree_U.html">U</a><a href="simpleinvtree_V.html">V</a><a href="simpleinvtree_W.html">W</a><a href="simpleinvtree_X.html">X</a><a href="simpleinvtree_Y.html">Y</a><a href="simpleinvtree_Z.html">Z</a></div></div></nav>
+<script type="text/javascript">navbar();</script><script type="text/javascript">if (typeof ToC === 'undefined') {document.getElementById("dropdown-button").remove();document.getElementById("dropdown-buffer").remove();document.getElementById("nav-dropdown-content").remove();}</script>
+<div id="main-content"><pre>
+<a href="dictionary_P.html#8980">pagealign</a>
+| <a href="dictionary_S.html#8987">sbrk</a>
+
+<a href="dictionary_P.html#6366">param_expand</a>
+| <a href="dictionary_E.html#2709">err_unboundvar</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+| <a href="dictionary_I.html#2648">itos</a>
+| <a href="dictionary_N.html#6363">number_of_args</a>
+| <a href="dictionary_W.html#5860">which_set_flags</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+| <a href="dictionary_S.html#6787">string_list_dollar_star</a>
+| <a href="dictionary_S.html#6778">string_list</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#6780">string_list_dollar_at</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_P.html#6412">parameter_brace_expand</a>
+| <a href="dictionary_E.html#5904">extract_command_subst</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_C.html#6018">chk_arithsub</a>
+| <a href="dictionary_E.html#6090">expand_arith_string</a>
+| <a href="dictionary_S.html#4502">substring</a>
+| <a href="dictionary_C.html#6029">command_substitute</a>
+| <a href="dictionary_D.html#5856">dispose_word_desc</a>
+| <a href="dictionary_E.html#6209">extract_arithmetic_subst</a>
+| <a href="dictionary_I.html#2697">isalnum</a>
+| <a href="dictionary_F.html#2725">find_variable</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+
+<a href="dictionary_P.html#6392">parameter_brace_casemod</a>
+| <a href="dictionary_G.html#6249">get_var_and_type</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_G.html#6275">getpattern</a>
+| <a href="dictionary_S.html#5360">sh_modcase</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+| <a href="dictionary_P.html#6578">pos_params_modcase</a>
+
+<a href="dictionary_P.html#6412">parameter_brace_expand</a>
+| <a href="dictionary_I.html#2699">isalpha</a>
+| <a href="dictionary_S.html#6735">string_extract</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_M.html#2711">mbschr</a>
+| <a href="dictionary_A.html#5862">all_digits</a>
+| <a href="dictionary_V.html#6840">valid_length_expression</a>
+| <a href="dictionary_E.html#2709">err_unboundvar</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+| <a href="dictionary_A.html#5940">all_variables_matching_prefix</a>
+| <a href="dictionary_S.html#5409">strvec_to_word_list</a>
+| <a href="dictionary_S.html#6787">string_list_dollar_star</a>
+| <a href="dictionary_S.html#6780">string_list_dollar_at</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_V.html#6837">valid_brace_expansion_word</a>
+| <a href="dictionary_P.html#6447">parameter_brace_expand_indir</a>
+| <a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+| <a href="dictionary_D.html#5856">dispose_word_desc</a>
+| <a href="dictionary_E.html#6231">extract_dollar_brace_string</a>
+| <a href="dictionary_R.html#1130">report_error</a>
+| <a href="dictionary_P.html#6461">parameter_brace_expand_rhs</a>
+| <a href="dictionary_P.html#6442">parameter_brace_expand_error</a>
+
+<a href="dictionary_P.html#6442">parameter_brace_expand_error</a>
+| <a href="dictionary_E.html#5891">expand_string</a>
+| <a href="dictionary_S.html#6778">string_list</a>
+| <a href="dictionary_R.html#1130">report_error</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#6447">parameter_brace_expand_indir</a>
+| <a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+| <a href="dictionary_D.html#6058">dequote_string</a>
+| <a href="dictionary_D.html#6049">dequote_escapes</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_D.html#5856">dispose_word_desc</a>
+| <a href="dictionary_C.html#6023">chk_atstar</a>
+| <a href="dictionary_A.html#5862">all_digits</a>
+
+<a href="dictionary_P.html#6456">parameter_brace_expand_length</a>
+| <a href="dictionary_W.html#5860">which_set_flags</a>
+| <a href="dictionary_I.html#2648">itos</a>
+| <a href="dictionary_N.html#6363">number_of_args</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_E.html#5891">expand_string</a>
+| <a href="dictionary_S.html#6778">string_list</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#6461">parameter_brace_expand_rhs</a>
+| <a href="dictionary_S.html#6745">string_extract_double_quoted</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+| <a href="dictionary_E.html#6105">expand_string_for_rhs</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#6787">string_list_dollar_star</a>
+| <a href="dictionary_S.html#6778">string_list</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_M.html#6333">make_quoted_char</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_D.html#6058">dequote_string</a>
+| <a href="dictionary_B.html#1193">bind_variable</a>
+
+<a href="dictionary_P.html#6474">parameter_brace_expand_word</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_P.html#6366">param_expand</a>
+| <a href="dictionary_F.html#2725">find_variable</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+
+<a href="dictionary_P.html#6488">parameter_brace_patsub</a>
+| <a href="dictionary_G.html#6249">get_var_and_type</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#4535">skip_to_delim</a>
+| <a href="dictionary_G.html#6275">getpattern</a>
+| <a href="dictionary_E.html#6112">expand_string_if_necessary</a>
+| <a href="dictionary_E.html#5900">expand_string_unsplit</a>
+| <a href="dictionary_E.html#6134">expand_string_to_string_internal</a>
+| <a href="dictionary_P.html#6545">pat_subst</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+| <a href="dictionary_P.html#6589">pos_params_pat_subst</a>
+
+<a href="dictionary_P.html#6507">parameter_brace_remove_pattern</a>
+| <a href="dictionary_G.html#6249">get_var_and_type</a>
+| <a href="dictionary_G.html#6272">getpatspec</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_G.html#6275">getpattern</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_R.html#6642">remove_pattern</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+| <a href="dictionary_P.html#6537">parameter_list_remove_pattern</a>
+
+<a href="dictionary_P.html#6522">parameter_brace_substring</a>
+| <a href="dictionary_G.html#6249">get_var_and_type</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_Q.html#6615">quote_string</a>
+| <a href="dictionary_Q.html#6601">quote_escapes</a>
+
+<a href="dictionary_P.html#6537">parameter_list_remove_pattern</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+| <a href="dictionary_L.html#6306">list_remove_pattern</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#414">parse_and_execute</a>
+| <a href="dictionary_P.html#6922">parse_prologue</a>
+| <a href="dictionary_P.html#2677">push_stream</a>
+| <a href="dictionary_W.html#1170">with_input_from_string</a>
+| <a href="dictionary_&.html#1077">_setjmp</a>
+| <a href="dictionary_R.html#562">run_unwind_frame</a>
+| <a href="dictionary_C.html#3294">command_error</a>
+| <a href="dictionary_P.html#3320">parse_command</a>
+| <a href="dictionary_D.html#3293">dispose_command</a>
+| <a href="dictionary_N.html#6879">new_fd_bitmap</a>
+| <a href="dictionary_B.html#561">begin_unwind_frame</a>
+| <a href="dictionary_A.html#560">add_unwind_protect</a>
+| <a href="dictionary_D.html#6877">dispose_fd_bitmap</a>
+| <a href="dictionary_C.html#6903">cat_file</a>
+| <a href="dictionary_E.html#6878">execute_command_internal</a>
+| <a href="dictionary_D.html#6886">discard_unwind_frame</a>
+| <a href="dictionary_T.html#547">throw_to_top_level</a>
+| <a href="dictionary_J.html#2720">jump_to_top_level</a>
+
+<a href="dictionary_P.html#6921">parse_and_execute_cleanup</a>
+| <a href="dictionary_R.html#6885">run_trap_cleanup</a>
+| <a href="dictionary_U.html#9871">unfreeze_jobs_list</a>
+| <a href="dictionary_H.html#6888">have_unwind_protects</a>
+| <a href="dictionary_R.html#562">run_unwind_frame</a>
+
+<a href="dictionary_P.html#3320">parse_command</a>
+| <a href="dictionary_R.html#3305">run_pending_traps</a>
+| <a href="dictionary_G.html#568">get_string_value</a>
+| <a href="dictionary_E.html#2672">execute_variable_command</a>
+| <a href="dictionary_S.html#3327">send_pwd_to_eterm</a>
+| <a href="dictionary_Y.html#3302">yyparse</a>
+| <a href="dictionary_G.html#2674">gather_here_documents</a>
+
+<a href="dictionary_P.html#12437">parse_compound_assignment</a>
+| <a href="dictionary_R.html#12536">read_token</a>
+| <a href="dictionary_P.html#12514">prompt_again</a>
+| <a href="dictionary_P.html#9289">parser_error</a>
+| <a href="dictionary_Y.html#12659">yyerror</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_M.html#1177">make_word_list</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_J.html#2720">jump_to_top_level</a>
+| <a href="dictionary_L.html#433">list_reverse</a>
+| <a href="dictionary_S.html#6778">string_list</a>
+| <a href="dictionary_S.html#26">strlen</a>
+
+<a href="dictionary_P.html#12448">parse_comsub</a>
+| <a href="dictionary_S.html#12581">shell_getc</a>
+| <a href="dictionary_S.html#12594">shell_ungetc</a>
+| <a href="dictionary_P.html#12476">parse_matched_pair</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_P.html#9289">parser_error</a>
+| <a href="dictionary_S.html#1389">strncmp</a>
+| <a href="dictionary_P.html#12514">prompt_again</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_S.html#4502">substring</a>
+| <a href="dictionary_S.html#5916">string_quote_removal</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_I.html#7">islower</a>
+| <a href="dictionary_A.html#5323">ansiexpand</a>
+| <a href="dictionary_X.html#168">xfree</a>
+| <a href="dictionary_S.html#1165">sh_single_quote</a>
+| <a href="dictionary_L.html#5336">localeexpand</a>
+| <a href="dictionary_S.html#5357">sh_mkdoublequoted</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_P.html#12448">parse_comsub</a>
+
+<a href="dictionary_P.html#1328">parse_long_options</a>
+| <a href="dictionary_S.html#961">strcmp</a>
+| <a href="dictionary_R.html#1130">report_error</a>
+| <a href="dictionary_E.html#600">exit</a>
+| <a href="dictionary_S.html#1380">show_shell_usage</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+
+<a href="dictionary_P.html#12476">parse_matched_pair</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#12581">shell_getc</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_P.html#9289">parser_error</a>
+| <a href="dictionary_P.html#12514">prompt_again</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_S.html#328">strchr</a>
+| <a href="dictionary_P.html#12476">parse_matched_pair</a>
+| <a href="dictionary_A.html#5323">ansiexpand</a>
+| <a href="dictionary_X.html#168">xfree</a>
+| <a href="dictionary_S.html#1165">sh_single_quote</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_L.html#5336">localeexpand</a>
+| <a href="dictionary_S.html#5357">sh_mkdoublequoted</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_P.html#12448">parse_comsub</a>
+
+<a href="dictionary_P.html#11792">parse_plural_expression</a>
+| <a href="dictionary_M.html#1480">malloc</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_&.html#15003">__gettextlex</a>
+| <a href="dictionary_N.html#15028">new_exp_3</a>
+| <a href="dictionary_N.html#15023">new_exp_2</a>
+| <a href="dictionary_N.html#15019">new_exp_1</a>
+| <a href="dictionary_N.html#15017">new_exp_0</a>
+| <a href="dictionary_&.html#15001">__gettexterror</a>
+| <a href="dictionary_Y.html#17297">yydestruct</a>
+
+<a href="dictionary_P.html#6922">parse_prologue</a>
+| <a href="dictionary_B.html#561">begin_unwind_frame</a>
+| <a href="dictionary_U.html#564">unwind_protect_mem</a>
+| <a href="dictionary_G.html#5330">get_current_prompt_level</a>
+| <a href="dictionary_A.html#560">add_unwind_protect</a>
+| <a href="dictionary_S.html#3301">set_current_prompt_level</a>
+| <a href="dictionary_P.html#2676">pop_stream</a>
+| <a href="dictionary_X.html#168">xfree</a>
+
+<a href="dictionary_P.html#1336">parse_shell_options</a>
+| <a href="dictionary_L.html#1115">list_minus_o_opts</a>
+| <a href="dictionary_S.html#1119">set_minus_o_option</a>
+| <a href="dictionary_E.html#600">exit</a>
+| <a href="dictionary_S.html#1120">shopt_listopt</a>
+| <a href="dictionary_A.html#1244">add_shopt_to_alist</a>
+| <a href="dictionary_C.html#436">change_flag</a>
+| <a href="dictionary_R.html#1130">report_error</a>
+| <a href="dictionary_S.html#1380">show_shell_usage</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+
+<a href="dictionary_P.html#6928">parse_string</a>
+| <a href="dictionary_P.html#6922">parse_prologue</a>
+| <a href="dictionary_P.html#2677">push_stream</a>
+| <a href="dictionary_W.html#1170">with_input_from_string</a>
+| <a href="dictionary_&.html#1077">_setjmp</a>
+| <a href="dictionary_D.html#3293">dispose_command</a>
+| <a href="dictionary_C.html#3294">command_error</a>
+| <a href="dictionary_P.html#3320">parse_command</a>
+| <a href="dictionary_R.html#5348">reset_parser</a>
+| <a href="dictionary_R.html#562">run_unwind_frame</a>
+| <a href="dictionary_J.html#2720">jump_to_top_level</a>
+
+<a href="dictionary_P.html#5345">parse_string_to_word_list</a>
+| <a href="dictionary_P.html#2677">push_stream</a>
+| <a href="dictionary_W.html#1170">with_input_from_string</a>
+| <a href="dictionary_R.html#12536">read_token</a>
+| <a href="dictionary_Y.html#12659">yyerror</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_M.html#1177">make_word_list</a>
+| <a href="dictionary_P.html#2676">pop_stream</a>
+| <a href="dictionary_J.html#2720">jump_to_top_level</a>
+| <a href="dictionary_L.html#433">list_reverse</a>
+
+<a href="dictionary_P.html#11275">parser_else</a>
+| <a href="dictionary_&.html#11207">_rl_init_file_error</a>
+
+<a href="dictionary_P.html#11278">parser_endif</a>
+| <a href="dictionary_&.html#11207">_rl_init_file_error</a>
+
+<a href="dictionary_P.html#9289">parser_error</a>
+| <a href="dictionary_G.html#423">get_name_for_error</a>
+| <a href="dictionary_Y.html#2690">yy_input_name</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+| <a href="dictionary_S.html#961">strcmp</a>
+| <a href="dictionary_V.html#3026">va_start</a>
+| <a href="dictionary_V.html#3006">vfprintf</a>
+| <a href="dictionary_V.html#3024">va_end</a>
+| <a href="dictionary_E.html#1133">exit_shell</a>
+
+<a href="dictionary_P.html#11280">parser_if</a>
+| <a href="dictionary_X.html#13531">xmalloc</a>
+| <a href="dictionary_X.html#13534">xrealloc</a>
+| <a href="dictionary_&.html#1971">_rl_strnicmp</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#328">strchr</a>
+| <a href="dictionary_&.html#5203">_rl_stricmp</a>
+| <a href="dictionary_X.html#16429">xfree</a>
+
+<a href="dictionary_P.html#11286">parser_include</a>
+| <a href="dictionary_S.html#328">strchr</a>
+| <a href="dictionary_&.html#11227">_rl_read_init_file</a>
+
+<a href="dictionary_P.html#6545">pat_subst</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_M.html#6336">match_pattern</a>
+| <a href="dictionary_S.html#4832">strcreplace</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_S.html#28">strncpy</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#12053">patcomp</a>
+| <a href="dictionary_S.html#4547">strmatch</a>
+
+<a href="dictionary_P.html#9206">path_is_devfd</a>
+| <a href="dictionary_S.html#1389">strncmp</a>
+| <a href="dictionary_S.html#961">strcmp</a>
+
+<a href="dictionary_P.html#2133">path_isdir</a>
+| <a href="dictionary_S.html#1019">stat</a>
+
+<a href="dictionary_P.html#16296">pathchk_builtin</a>
+| <a href="dictionary_R.html#1417">reset_internal_getopt</a>
+| <a href="dictionary_I.html#1415">internal_getopt</a>
+| <a href="dictionary_B.html#1419">builtin_usage</a>
+| <a href="dictionary_V.html#16311">validate_path</a>
+
+<a href="dictionary_P.html#5761">pathconf</a>
+| <a href="dictionary_&.html#383">_errno</a>
+
+<a href="dictionary_P.html#1876">perl_main</a>
+| <a href="dictionary_P.html#1867">PerlIO_flush</a>
+| <a href="dictionary_P.html#1869">PerlIO_stdout</a>
+| <a href="dictionary_P.html#1868">PerlIO_stderr</a>
+
+<a href="dictionary_P.html#1736">perms</a>
+| <a href="dictionary_P.html#398">printf</a>
+
+<a href="dictionary_P.html#12148">phash_create</a>
+| <a href="dictionary_H.html#11484">hash_create</a>
+
+<a href="dictionary_P.html#12149">phash_flush</a>
+| <a href="dictionary_H.html#11490">hash_flush</a>
+| <a href="dictionary_P.html#12150">phash_freedata</a>
+
+<a href="dictionary_P.html#12150">phash_freedata</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#12152">phash_insert</a>
+| <a href="dictionary_P.html#12148">phash_create</a>
+| <a href="dictionary_H.html#11496">hash_insert</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+
+<a href="dictionary_P.html#12158">phash_remove</a>
+| <a href="dictionary_H.html#11503">hash_remove</a>
+| <a href="dictionary_P.html#12150">phash_freedata</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#12161">phash_search</a>
+| <a href="dictionary_H.html#11511">hash_search</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_E.html#8047">executable_file</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#331">strrchr</a>
+| <a href="dictionary_S.html#11974">same_file</a>
+
+<a href="dictionary_P.html#3990">plural_eval</a>
+| <a href="dictionary_P.html#3990">plural_eval</a>
+| <a href="dictionary_K.html#751">kill</a>
+| <a href="dictionary_G.html#713">getpid</a>
+
+<a href="dictionary_P.html#4168">plural_lookup</a>
+| <a href="dictionary_P.html#3990">plural_eval</a>
+| <a href="dictionary_S.html#328">strchr</a>
+
+<a href="dictionary_P.html#7719">pointer</a>
+| <a href="dictionary_F.html#5326">fmtulong</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+
+<a href="dictionary_P.html#446">polite_directory_format</a>
+| <a href="dictionary_G.html#568">get_string_value</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_S.html#1389">strncmp</a>
+| <a href="dictionary_S.html#28">strncpy</a>
+
+<a href="dictionary_P.html#8083">pop_context</a>
+| <a href="dictionary_P.html#13878">pop_dollar_vars</a>
+| <a href="dictionary_P.html#14248">pop_var_context</a>
+| <a href="dictionary_S.html#13910">sv_ifs</a>
+
+<a href="dictionary_P.html#13878">pop_dollar_vars</a>
+| <a href="dictionary_R.html#1117">remember_args</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_S.html#10340">set_dollar_vars_unchanged</a>
+
+<a href="dictionary_P.html#8084">pop_scope</a>
+| <a href="dictionary_I.html#424">internal_error</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_H.html#11490">hash_flush</a>
+| <a href="dictionary_P.html#14270">push_func_var</a>
+| <a href="dictionary_P.html#14266">push_exported_var</a>
+| <a href="dictionary_H.html#11488">hash_dispose</a>
+| <a href="dictionary_S.html#13910">sv_ifs</a>
+
+<a href="dictionary_P.html#2676">pop_stream</a>
+| <a href="dictionary_I.html#2675">init_yy_io</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#14248">pop_var_context</a>
+| <a href="dictionary_I.html#424">internal_error</a>
+| <a href="dictionary_H.html#11490">hash_flush</a>
+| <a href="dictionary_P.html#14270">push_func_var</a>
+| <a href="dictionary_D.html#14067">dispose_var_context</a>
+
+<a href="dictionary_P.html#2887">popexp</a>
+| <a href="dictionary_E.html#2795">evalerror</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#16304">portable_chars_only</a>
+| <a href="dictionary_B.html#1418">builtin_error</a>
+
+<a href="dictionary_P.html#6566">pos_params</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+| <a href="dictionary_M.html#1177">make_word_list</a>
+| <a href="dictionary_M.html#1176">make_word</a>
+| <a href="dictionary_S.html#6800">string_list_pos_params</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#6578">pos_params_modcase</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+| <a href="dictionary_S.html#5360">sh_modcase</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_D.html#5855">dispose_word</a>
+| <a href="dictionary_S.html#6800">string_list_pos_params</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#6589">pos_params_pat_subst</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+| <a href="dictionary_P.html#6545">pat_subst</a>
+| <a href="dictionary_A.html#5869">alloc_word_desc</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_D.html#5855">dispose_word</a>
+| <a href="dictionary_S.html#6800">string_list_pos_params</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+
+<a href="dictionary_P.html#12059">posixtest</a>
+| <a href="dictionary_T.html#12077">two_arguments</a>
+| <a href="dictionary_T.html#12075">three_arguments</a>
+| <a href="dictionary_B.html#12028">beyond</a>
+| <a href="dictionary_E.html#12038">expr</a>
+
+<a href="dictionary_P.html#4775">postproc_subst_rhs</a>
+| <a href="dictionary_X.html#13531">xmalloc</a>
+| <a href="dictionary_X.html#13534">xrealloc</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#16429">xfree</a>
+
+<a href="dictionary_P.html#2136">postprocess_matches</a>
+| <a href="dictionary_R.html#2160">remove_duplicate_matches</a>
+| <a href="dictionary_X.html#16429">xfree</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_C.html#2072">compute_lcd_of_matches</a>
+
+<a href="dictionary_P.html#819">pretty_print_job</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_P.html#829">print_pipeline</a>
+
+<a href="dictionary_P.html#13879">print_assignment</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_P.html#10913">print_var_function</a>
+| <a href="dictionary_P.html#10914">print_var_value</a>
+
+<a href="dictionary_P.html#7882">print_builtin</a>
+| <a href="dictionary_R.html#1417">reset_internal_getopt</a>
+| <a href="dictionary_I.html#1415">internal_getopt</a>
+| <a href="dictionary_B.html#1419">builtin_usage</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+| <a href="dictionary_F.html#1086">fdopen</a>
+| <a href="dictionary_D.html#690">dup</a>
+| <a href="dictionary_M.html#1176">make_word</a>
+| <a href="dictionary_M.html#1177">make_word_list</a>
+| <a href="dictionary_P.html#7905">printf_builtin</a>
+| <a href="dictionary_D.html#1128">dispose_words</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_F.html#12">fflush</a>
+| <a href="dictionary_P.html#7899">printargs</a>
+| <a href="dictionary_F.html#1084">fclose</a>
+
+<a href="dictionary_P.html#4390">print_case_clauses</a>
+| <a href="dictionary_N.html#4388">newline</a>
+| <a href="dictionary_C.html#4342">command_print_word_list</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_P.html#4398">print_deferred_heredocs</a>
+
+<a href="dictionary_P.html#4392">print_case_command</a>
+| <a href="dictionary_P.html#4394">print_case_command_head</a>
+| <a href="dictionary_P.html#4390">print_case_clauses</a>
+| <a href="dictionary_N.html#4388">newline</a>
+
+<a href="dictionary_P.html#4394">print_case_command_head</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+
+<a href="dictionary_P.html#4396">print_command</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_M.html#4311">make_command_string</a>
+
+<a href="dictionary_P.html#4398">print_deferred_heredocs</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_P.html#4413">print_heredoc_header</a>
+| <a href="dictionary_P.html#4411">print_heredoc_body</a>
+| <a href="dictionary_D.html#4304">dispose_redirects</a>
+
+<a href="dictionary_P.html#5436">print_escaped</a>
+| <a href="dictionary_P.html#16">putc</a>
+| <a href="dictionary_F.html#1088">fputs</a>
+
+<a href="dictionary_P.html#2144">print_filename</a>
+| <a href="dictionary_F.html#2088">fnprint</a>
+| <a href="dictionary_T.html#2939">tilde_expand</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_X.html#13531">xmalloc</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_S.html#2279">stat_char</a>
+| <a href="dictionary_P.html#2133">path_isdir</a>
+| <a href="dictionary_X.html#16429">xfree</a>
+| <a href="dictionary_P.html#16">putc</a>
+
+<a href="dictionary_P.html#4401">print_for_command</a>
+| <a href="dictionary_P.html#4403">print_for_command_head</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_N.html#4388">newline</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_P.html#4398">print_deferred_heredocs</a>
+| <a href="dictionary_S.html#4445">semicolon</a>
+
+<a href="dictionary_P.html#4403">print_for_command_head</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_C.html#4342">command_print_word_list</a>
+
+<a href="dictionary_P.html#14251">print_func_list</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_P.html#10913">print_var_function</a>
+
+<a href="dictionary_P.html#4405">print_function_def</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_A.html#560">add_unwind_protect</a>
+| <a href="dictionary_R.html#4444">reset_locals</a>
+| <a href="dictionary_I.html#4359">indent</a>
+| <a href="dictionary_C.html#4247">copy_command</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_R.html#4322">remove_unwind_protect</a>
+| <a href="dictionary_N.html#4388">newline</a>
+| <a href="dictionary_P.html#4428">print_redirection_list</a>
+| <a href="dictionary_D.html#3293">dispose_command</a>
+
+<a href="dictionary_P.html#4409">print_group_command</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_I.html#4359">indent</a>
+| <a href="dictionary_S.html#4445">semicolon</a>
+
+<a href="dictionary_P.html#4411">print_heredoc_body</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+
+<a href="dictionary_P.html#4413">print_heredoc_header</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_S.html#1165">sh_single_quote</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#4417">print_heredocs</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_P.html#4422">print_redirection</a>
+
+<a href="dictionary_P.html#4420">print_if_command</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_S.html#4445">semicolon</a>
+| <a href="dictionary_P.html#4398">print_deferred_heredocs</a>
+| <a href="dictionary_N.html#4388">newline</a>
+
+<a href="dictionary_P.html#824">print_job</a>
+| <a href="dictionary_P.html#819">pretty_print_job</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+
+<a href="dictionary_P.html#12510">print_offending_line</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_P.html#9289">parser_error</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#829">print_pipeline</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_P.html#840">printable_job_status</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_C.html#678">current_working_directory</a>
+| <a href="dictionary_S.html#961">strcmp</a>
+| <a href="dictionary_P.html#446">polite_directory_format</a>
+| <a href="dictionary_F.html#12">fflush</a>
+
+<a href="dictionary_P.html#12513">print_prompt</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+| <a href="dictionary_F.html#12">fflush</a>
+
+<a href="dictionary_P.html#4422">print_redirection</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_P.html#4413">print_heredoc_header</a>
+| <a href="dictionary_P.html#4411">print_heredoc_body</a>
+
+<a href="dictionary_P.html#4428">print_redirection_list</a>
+| <a href="dictionary_C.html#4248">copy_redirect</a>
+| <a href="dictionary_P.html#4422">print_redirection</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_P.html#4417">print_heredocs</a>
+| <a href="dictionary_D.html#4304">dispose_redirects</a>
+
+<a href="dictionary_P.html#15334">print_sig</a>
+| <a href="dictionary_T.html#1096">time</a>
+| <a href="dictionary_L.html#4970">localtime</a>
+| <a href="dictionary_S.html#3406">strftime</a>
+| <a href="dictionary_P.html#398">printf</a>
+
+<a href="dictionary_P.html#4313">print_simple_command</a>
+| <a href="dictionary_C.html#4342">command_print_word_list</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_P.html#4428">print_redirection_list</a>
+
+<a href="dictionary_P.html#4433">print_until_command</a>
+| <a href="dictionary_P.html#4435">print_until_or_while</a>
+
+<a href="dictionary_P.html#4435">print_until_or_while</a>
+| <a href="dictionary_C.html#4346">cprintf</a>
+| <a href="dictionary_M.html#4375">make_command_string_internal</a>
+| <a href="dictionary_P.html#4398">print_deferred_heredocs</a>
+| <a href="dictionary_S.html#4445">semicolon</a>
+| <a href="dictionary_N.html#4388">newline</a>
+
+<a href="dictionary_P.html#10913">print_var_function</a>
+| <a href="dictionary_N.html#4379">named_function_string</a>
+| <a href="dictionary_P.html#398">printf</a>
+
+<a href="dictionary_P.html#14255">print_var_list</a>
+| <a href="dictionary_P.html#13879">print_assignment</a>
+
+<a href="dictionary_P.html#10914">print_var_value</a>
+| <a href="dictionary_A.html#4308">ansic_shouldquote</a>
+| <a href="dictionary_A.html#4307">ansic_quote</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_F.html#36">free</a>
+| <a href="dictionary_S.html#4315">sh_contains_shell_metas</a>
+| <a href="dictionary_S.html#1165">sh_single_quote</a>
+
+<a href="dictionary_P.html#4438">print_while_command</a>
+| <a href="dictionary_P.html#4435">print_until_or_while</a>
+
+<a href="dictionary_P.html#4440">print_word_list</a>
+| <a href="dictionary_&.html#4337">_print_word_list</a>
+| <a href="dictionary_X.html#4454">xprintf</a>
+
+<a href="dictionary_P.html#840">printable_job_status</a>
+| <a href="dictionary_S.html#19">sprintf</a>
+| <a href="dictionary_S.html#558">signal_name</a>
+| <a href="dictionary_J.html#1297">j_strsignal</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+
+<a href="dictionary_P.html#2156">printable_part</a>
+| <a href="dictionary_S.html#331">strrchr</a>
+
+<a href="dictionary_P.html#7899">printargs</a>
+| <a href="dictionary_A.html#5322">ansicstr</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#10915">printenv_builtin</a>
+| <a href="dictionary_R.html#1417">reset_internal_getopt</a>
+| <a href="dictionary_I.html#1415">internal_getopt</a>
+| <a href="dictionary_B.html#1419">builtin_usage</a>
+| <a href="dictionary_M.html#5945">maybe_make_export_env</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_F.html#2725">find_variable</a>
+| <a href="dictionary_P.html#10913">print_var_function</a>
+| <a href="dictionary_P.html#10914">print_var_value</a>
+
+<a href="dictionary_P.html#1743">printfinfo</a>
+| <a href="dictionary_G.html#1724">getstat</a>
+| <a href="dictionary_P.html#1756">printst</a>
+
+<a href="dictionary_P.html#1746">printmode</a>
+| <a href="dictionary_S.html#1702">S_ISBLK</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_S.html#1704">S_ISLNK</a>
+| <a href="dictionary_S.html#1705">S_ISSOCK</a>
+| <a href="dictionary_P.html#1736">perms</a>
+| <a href="dictionary_G.html#1722">getperm</a>
+
+<a href="dictionary_P.html#1748">printsome</a>
+| <a href="dictionary_G.html#1724">getstat</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_C.html#1660">ctime</a>
+| <a href="dictionary_P.html#1736">perms</a>
+| <a href="dictionary_G.html#1722">getperm</a>
+| <a href="dictionary_G.html#1284">getpwuid</a>
+| <a href="dictionary_G.html#1429">getgrgid</a>
+
+<a href="dictionary_P.html#1756">printst</a>
+| <a href="dictionary_M.html#1729">major</a>
+| <a href="dictionary_M.html#1732">minor</a>
+| <a href="dictionary_P.html#398">printf</a>
+| <a href="dictionary_P.html#1746">printmode</a>
+| <a href="dictionary_G.html#1284">getpwuid</a>
+| <a href="dictionary_G.html#1429">getgrgid</a>
+| <a href="dictionary_C.html#1660">ctime</a>
+| <a href="dictionary_F.html#12">fflush</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+
+<a href="dictionary_P.html#16154">process_line</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+| <a href="dictionary_P.html#7007">perror</a>
+| <a href="dictionary_E.html#600">exit</a>
+| <a href="dictionary_S.html#961">strcmp</a>
+| <a href="dictionary_S.html#938">sleep</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#13450">produces_handler</a>
+| <a href="dictionary_L.html#13425">line_error</a>
+| <a href="dictionary_G.html#13411">get_arg</a>
+| <a href="dictionary_F.html#1783">fopen</a>
+| <a href="dictionary_F.html#708">file_error</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+
+<a href="dictionary_P.html#3240">programming_error</a>
+| <a href="dictionary_V.html#3026">va_start</a>
+| <a href="dictionary_V.html#3006">vfprintf</a>
+| <a href="dictionary_&.html#375">__acrt_iob_func</a>
+| <a href="dictionary_F.html#14">fprintf</a>
+| <a href="dictionary_V.html#3024">va_end</a>
+| <a href="dictionary_F.html#12">fflush</a>
+| <a href="dictionary_A.html#4924">abort</a>
+
+<a href="dictionary_P.html#12514">prompt_again</a>
+| <a href="dictionary_G.html#568">get_string_value</a>
+| <a href="dictionary_D.html#4309">decode_prompt_string</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_F.html#36">free</a>
+
+<a href="dictionary_P.html#14259">propagate_temp_var</a>
+| <a href="dictionary_P.html#14276">push_temp_var</a>
+| <a href="dictionary_F.html#14088">find_special_var</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_D.html#14069">dispose_variable</a>
+
+<a href="dictionary_P.html#4915">push_builtin</a>
+| <a href="dictionary_R.html#1417">reset_internal_getopt</a>
+| <a href="dictionary_I.html#1415">internal_getopt</a>
+| <a href="dictionary_B.html#1419">builtin_usage</a>
+| <a href="dictionary_B.html#1418">builtin_error</a>
+| <a href="dictionary_S.html#1991">strerror</a>
+| <a href="dictionary_&.html#383">_errno</a>
+| <a href="dictionary_A.html#4912">adjust_shell_level</a>
+| <a href="dictionary_G.html#713">getpid</a>
+| <a href="dictionary_S.html#4913">set_ppid</a>
+| <a href="dictionary_S.html#3252">stop_making_children</a>
+| <a href="dictionary_C.html#670">cleanup_the_pipeline</a>
+| <a href="dictionary_D.html#681">delete_all_jobs</a>
+| <a href="dictionary_I.html#3214">initialize_job_control</a>
+| <a href="dictionary_I.html#11048">initialize_job_signals</a>
+| <a href="dictionary_R.html#1137">reader_loop</a>
+| <a href="dictionary_E.html#1133">exit_shell</a>
+| <a href="dictionary_S.html#8760">stop_pipeline</a>
+
+<a href="dictionary_P.html#8085">push_context</a>
+| <a href="dictionary_P.html#13886">push_dollar_vars</a>
+| <a href="dictionary_P.html#14281">push_var_context</a>
+
+<a href="dictionary_P.html#13886">push_dollar_vars</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_L.html#6316">list_rest_of_args</a>
+
+<a href="dictionary_P.html#14266">push_exported_var</a>
+| <a href="dictionary_B.html#14043">bind_variable_internal</a>
+| <a href="dictionary_S.html#2728">stupidly_hack_special_variables</a>
+| <a href="dictionary_D.html#14069">dispose_variable</a>
+
+<a href="dictionary_P.html#14270">push_func_var</a>
+| <a href="dictionary_H.html#11484">hash_create</a>
+| <a href="dictionary_B.html#14043">bind_variable_internal</a>
+| <a href="dictionary_S.html#2728">stupidly_hack_special_variables</a>
+| <a href="dictionary_D.html#14069">dispose_variable</a>
+
+<a href="dictionary_P.html#8086">push_scope</a>
+| <a href="dictionary_P.html#14281">push_var_context</a>
+
+<a href="dictionary_P.html#2677">push_stream</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_X.html#4867">xbcopy</a>
+
+<a href="dictionary_P.html#14276">push_temp_var</a>
+| <a href="dictionary_H.html#11484">hash_create</a>
+| <a href="dictionary_B.html#14043">bind_variable_internal</a>
+| <a href="dictionary_F.html#14088">find_special_var</a>
+| <a href="dictionary_S.html#23">strcpy</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+| <a href="dictionary_S.html#26">strlen</a>
+| <a href="dictionary_D.html#14069">dispose_variable</a>
+
+<a href="dictionary_P.html#14281">push_var_context</a>
+| <a href="dictionary_N.html#13873">new_var_context</a>
+| <a href="dictionary_F.html#14098">flatten</a>
+| <a href="dictionary_S.html#14298">set_context</a>
+
+<a href="dictionary_P.html#2889">pushexp</a>
+| <a href="dictionary_E.html#2795">evalerror</a>
+| <a href="dictionary_X.html#2358">xrealloc</a>
+| <a href="dictionary_X.html#2355">xmalloc</a>
+
+<a href="dictionary_P.html#8087">put_command_name_into_env</a>
+| <a href="dictionary_U.html#14337">update_export_env_inplace</a>
+</pre>
+<p>
+<div class="footer"><b>Generated:</b> 2024年4月30日 8:39:36</div><center><p><div class="scitools-tag">Scientific Toolworks, Inc.<br></div><div class="scitools-link"><A target="_blank" href="mailto:support@scitools.com">support@scitools.com</A><br><A href="http://www.scitools.com">www.scitools.com</A></div></center></div></body></html>

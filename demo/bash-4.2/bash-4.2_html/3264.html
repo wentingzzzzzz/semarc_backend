@@ -1,0 +1,61 @@
+<html><head><title>ndir.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: E:\XJTU\架构逆向\lda_demoGPT\local\data\bash-4.2\lib\glob\ndir.h</h3>
+<SCRIPT>
+defaultStatus = "File: E:\\XJTU\\架构逆向\\lda_demoGPT\\local\\data\\bash-4.2\\lib\\glob\\ndir.h";
+top.document.title  = "ndir.h";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">/* &lt;dir.h&gt; -- definitions for 4.2BSD-compatible directory access.</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment">   last edit:	09-Jul-1983	D A Gwyn. */</span>
+<a name="3"><font size=-1>3     </font></a><span class="comment"></span>
+<a name="4"><font size=-1>4     </font></a><span class="comment"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_V.html#3268">VMS</a>)</span>
+<a name="5"><font size=-1>5     </font></a><span class="default"></span><span class="preproc">#  if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(FAB$C_BID)</span>
+<a name="6"><font size=-1>6     </font></a><span class="default"></span><span class="preproc">#    include </span><span class="string">&lt;fab.h&gt;</span>
+<a name="7"><font size=-1>7     </font></a><span class="string"></span><span class="preproc">#  endif</span>
+<a name="8"><font size=-1>8     </font></a><span class="preproc">#  if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(NAM$C_BID)</span>
+<a name="9"><font size=-1>9     </font></a><span class="default"></span><span class="preproc">#    include </span><span class="string">&lt;nam.h&gt;</span>
+<a name="10"><font size=-1>10     </font></a><span class="string"></span><span class="preproc">#  endif</span>
+<a name="11"><font size=-1>11     </font></a><span class="preproc">#  if </span><span class="default">!</span><span class="preproc">defined </span><span class="default">(RMS$_SUC)</span>
+<a name="12"><font size=-1>12     </font></a><span class="default"></span><span class="preproc">#    include </span><span class="string">&lt;rmsdef.h&gt;</span>
+<a name="13"><font size=-1>13     </font></a><span class="string"></span><span class="preproc">#  endif</span>
+<a name="14"><font size=-1>14     </font></a><span class="preproc">#  include </span><span class="string">&quot;dir.h&quot;</span>
+<a name="15"><font size=-1>15     </font></a><span class="string"></span><span class="preproc">#endif </span><span class="comment">/* VMS */</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment"></span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">/* Size of directory block. */</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment"></span><span class="preproc">#define <a href="dictionary_D.html#3266">DIRBLKSIZ</a> </span><span class="number">512</span>
+<a name="19"><font size=-1>19     </font></a><span class="number"></span>
+<a name="20"><font size=-1>20     </font></a><span class="number"></span><span class="comment">/* NOTE:  MAXNAMLEN must be one less than a multiple of 4 */</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment"></span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span><span class="preproc">#if defined </span><span class="default">(<a href="dictionary_V.html#3268">VMS</a>)</span>
+<a name="23"><font size=-1>23     </font></a><span class="default"></span><span class="preproc">#  define <a href="dictionary_M.html#3267">MAXNAMLEN</a> </span><span class="default">(DIR$S_NAME + </span><span class="number">7</span><span class="default">)	</span><span class="comment">/* 80 plus room for version #.  */</span>
+<a name="24"><font size=-1>24     </font></a><span class="comment"></span><span class="preproc">#  define </span><span class="default">MAXFULLSPEC NAM$C_MAXRSS	</span><span class="comment">/* Maximum full spec */</span>
+<a name="25"><font size=-1>25     </font></a><span class="comment"></span><span class="preproc">#else</span>
+<a name="26"><font size=-1>26     </font></a><span class="preproc">#  define <a href="dictionary_M.html#3267">MAXNAMLEN</a> </span><span class="number">15			</span><span class="comment">/* Maximum filename length. */</span>
+<a name="27"><font size=-1>27     </font></a><span class="comment"></span><span class="preproc">#endif </span><span class="comment">/* VMS */</span>
+<a name="28"><font size=-1>28     </font></a><span class="comment"></span>
+<a name="29"><font size=-1>29     </font></a><span class="comment">/* Data from readdir (). */</span>
+<a name="30"><font size=-1>30     </font></a><span class="comment"></span><span class="keyword">struct <a href="dictionary_D.html#1031">direct</a> </span><span class="default">{</span>
+<a name="31"><font size=-1>31     </font></a><span class="default">  </span><span class="keyword">long <a href="dictionary_D.html#3276">d_ino</a></span><span class="default">;			</span><span class="comment">/* Inode number of entry. */</span>
+<a name="32"><font size=-1>32     </font></a><span class="comment">  </span><span class="keyword">unsigned short <a href="dictionary_D.html#3279">d_reclen</a></span><span class="default">;	</span><span class="comment">/* Length of this record. */</span>
+<a name="33"><font size=-1>33     </font></a><span class="comment">  </span><span class="keyword">unsigned short <a href="dictionary_D.html#3278">d_namlen</a></span><span class="default">;	</span><span class="comment">/* Length of string in d_name. */</span>
+<a name="34"><font size=-1>34     </font></a><span class="comment">  </span><span class="keyword">char <a href="dictionary_D.html#3277">d_name</a></span><span class="default">[<a href="dictionary_M.html#3267">MAXNAMLEN</a> + </span><span class="number">1</span><span class="default">];	</span><span class="comment">/* Name of file. */</span>
+<a name="35"><font size=-1>35     </font></a><span class="comment"></span><span class="default">};</span>
+<a name="36"><font size=-1>36     </font></a><span class="default"></span>
+<a name="37"><font size=-1>37     </font></a><span class="default"></span><span class="comment">/* Stream data from opendir (). */</span>
+<a name="38"><font size=-1>38     </font></a><span class="comment"></span><span class="keyword">typedef struct </span><span class="default">{</span>
+<a name="39"><font size=-1>39     </font></a><span class="default">  </span><span class="keyword">int <a href="dictionary_D.html#3271">dd_fd</a></span><span class="default">;			</span><span class="comment">/* File descriptor. */</span>
+<a name="40"><font size=-1>40     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_D.html#3272">dd_loc</a></span><span class="default">;			</span><span class="comment">/* Offset in block. */</span>
+<a name="41"><font size=-1>41     </font></a><span class="comment">  </span><span class="keyword">int <a href="dictionary_D.html#3273">dd_size</a></span><span class="default">;			</span><span class="comment">/* Amount of valid data. */</span>
+<a name="42"><font size=-1>42     </font></a><span class="comment">  </span><span class="keyword">char	<a href="dictionary_D.html#3270">dd_buf</a></span><span class="default">[<a href="dictionary_D.html#3266">DIRBLKSIZ</a>];	</span><span class="comment">/* Directory block. */</span>
+<a name="43"><font size=-1>43     </font></a><span class="comment"></span><span class="default">} <a href="dictionary_D.html#3265">DIR</a>;</span>
+<a name="44"><font size=-1>44     </font></a><span class="default"></span>
+<a name="45"><font size=-1>45     </font></a><span class="default"></span><span class="keyword">extern <a href="dictionary_D.html#3265">DIR</a> </span><span class="default">*<a href="dictionary_O.html#3282">opendir</a> ();</span>
+<a name="46"><font size=-1>46     </font></a><span class="default"></span><span class="keyword">extern struct <a href="dictionary_D.html#1031">direct</a> </span><span class="default">*<a href="dictionary_R.html#3283">readdir</a> ();</span>
+<a name="47"><font size=-1>47     </font></a><span class="default"></span><span class="keyword">extern long <a href="dictionary_T.html#3287">telldir</a> </span><span class="default">();</span>
+<a name="48"><font size=-1>48     </font></a><span class="default"></span><span class="keyword">extern void <a href="dictionary_S.html#3286">seekdir</a> </span><span class="default">(), <a href="dictionary_C.html#3274">closedir</a> ();</span>
+<a name="49"><font size=-1>49     </font></a><span class="default"></span>
+<a name="50"><font size=-1>50     </font></a><span class="default"></span><span class="preproc">#define <a href="dictionary_R.html#3284">rewinddir</a></span><span class="default">(dirp) seekdir (dirp, </span><span class="number">0L</span><span class="default">)</span>
+<a name="51"><font size=-1>51     </font></a><span class="default"></span>
+</pre></body></html>

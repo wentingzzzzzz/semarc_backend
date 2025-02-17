@@ -1,0 +1,307 @@
+{
+    "pycg.machinery.classes.ClassManager.create": [
+        "pycg.machinery.classes.ClassNode.__init__"
+    ],
+    "pycg.machinery.definitions.DefinitionManager.create": [
+        "pycg.machinery.definitions.DefinitionManager.get",
+        "pycg.machinery.definitions.Definition.__init__"
+    ],
+    "pycg.machinery.definitions.DefinitionManager.assign": [
+        "pycg.machinery.definitions.Definition.merge",
+        "pycg.machinery.definitions.Definition.get_name_pointer",
+        "pycg.machinery.definitions.Definition.__init__"
+    ],
+    "pycg.machinery.definitions.DefinitionManager.transitive_closure": [
+        "pycg.machinery.definitions.DefinitionManager.transitive_closure.dfs"
+    ],
+    "pycg.machinery.definitions.DefinitionManager.complete_definitions": [
+        "pycg.machinery.pointers.NamePointer.add_arg",
+        "pycg.machinery.definitions.Definition.get_name_pointer",
+        "pycg.machinery.pointers.NamePointer.get_arg",
+        "pycg.machinery.pointers.NamePointer.add_pos_arg",
+        "pycg.machinery.pointers.NamePointer.get_pos_arg",
+        "pycg.machinery.definitions.DefinitionManager.complete_definitions.update_pointsto_args"
+    ],
+    "pycg.machinery.definitions.Definition.__init__": [
+        "pycg.machinery.pointers.NamePointer.__init__"
+    ],
+    "pycg.machinery.definitions.DefinitionManager.transitive_closure.dfs": [
+        "pycg.machinery.definitions.DefinitionManager.transitive_closure.dfs"
+    ],
+    "pycg.machinery.imports.ImportManager.create_node": [
+        "pycg.machinery.imports.ImportManager.get_node"
+    ],
+    "pycg.machinery.imports.ImportManager.create_edge": [
+        "pycg.machinery.imports.ImportManager.get_node",
+        "pycg.machinery.imports.ImportManager._get_module_path"
+    ],
+    "pycg.machinery.imports.ImportManager.install_hooks": [
+        "pycg.machinery.imports.ImportManager._clear_caches",
+        "pycg.machinery.imports.get_custom_loader"
+    ],
+    "pycg.machinery.modules.ModuleManager.create": [
+        "pycg.machinery.modules.Module.__init__"
+    ],
+    "pycg.machinery.scopes.ScopeManager.handle_module": [
+        "pycg.machinery.scopes.ScopeManager.handle_module.process"
+    ],
+    "pycg.machinery.scopes.ScopeManager.create_scope": [
+        "pycg.machinery.scopes.ScopeItem.__init__"
+    ],
+    "pycg.machinery.scopes.ScopeManager.handle_module.process": [
+        "pycg.machinery.scopes.ScopeManager.handle_module.process"
+    ],
+    "pycg.processing.base.ProcessingBase._visit_assign": [
+        "pycg.processing.base.ProcessingBase._visit_assign.do_assign"
+    ],
+    "pycg.processing.base.ProcessingBase._visit_assign.do_assign": [
+        "pycg.processing.base.ProcessingBase._visit_assign.do_assign"
+    ],
+    "pycg.processing.cgprocessor.CallGraphProcessor.visit_Call": [
+        "pycg.processing.cgprocessor.CallGraphProcessor.visit_Call.create_ext_edge"
+    ],
+    "pycg.processing.preprocessor.PreProcessor.visit_Import": [
+        "pycg.processing.preprocessor.PreProcessor.visit_Import.add_external_def",
+        "pycg.processing.preprocessor.PreProcessor.visit_Import.handle_scopes",
+        "pycg.processing.preprocessor.PreProcessor.visit_Import.handle_src_name"
+    ],
+    "pycg.processing.preprocessor.PreProcessor.visit_Import.handle_scopes": [
+        "pycg.processing.preprocessor.PreProcessor.visit_Import.handle_scopes.create_def"
+    ],
+    "pycg.pycg.CallGraphGenerator.setUp": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.key_err.KeyErrors.__init__",
+        "pycg.machinery.classes.ClassManager.__init__",
+        "pycg.machinery.modules.ModuleManager.__init__",
+        "pycg.machinery.definitions.DefinitionManager.__init__",
+        "pycg.machinery.callgraph.CallGraph.__init__",
+        "pycg.machinery.scopes.ScopeManager.__init__"
+    ],
+    "pycg.formats.fasten.Fasten.find_dependencies": [
+        "pycg.formats.fasten.Fasten.find_dependencies.add_range"
+    ],
+    "pycg.tests.callgraph_test.CallGraphTest.setUp": [
+        "pycg.machinery.callgraph.CallGraph.__init__"
+    ],
+    "pycg.tests.definitions_test.DefinitionManagerTest.test_create": [
+        "pycg.machinery.definitions.DefinitionManager.create",
+        "pycg.machinery.definitions.Definition.get_ns",
+        "pycg.machinery.definitions.Definition.get_type",
+        "pycg.machinery.definitions.DefinitionManager.__init__",
+        "pycg.machinery.definitions.DefinitionManager.get"
+    ],
+    "pycg.tests.definitions_test.DefinitionManagerTest.test_assign": [
+        "pycg.machinery.definitions.Definition.get_ns",
+        "pycg.machinery.definitions.Definition.get_type",
+        "pycg.machinery.definitions.DefinitionManager.assign",
+        "pycg.machinery.definitions.DefinitionManager.__init__",
+        "pycg.machinery.definitions.Definition.get_name_pointer",
+        "pycg.machinery.pointers.NamePointer.get_arg",
+        "pycg.machinery.pointers.Pointer.get"
+    ],
+    "pycg.tests.definitions_test.DefinitionManagerTest.test_handle_function_def": [
+        "pycg.machinery.definitions.DefinitionManager.__init__"
+    ],
+    "pycg.tests.fasten_format_test.FastenFormatTest.get_formatter": [
+        "pycg.formats.fasten.Fasten.__init__"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_create_node": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager.create_node",
+        "pycg.machinery.imports.ImportManager.set_pkg"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_set_filepath": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager.set_pkg"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_create_edge": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager.create_edge",
+        "pycg.machinery.imports.ImportManager.set_pkg"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_hooks": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager.remove_hooks",
+        "pycg.machinery.imports.ImportManager.set_pkg",
+        "pycg.machinery.imports.ImportManager.install_hooks"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_custom_loader": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.get_custom_loader.CustomLoader.get_filename",
+        "pycg.machinery.imports.ImportManager.set_pkg",
+        "pycg.machinery.imports.ImportManager.get_filepath",
+        "pycg.machinery.imports.get_custom_loader.CustomLoader.__init__",
+        "pycg.machinery.imports.get_custom_loader",
+        "pycg.machinery.imports.ImportManager.create_node",
+        "pycg.machinery.imports.get_custom_loader.CustomLoader.get_data",
+        "pycg.machinery.imports.ImportManager.get_imports"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_handle_import_level": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager._handle_import_level",
+        "pycg.machinery.imports.ImportManager.set_pkg"
+    ],
+    "pycg.tests.imports_test.ImportsTest.test_handle_import": [
+        "pycg.machinery.imports.ImportManager.__init__",
+        "pycg.machinery.imports.ImportManager.handle_import",
+        "pycg.machinery.imports.ImportManager.set_pkg",
+        "pycg.tests.imports_test.ImportsTest.test_handle_import.MockImport.__init__",
+        "pycg.machinery.imports.ImportManager.create_node",
+        "pycg.machinery.imports.ImportManager.get_imports"
+    ],
+    "pycg.tests.pointers_test.PointerTest.test_merge": [
+        "pycg.machinery.pointers.Pointer.__init__",
+        "pycg.machinery.pointers.Pointer.merge",
+        "pycg.machinery.pointers.Pointer.add",
+        "pycg.machinery.pointers.Pointer.get"
+    ],
+    "pycg.tests.pointers_test.PointerTest.test_literal_pointer": [
+        "pycg.machinery.pointers.Pointer.get",
+        "pycg.machinery.pointers.LiteralPointer.add"
+    ],
+    "pycg.tests.pointers_test.PointerTest.test_name_pointer": [
+        "pycg.machinery.pointers.NamePointer.__init__",
+        "pycg.machinery.pointers.NamePointer.get_args",
+        "pycg.machinery.pointers.NamePointer.add_pos_lit_arg",
+        "pycg.machinery.pointers.NamePointer.add_pos_arg",
+        "pycg.machinery.pointers.NamePointer.get_pos_args"
+    ],
+    "pycg.tests.pointers_test.PointerTest.test_name_pointer_merge": [
+        "pycg.machinery.pointers.NamePointer.__init__",
+        "pycg.machinery.pointers.NamePointer.get_arg",
+        "pycg.machinery.pointers.Pointer.add",
+        "pycg.machinery.pointers.NamePointer.merge",
+        "pycg.machinery.pointers.Pointer.get"
+    ],
+    "pycg.tests.scopes_test.ScopeManagerTest.test_handle_module": [
+        "pycg.machinery.scopes.ScopeManager.get_scope",
+        "pycg.machinery.scopes.ScopeManager.handle_module",
+        "pycg.tests.scopes_test.ScopeManagerTest.test_handle_module.MockTable.__init__",
+        "pycg.machinery.scopes.ScopeManager.__init__",
+        "pycg.machinery.scopes.ScopeItem.get_ns"
+    ],
+    "pycg.tests.scopes_test.ScopeManagerTest.test_handle_assign": [
+        "pycg.machinery.scopes.ScopeManager.get_def",
+        "pycg.machinery.scopes.ScopeManager.handle_assign",
+        "pycg.machinery.scopes.ScopeItem.__init__",
+        "pycg.machinery.scopes.ScopeManager.__init__"
+    ],
+    "pycg.tests.scopes_test.ScopeManagerTest.test_get_def": [
+        "pycg.machinery.scopes.ScopeManager.__init__",
+        "pycg.machinery.scopes.ScopeManager.get_def",
+        "pycg.machinery.scopes.ScopeItem.add_def"
+    ],
+    "pycg.tests.scopes_test.ScopeManagerTest.test_get_scope": [
+        "pycg.machinery.scopes.ScopeManager.get_scope",
+        "pycg.machinery.scopes.ScopeItem.__init__",
+        "pycg.machinery.scopes.ScopeManager.__init__"
+    ],
+    "pycg.tests.scopes_test.ScopeItemTest.test_setup": [
+        "pycg.machinery.scopes.ScopeItem.__init__",
+        "pycg.machinery.scopes.ScopeItem.get_defs"
+    ],
+    "pycg.tests.scopes_test.ScopeItemTest.test_get_ns": [
+        "pycg.machinery.scopes.ScopeItem.__init__",
+        "pycg.machinery.scopes.ScopeItem.get_ns"
+    ],
+    "pycg.tests.scopes_test.ScopeItemTest.test_defs": [
+        "pycg.tests.scopes_test.ScopeItemTest.test_defs.MockDef.__init__",
+        "pycg.machinery.scopes.ScopeItem.merge_def",
+        "pycg.machinery.scopes.ScopeItem.get_defs",
+        "pycg.machinery.scopes.ScopeItem.add_def",
+        "pycg.machinery.scopes.ScopeItem.get_def",
+        "pycg.machinery.scopes.ScopeItem.__init__"
+    ],
+    "pycg.__main__": [
+        "pycg.__main__.main"
+    ],
+    "pycg.__main__.main": [
+        "pycg.pycg.CallGraphGenerator.__init__",
+        "pycg.pycg.CallGraphGenerator.output_key_errs",
+        "pycg.pycg.CallGraphGenerator.analyze"
+    ],
+    "pycg.machinery.pointers.NamePointer.add_pos_arg": [
+        "pycg.machinery.pointers.NamePointer.add_arg",
+        "pycg.machinery.pointers.NamePointer._sanitize_pos"
+    ],
+    "pycg.machinery.pointers.NamePointer.add_pos_lit_arg": [
+        "pycg.machinery.pointers.NamePointer._sanitize_pos",
+        "pycg.machinery.pointers.NamePointer.add_lit_arg"
+    ],
+    "pycg.machinery.pointers.NamePointer.merge": [
+        "pycg.machinery.pointers.NamePointer.add_arg",
+        "pycg.machinery.pointers.NamePointer.get_pos_names",
+        "pycg.machinery.pointers.NamePointer.get_args"
+    ],
+    "pycg.machinery.imports.ImportManager._handle_import_level": [
+        "pycg.machinery.imports.ImportManager._is_init_file",
+        "pycg.machinery.imports.ImportManager._get_module_path"
+    ],
+    "pycg.machinery.imports.ImportManager.handle_import": [
+        "pycg.machinery.imports.ImportManager._handle_import_level",
+        "pycg.machinery.imports.ImportManager.create_edge",
+        "pycg.machinery.imports.ImportManager._do_import"
+    ],
+    "pycg.machinery.imports.ImportManager.remove_hooks": [
+        "pycg.machinery.imports.ImportManager._clear_caches"
+    ],
+    "pycg.machinery.scopes.ScopeManager.handle_assign": [
+        "pycg.machinery.scopes.ScopeItem.add_def",
+        "pycg.machinery.scopes.ScopeManager.get_scope"
+    ],
+    "pycg.machinery.scopes.ScopeManager.get_def": [
+        "pycg.machinery.scopes.ScopeItem.get_def",
+        "pycg.machinery.scopes.ScopeManager.get_scope"
+    ],
+    "pycg.machinery.scopes.ScopeManager.get_scope": [
+        "pycg.machinery.scopes.ScopeManager.get_scopes"
+    ],
+    "pycg.machinery.scopes.ScopeItem.get_def": [
+        "pycg.machinery.scopes.ScopeItem.get_defs"
+    ],
+    "pycg.machinery.scopes.ScopeItem.merge_def": [
+        "pycg.tests.scopes_test.ScopeItemTest.test_defs.MockDef.merge_points_to",
+        "pycg.tests.scopes_test.ScopeItemTest.test_defs.MockDef.get_points_to"
+    ],
+    "pycg.pycg.CallGraphGenerator.__init__": [
+        "pycg.pycg.CallGraphGenerator.setUp"
+    ],
+    "pycg.pycg.CallGraphGenerator.analyze": [
+        "pycg.pycg.CallGraphGenerator.reset_counters",
+        "pycg.pycg.CallGraphGenerator.extract_state",
+        "pycg.machinery.definitions.DefinitionManager.complete_definitions",
+        "pycg.pycg.CallGraphGenerator.do_pass",
+        "pycg.pycg.CallGraphGenerator.has_converged"
+    ],
+    "pycg.pycg.CallGraphGenerator.output_key_errs": [
+        "pycg.machinery.key_err.KeyErrors.get"
+    ],
+    "pycg.machinery.pointers.NamePointer.add_arg": [
+        "pycg.machinery.pointers.NamePointer.get_or_create"
+    ],
+    "pycg.machinery.pointers.NamePointer.add_lit_arg": [
+        "pycg.machinery.pointers.NamePointer.get_or_create"
+    ],
+    "pycg.machinery.imports.ImportManager._do_import": [
+        "pycg.machinery.imports.ImportManager.create_edge"
+    ],
+    "pycg.pycg.CallGraphGenerator.extract_state": [
+        "pycg.machinery.scopes.ScopeManager.get_scopes",
+        "pycg.machinery.classes.ClassManager.get_classes",
+        "pycg.machinery.definitions.DefinitionManager.get_defs"
+    ],
+    "pycg.pycg.CallGraphGenerator.reset_counters": [
+        "pycg.machinery.scopes.ScopeManager.get_scopes"
+    ],
+    "pycg.pycg.CallGraphGenerator.has_converged": [
+        "pycg.pycg.CallGraphGenerator.extract_state"
+    ],
+    "pycg.machinery.definitions.Definition.merge": [
+        "pycg.machinery.pointers.Pointer.merge",
+        "pycg.machinery.pointers.NamePointer.merge"
+    ],
+    "pycg.machinery.pointers.NamePointer.get_pos_arg": [
+        "pycg.machinery.pointers.NamePointer._sanitize_pos",
+        "pycg.machinery.pointers.NamePointer.get_arg"
+    ]
+}
