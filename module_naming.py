@@ -160,9 +160,11 @@ def replace_no_with_name(cluster_result_path, cc_map, output_path):
         for component in map_data['structure']:
             # 遍历 'nested' 数组中的每个 'cluster'
             for cluster in component['nested']:
-                no = cluster['No.']
+                no = cluster.get('No.')  # 获取 No. 字段的值
                 if no in no_to_name:
-                    cluster['No.'] = no_to_name[no]
+                    # 用对应的 name 替换 No. 字段
+                    cluster['name'] = no_to_name[no]  # 替换为 name
+                    del cluster['No.']  # 删除 No. 字段，因为它已经被替换
 
         # 将修改后的数据写入一个新文件
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -187,13 +189,14 @@ def module_naming(result_dir,project_name,cluster_path,functionality_path):
 
     if check_file_exists_and_not_empty(merged_path) and check_file_exists_and_not_empty(named_cluster_path) and check_file_exists_and_not_empty(module_name_path):
         print("Find cache.")
-        return  # 如果文件都存在且不为空，直接结束函数
+        return named_cluster_path,cluster_component_path # 如果文件都存在且不为空，直接结束函数
 
     merge_functionality_with_clusters(cluster_path, functionality_path, merged_path)
     module_name_res=analysis_json(json_file=merged_path,llm_kwargs=llm_kwargs, plugin_kwargs={}, history=[], system_prompt="")
     md2json_name(module_name_res,module_name_path)
     mapping_module(cluster_path,module_name_path,named_cluster_path)
     replace_no_with_name(module_name_path,cc_map,cluster_component_path)
+    return named_cluster_path,cluster_component_path
 
 
 # if __name__ == "__main__":

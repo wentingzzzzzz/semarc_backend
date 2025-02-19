@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from uml_to_code_generation import tools as tl
@@ -6,6 +8,9 @@ from arch_pattern_analysis import execute_parsing_and_analysis
 from semantic_analysis import code_semantic_analysis, get_semantic
 from cluster_project import cluster_project
 from module_naming import module_naming
+from merge_final_json import merge_json_files
+from graph_json import graph_json
+from graph_add_function_json import merge_functionality_with_clusters,convert_component_to_sum
 import os
 
 app = Flask(__name__)
@@ -76,7 +81,7 @@ def get_semantic_api():
         return jsonify({
             "message": "Semantic analysis completed",
             "code_sem_file": code_sem_path,
-            "arch_sem_file": arch_sem_path
+            "arch_sem_file": arch_sem_path,
         }), 200
 
     except Exception as e:
@@ -109,25 +114,53 @@ def run_clustering():
     pattern_file_path = os.path.join(result_dir, project_name, f'{project_name}_ArchSem.json')
     llm_file_path = os.path.join(result_dir, project_name, f'{project_name}_CodeSem.json')
 
-    try:
-        # 调用 cluster_project 函数执行聚类操作
-        cluster_project(
-            data_paths=[project_folder],
-            gt_json_paths=None,
-            resolution=1.7,
-            result_folder_name=None,
-            cache_dir='./cache',
-            save_to_csvfile=True,
-            stopword_files=[stopwords_path],
-            generate_figures=True,
-            pattern_file=[pattern_file_path],
-            llm_file=[llm_file_path]
-        )
-        module_naming(result_dir,project_name, os.path.join(result_dir, project_name, f'cluster_result.json'), llm_file_path)
+    # try:
+    # 调用 cluster_project 函数执行聚类操作
+    cluster_project(
+        data_paths=[project_folder],
+        gt_json_paths=None,
+        resolution=1.2,
+        result_folder_name=None,
+        cache_dir='./cache',
+        save_to_csvfile=True,
+        stopword_files=[stopwords_path],
+        generate_figures=True,
+        pattern_file=[pattern_file_path],
+        llm_file=[llm_file_path]
+    )
 
-        return jsonify({"message": "Clustering completed successfully!"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    #模块命名
+    named_cluster_path,cluster_component_path=module_naming(result_dir,project_name, os.path.join(result_dir, project_name, f'cluster_result.json'), llm_file_path)
+
+    #合并组件-模块和模块-文件json
+    final_json_path = os.path.join(result_dir, project_name, f"{project_name}_Final.json")
+    merge_json_files(cluster_component_path,named_cluster_path,final_json_path)
+
+    #生成新的graph id
+    graph_id_path = os.path.join(result_dir, project_name, f'{project_name}_GraphID.json')
+    graph_json(final_json_path,graph_id_path)
+
+    #添加functionality
+    component_sum_path=os.path.join(result_dir, project_name, f'{project_name}_ComponentSum.json')
+    convert_component_to_sum(pattern_file_path,component_sum_path)
+
+    graph_id_func_path = os.path.join(result_dir, project_name, f'{project_name}_GraphIDFunc.json')  # 可视化json文件
+
+    merge_functionality_with_clusters(graph_id_path,llm_file_path,graph_id_func_path)
+    merge_functionality_with_clusters(graph_id_func_path, component_sum_path, graph_id_func_path)
+    json_file_path = os.path.join(os.path.join(result_dir, project_name, f'{project_name}_GraphIDFunc.json'))
+    if os.path.exists(json_file_path):
+        # 读取JSON文件内容
+        with open(json_file_path, 'r', encoding='utf-8') as json_file:
+            file_content = json.load(json_file)
+
+        # 返回JSON文件内容作为响应
+        return jsonify({"sharedFile": file_content}), 200
+    else:
+        return jsonify({"error": "File not found"}), 404
+
+    # except Exception as e:
+    #     return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

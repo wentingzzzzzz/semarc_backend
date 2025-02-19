@@ -132,10 +132,10 @@ def get_semantic(folder_path):
     project_name = os.path.basename(folder_path)
 
     llm_kwargs = tl.get_default_kwargs()
-    language = "python"
+    language = "c"
 
     # 调用 get_semantic 函数
-    code_sem_res = code_semantic_analysis("python", folder_path, llm_kwargs, plugin_kwargs={}, history=[],
+    code_sem_res = code_semantic_analysis(language, folder_path, llm_kwargs, plugin_kwargs={}, history=[],
                                           system_prompt="")
 
     # 保存语义信息到results目录
